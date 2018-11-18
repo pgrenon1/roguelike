@@ -1,5 +1,8 @@
 import libtcodpy as libtcod
- 
+#This is a test - Alvaro
+
+#ay
+
 #actual size of the window
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
@@ -7,7 +10,7 @@ SCREEN_HEIGHT = 50
 LIMIT_FPS = 20  #20 frames-per-second maximum
 
 MAP_WIDTH = 80
-MAP_HEIGHT = 45
+MAP_HEIGHT = 45     
 
 color_dark_wall = libtcod.Color(0, 0, 100)
 color_dark_ground = libtcod.Color(50, 50, 150)
@@ -62,7 +65,7 @@ def handle_keys():
     elif libtcod.console_is_key_pressed(libtcod.KEY_RIGHT):
         player.move(1, 0)
  
- 
+
 #############################################
 # Initialization & Main Loop
 #############################################
@@ -71,7 +74,6 @@ libtcod.console_set_custom_font('arial10x10.png', libtcod.FONT_TYPE_GREYSCALE | 
 libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'python/libtcod tutorial', False)
 libtcod.sys_set_fps(LIMIT_FPS)
 con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
- 
 #create object representing the player
 player = Object(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, '@', libtcod.white)
  
