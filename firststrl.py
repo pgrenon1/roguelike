@@ -15,7 +15,14 @@ MAP_HEIGHT = 45
 color_dark_wall = libtcod.Color(0, 0, 100)
 color_dark_ground = libtcod.Color(50, 50, 150)
 
-
+class Tile:
+    #a tile of the map and its properties
+    def __init__(self, blocked, block_sight = None):
+        self.blocked = blocked
+ 
+        #by default, if a tile is blocked, it also blocks sight
+        block_sight = blocked if block_sight is None else None
+        self.block_sight = block_sight
  
 class Object:
     #this is a generic object: the player, a monster, an item, the stairs...
@@ -40,7 +47,15 @@ class Object:
         #erase the character that represents this object
         libtcod.console_put_char(con, self.x, self.y, ' ', libtcod.BKGND_NONE)
  
+def make_map():
+    global map
  
+    #fill map with "unblocked" tiles
+    map = [
+         [Tile(False) for y in range(MAP_HEIGHT)]
+         for x in range(MAP_WIDTH) 
+    ]
+
 def handle_keys():
     #key = libtcod.console_check_for_keypress()  #real-time
     key = libtcod.console_wait_for_keypress(True)  #turn-based
