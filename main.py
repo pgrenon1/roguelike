@@ -1,4 +1,6 @@
 import libtcodpy as libtcod
+from Objects import Player
+
 #This is a test - Alvaro
 
 #ay
@@ -11,6 +13,10 @@ LIMIT_FPS = 20  #20 frames-per-second maximum
 
 MAP_WIDTH = 80
 MAP_HEIGHT = 45
+
+#player = Player()
+
+#player
 
 color_dark_wall = libtcod.Color(0, 0, 100)
 color_dark_ground = libtcod.Color(50, 50, 150)

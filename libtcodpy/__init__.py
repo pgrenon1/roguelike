@@ -167,7 +167,7 @@ def _get_cdll(libname):
             if libArchitecture != pythonExeArchitecture:
                 libName = os.path.basename(libPath)
                 print ("Error: Incompatible architecture, python is %s, %s is %s" % (pythonExeArchitecture, libName, libArchitecture))
-                sys.exit(1)
+                setup.exit(1)
             return ctypes.cdll[libPath]
 
     raise Exception("unable to locate: "+ libname)
@@ -292,8 +292,8 @@ _lib.TCOD_color_multiply_scalar.argtypes=[Color , c_float ]
 # Should be valid on any platform, check it!  Has to be done after Color is defined.
 # NOTE(rmtew): This should ideally be deleted.  Most of it is moved or duplicated here.
 if MAC:
-    from .cprotos import setup_protos
-    setup_protos(_lib)
+    from .cprotos import sys_protos
+    sys_protos(_lib)
 
 
 # default colors
