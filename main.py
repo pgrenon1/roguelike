@@ -9,7 +9,7 @@ SCREEN_HEIGHT = 50
 #size of the map
 MAP_WIDTH = 80
 MAP_HEIGHT = 45
- 
+
 LIMIT_FPS = 20  #20 frames-per-second maximum
 
 ROOM_MAX_SIZE = 10
