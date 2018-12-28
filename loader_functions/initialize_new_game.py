@@ -20,10 +20,10 @@ from render_functions import RenderOrder
 
 
 def get_constants():
-    window_title = 'Roguelike Tutorial Revised'
+    window_title = 'le Rogue'
 
-    screen_width = 80
-    screen_height = 50
+    screen_width = 120
+    screen_height = 75
 
     bar_width = 20
     panel_height = 7
@@ -91,7 +91,8 @@ def get_game_variables(constants):
     entities = [player]
 
     equippable_component = Equippable(EquipmentSlots.MAIN_HAND, power_bonus=2)
-    dagger = Entity(0, 0, '-', libtcod.sky, 'Dagger', equippable=equippable_component)
+    dagger = Entity(0, 0, '-', libtcod.sky, 'Dagger',
+                    equippable=equippable_component)
     player.inventory.add_item(dagger)
     player.equipment.toggle_equip(dagger)
 
@@ -99,7 +100,8 @@ def get_game_variables(constants):
     game_map.make_map(constants['max_rooms'], constants['room_min_size'], constants['room_max_size'],
                       constants['map_width'], constants['map_height'], player, entities)
 
-    message_log = MessageLog(constants['message_x'], constants['message_width'], constants['message_height'])
+    message_log = MessageLog(
+        constants['message_x'], constants['message_width'], constants['message_height'])
 
     game_state = GameStates.PLAYERS_TURN
 

@@ -52,18 +52,18 @@ def handle_player_turn_keys(key):
     elif key_char == 'd':
         return {'drop_inventory': True}
 
-    elif key.vk == libtcod.KEY_ENTER:
-        return {'take_stairs': True}
-
-    elif key_char == 'c':
-        return {'show_character_screen': True}
-
     if key.vk == libtcod.KEY_ENTER and key.lalt:
         # Alt+Enter: toggle full screen
         return {'fullscreen': True}
     elif key.vk == libtcod.KEY_ESCAPE:
         # Exit the game
         return {'exit': True}
+
+    elif key.vk == libtcod.KEY_ENTER:
+        return {'take_stairs': True}
+
+    elif key_char == 'c':
+        return {'show_character_screen': True}
 
     # No key was pressed
     return {}
