@@ -11,6 +11,7 @@ class Entity:
     """
     A generic object to represent players, enemies, items, etc.
     """
+
     def __init__(self, x, y, char, color, name, blocks=False, render_order=RenderOrder.CORPSE, fighter=None, ai=None,
                  item=None, inventory=None, stairs=None, level=None, equipment=None, equippable=None):
         self.x = x
@@ -72,7 +73,7 @@ class Entity:
         dy = int(round(dy / distance))
 
         if not (game_map.is_blocked(self.x + dx, self.y + dy) or
-                    get_blocking_entities_at_location(entities, self.x + dx, self.y + dy)):
+                get_blocking_entities_at_location(entities, self.x + dx, self.y + dy)):
             self.move(dx, dy)
 
     def distance(self, x, y):
@@ -99,7 +100,8 @@ class Entity:
         for entity in entities:
             if entity.blocks and entity != self and entity != target:
                 # Set the tile as a wall so it must be navigated around
-                libtcod.map_set_properties(fov, entity.x, entity.y, True, False)
+                libtcod.map_set_properties(
+                    fov, entity.x, entity.y, True, False)
 
         # Allocate a A* path
         # The 1.41 is the normal diagonal cost of moving, it can be set as 0.0 if diagonal moves are prohibited
