@@ -11,7 +11,7 @@ def Factory(class_name):
 # maybe have a more generic function that loads these items when needed
 # A repertory contains templates of entities (player, monsters, items, etc)
 
-def LoadDataSet(repertory):
+def load_dataset(repertory):
     """We load the JSON containing all the data, we specify the entity we
     want it to check for. Store it in a variable"""
 
@@ -19,12 +19,16 @@ def LoadDataSet(repertory):
         data = json.load(f)
         return data
 
-def QueryDataSet(data,query):
+def query_dataset(data,query):
     """Query the dataset you loaded with LoadDataSet"""
     print(data[query])
     return data[query]
 
-def GetEntityData(data):
+def fetch_all_components():
+    pass
+
+
+def get_entity_data(data):
     """We create a dataset to be used as an argument to be used when creating a new entity"""
     _newData = {"attributes": {}, "components": {}}
 
