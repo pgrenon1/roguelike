@@ -1,9 +1,23 @@
 import json
 from components.fighter import *
 from components.mover import *
+import Process
+
+NAMED_COMPONENTS = {'fighter' : Fighter, 'mover' : Mover}
 
 #maybe have a more generic function that loads these items when needed
 #A repertory contains templates of entities (player, monsters, items, etc)
+
+
+class ProcessDirector:
+    def __init__(self):
+        self.allClasses = []
+
+    def construct(self, builderName):
+        targetClass = getattr(idClasses, builderName)
+        instance = targetClass()
+        self.allClasses.append(instance)
+
 
 def LoadDataSet(repertory,entity):
     with open(repertory) as f:
@@ -13,7 +27,7 @@ def LoadDataSet(repertory,entity):
 
 
 def GetEntityData(data):
-    _newData = {"attributes": {}, "components": []}
+    _newData = {"attributes": {}, "components": {}}
     print(type(_newData))
 
 
@@ -27,18 +41,15 @@ def GetEntityData(data):
 #     else:
 #       print("{0} : {1}".format(k, v))
     for key in data:
-        if key == "attributes":
+        if key != "components":
             _newData["attributes"][key] = data[key]
+            print(_newData)
         else:
-
-            #We scan for components
-            for value in data["components"]:
-
                 if value == "mover":
-                    _newData["components"].append(Mover())
+                    _newData["components"]["mover"].append(Mover())
                 elif value == "fighter": 
                     _tempComponent = data["components"]["fighter"]
-                    _newData["components"].append(Fighter(_tempComponent["hp"]
+                    _newData["components"]["fighter"].append(Fighter(_tempComponent["hp"]
                                                ,_tempComponent["defense"]
                                                ,_tempComponent["power"]))
                 else:
