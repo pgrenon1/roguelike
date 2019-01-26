@@ -14,7 +14,7 @@ def main():
         'dark_ground': libtcod.Color(50, 50, 150)
     }
 
-    player = Entity(int(config.config.SCREEN_HEIGHT / 2), int(config.SCREEN_HEIGHT / 2), '@', libtcod.white)
+    player = Entity(int(config.SCREEN_HEIGHT / 2), int(config.SCREEN_HEIGHT / 2), '@', libtcod.white)
     npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5), int(config.SCREEN_HEIGHT / 2), '@', libtcod.yellow)
 
     entities = [npc, player]
