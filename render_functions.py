@@ -17,6 +17,7 @@ def render_all(con, entities, game_map, screen_width, screen_height, colors):
             if wall:
                 libtcod.console_set_char_background(
                     con, x, y, colors.get('dark_wall'), libtcod.BKGND_SET)
+                # libtcod.console_put_char(con, x, y, ".")
             else:
                 libtcod.console_set_char_background(
                     con, x, y, colors.get('dark_ground'), libtcod.BKGND_SET)
