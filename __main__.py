@@ -2,7 +2,7 @@ import engine
 
 
 def main():
-    engine.rungame()
+    engine.run_game()
 
 
 if __name__ == '__main__':
