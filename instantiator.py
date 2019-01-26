@@ -8,7 +8,7 @@ from components.mover import *
 def LoadDataSet(repertory,entity):
     with open(repertory) as f:
         data = json.load(f)
-        print(data[entity])
+        # print(data[entity])
         return data[entity]
 
 

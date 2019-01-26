@@ -1,29 +1,28 @@
 {
   "player": {
+    "character": "@",
+    "color": "player",
     "name": "Player",
     "description": "The player description",
+    "blocks": "True",
     "components": {
       "mover": {
         "speed": 2
       },
-      "fighter":
-      {
+      "fighter": {
         "hp": 1,
         "defense": 1,
         "power": 1
       }
     }
   },
-
-
-    "enemy": {
-      "name": "Enemy",
-      "description": "This is a basic enemy",
-      "components": [
-        "comp1",
-        "comp2",
-        "comp3"
-      ]
-    }
+  "enemy": {
+    "name": "Enemy",
+    "description": "This is a basic enemy",
+    "components": [
+      "comp1",
+      "comp2",
+      "comp3"
+    ]
   }
-
+}
