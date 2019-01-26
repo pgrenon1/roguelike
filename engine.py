@@ -1,4 +1,4 @@
-import libtcodpy as libtcod
+import tcod as libtcod
 
 from entity import Entity
 from input_handlers import handle_keys
