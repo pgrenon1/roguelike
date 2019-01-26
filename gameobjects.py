@@ -7,7 +7,7 @@ from map_objects.game_map import GameMap
 
 #Initialize individual entities
 player = Entity(int(config.SCREEN_HEIGHT / 2), int(config.SCREEN_HEIGHT / 2), '@', libtcod.white)
-npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5), int(config.SCREEN_HEIGHT / 2), '@', libtcod.yellow)
+npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5), int(config.SCREEN_HEIGHT / 2), 'X', libtcod.yellow)
 
 
 
