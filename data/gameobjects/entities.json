@@ -10,19 +10,27 @@
         "speed": 2
       },
       "fighter": {
-        "hp": 1,
+        "hp": 3,
+        "defense": 1,
+        "power": 2
+      }
+    }
+  },
+  "npc": {
+    "character": "A",
+    "color": "player",
+    "name": "The Other Alvaro",
+    "description": "Alvaro's description",
+    "blocks": "True",
+    "components": {
+      "mover": {
+        "speed": 2
+      },
+      "fighter": {
+        "hp": 2,
         "defense": 1,
         "power": 1
       }
     }
-  },
-  "enemy": {
-    "name": "Enemy",
-    "description": "This is a basic enemy",
-    "components": [
-      "comp1",
-      "comp2",
-      "comp3"
-    ]
   }
 }

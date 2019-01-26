@@ -9,18 +9,14 @@ from instantiator import *
 
 # Initialize player entities
 playerData = LoadDataSet('data/gameobjects/entities.json', 'player')
-# player = GetEntityData(playerData)
-
-player_mover_component = Mover()
-player_fighter_component = Fighter(100, 0, 1)
 player = Entity(int(config.SCREEN_HEIGHT / 2),
                 int(config.SCREEN_HEIGHT / 2), GetEntityData(playerData))
 
 
 # An immobile entity that blocks
-npc_fighter_component = Fighter(2, 0, 0)
+npcData = LoadDataSet('data/gameobjects/entities.json', 'npc')
 npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5),
-             int(config.SCREEN_HEIGHT / 2), '@', libtcod.yellow, "OTHER ALVARO", blocks=True, fighter=npc_fighter_component)
+             int(config.SCREEN_HEIGHT / 2), GetEntityData(npcData))
 
 # Initialize entity groups
 entities = [npc, player]
