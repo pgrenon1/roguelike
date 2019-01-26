@@ -7,12 +7,18 @@ import action_handler
 from entity import get_blocking_entities_at_location
 
 
+# libtcod.sys_(30,30)
+#libtcod.console_init_root(400, 400, "", True)
+
+
 def run_game():
+
     while not libtcod.console_is_window_closed():
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
         render_all(config.con, gameobjects.entities, gameobjects.game_map,
                    config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)
+
         libtcod.console_flush()
 
         clear_all(config.con, gameobjects.entities)
