@@ -5,6 +5,7 @@
     "name": "Player",
     "description": "The player description",
     "blocks": "True",
+    "blocks_sight": "False",
     "components": {
       "mover": {
         "speed": 2
@@ -22,6 +23,7 @@
     "name": "The Other Alvaro",
     "description": "Alvaro's description",
     "blocks": "True",
+    "blocks_sight": "False",
     "components": {
       "mover": {
         "speed": 2
@@ -32,5 +34,14 @@
         "power": 1
       }
     }
+  },
+  "wall": {
+    "character": "#",
+    "color": "dark_wall",
+    "name": "wall",
+    "description": "A simple wall description",
+    "blocks": "True",
+    "blocks_sight": "True",
+    "components": {}
   }
 }

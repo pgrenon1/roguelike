@@ -33,7 +33,7 @@ def GetEntityData(data):
                 _newComponent = _entityType(args)
                 _newData['components'][value] = _newComponent
 
-            print(_newData)
+            # print(_newData)
 
     return _newData
 

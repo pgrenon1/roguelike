@@ -19,18 +19,28 @@ npcData = LoadDataSet('data/gameobjects/entities.json', 'npc')
 npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5),
              int(config.SCREEN_HEIGHT / 2), GetEntityData(npcData))
 
+
+# Create the arrays of tiles
+game_map = GameMap(config.MAP_WIDTH, config.MAP_HEIGHT)
+
+
+wallData = LoadDataSet('data/gameobjects/entities.json', 'wall')
+# Populate it with basic entites like walls
+
+
 def CreateMapEntities():
     mapEntities = []
 
-
-
+    for x in range(0, 5):
+        wall = Entity(x, 1, GetEntityData(wallData))
+        mapEntities.append(wall)
+        game_map.tiles[x][1].entities.append(wall)
 
     return mapEntities
+
+
 # Initialize a simple map
 mapEntities = CreateMapEntities()
 
 # Initialize entity groups
 entities = [npc, player] + mapEntities
-game_map = GameMap(config.MAP_WIDTH, config.MAP_HEIGHT)
-
-
