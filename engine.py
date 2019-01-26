@@ -5,6 +5,7 @@ from render_functions import clear_all, render_all
 import gameobjects
 import action_handler
 from entity import get_blocking_entities_at_location
+from death_functions import *
 
 
 # libtcod.sys_(30,30)
@@ -63,7 +64,7 @@ def run_game():
                 print(message)
 
             if dead_entity:
-                if dead_entity == player:
+                if dead_entity == gameobjects.player:
                     message, game_state = kill_player(dead_entity)
                 else:
                     message = kill_monster(dead_entity)
