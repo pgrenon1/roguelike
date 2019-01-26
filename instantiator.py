@@ -4,9 +4,9 @@ from components.mover import *
 
 
 def Factory(class_name):
-    components = {"fighter":Fighter, "mover":Mover}
+    components = {"fighter": Fighter, "mover": Mover}
     return components[class_name]
-    
+
 
 # maybe have a more generic function that loads these items when needed
 # A repertory contains templates of entities (player, monsters, items, etc)
@@ -19,10 +19,12 @@ def load_dataset(repertory):
         data = json.load(f)
         return data
 
-def query_dataset(data,query):
+
+def query_dataset(data, query):
     """Query the dataset you loaded with LoadDataSet"""
     print(data[query])
     return data[query]
+
 
 def fetch_all_components():
     pass
@@ -41,11 +43,11 @@ def get_entity_data(data):
                 args = {}
 
                 for param in data["components"][value]:
-                    args[param] =  data["components"][value][param]
+                    args[param] = data["components"][value][param]
                 _newComponent = _entityType(args)
                 _newData['components'][value] = _newComponent
 
-            #print(_newData)
+            # print(_newData)
 
     return _newData
 

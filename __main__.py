@@ -1,5 +1,6 @@
 import engine
 from instantiator import *
+from components import fetcher
 
 
 def main():
@@ -7,4 +8,5 @@ def main():
 
 
 if __name__ == '__main__':
+   # fetcher.print_classes()
     main()
