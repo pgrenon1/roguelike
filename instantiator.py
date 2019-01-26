@@ -8,12 +8,12 @@ from components.mover import *
 def LoadDataSet(repertory,entity):
     with open(repertory) as f:
         data = json.load(f)
-        print(data[entity])
         return data[entity]
 
 
 
 def GetEntityData(data):
+    _newData = {"attributes": {}, "components": []}
     _attributes = {}
     _components = []
 
@@ -24,22 +24,22 @@ def GetEntityData(data):
 
     for key in data:
         if key != "components":
-            _attributes[key] = data[key]
+            _newData["attributes"][key] = data[key]
         else:
 
             #We scan for components
             for value in data["components"]:
                 if value == "mover":
-                    _components.append(Mover())
+                    _newData["components"].append(Mover())
                 elif value == "fighter":
                     _tempComponent = data["components"]["fighter"]
-                    _components.append(Fighter(_tempComponent["hp"]
+                    _newData["components"].append(Fighter(_tempComponent["hp"]
                                                ,_tempComponent["defense"]
                                                ,_tempComponent["power"]))
                 else:
                     print(value + "does not exist")
 
-    return _attributes, _components
+    return _newData
 
 #Initialize a component without knowing what the component is
 #Fill the component parameters

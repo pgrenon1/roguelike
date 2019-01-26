@@ -77,4 +77,4 @@ tcod/version.py
 debian/files
 debian/python*
 .pytest_cache
-Thumbs.db
+Thumbs.P
