@@ -1,48 +1,22 @@
 import tcod as libtcod
-from config import config
-
-from entity import Entity
 from input_handlers import handle_keys
-from map_objects.game_map import GameMap
+from config import config
 from render_functions import clear_all, render_all
+import gameobjects
 
 
-def main():
 
-    colors = {
-        'dark_wall': libtcod.Color(0, 0, 100),
-        'dark_ground': libtcod.Color(50, 50, 150)
-    }
-
-    player = Entity(int(config.SCREEN_HEIGHT / 2), int(config.SCREEN_HEIGHT / 2), '@', libtcod.white)
-    npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5), int(config.SCREEN_HEIGHT / 2), '@', libtcod.yellow)
-
-    entities = [npc, player]
-
-    libtcod.console_set_custom_font(
-        'data/fonts/lucida10x10_gs_tc.png', libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
-
-    libtcod.console_init_root(config.SCREEN_WIDTH, config.SCREEN_HEIGHT, 'libtcod tutorial revised', False)
-
-
-    con = libtcod.console_new(config.SCREEN_WIDTH, config.SCREEN_HEIGHT)
-
-    game_map = GameMap(config.MAP_WIDTH, config.MAP_HEIGHT)
-
-    key = libtcod.Key()
-    mouse = libtcod.Mouse()
-
+def rungame():
     while not libtcod.console_is_window_closed():
-        libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS, key, mouse)
+        libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
 
-        render_all(con, entities, game_map, config.SCREEN_WIDTH, config.SCREEN_HEIGHT, colors)
-
+        render_all(config.con, gameobjects.entities, gameobjects.game_map, config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)
 
         libtcod.console_flush()
 
-        clear_all(con, entities)
+        clear_all(config.con, gameobjects.entities)
 
-        action = handle_keys(key)
+        action = handle_keys(config.KEY)
 
         move = action.get('move')
         exit = action.get('exit')
@@ -51,15 +25,11 @@ def main():
         if move:
             dx, dy = move
 
-            if not game_map.is_blocked(player.x + dx, player.y + dy):
-                player.move(dx, dy)
+            if not gameobjects.game_map.is_blocked(gameobjects.player.x + dx, gameobjects.player.y + dy):
+                gameobjects.player.move(dx, dy)
 
         if exit:
             return True
 
         if fullscreen:
             libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
-
-
-if __name__ == '__main__':
-    main()
