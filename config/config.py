@@ -1,4 +1,5 @@
 import tcod as libtcod
+from instantiator import *
 
 SCREEN_WIDTH = 100
 SCREEN_HEIGHT = 70
@@ -11,6 +12,9 @@ COLORS = {
     'dark_ground': libtcod.Color(0, 10, 10),
     'player': libtcod.Color(255, 255, 255)
 }
+
+ENTITY_DATA = load_dataset('data/gameobjects/entities.json')
+COMPONENT_LIST_DATA = fetch_all_components()
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 

@@ -9,15 +9,15 @@ from map_objects.tile import Tile
 
 
 # Initialize player entities
-playerData = LoadDataSet('data/gameobjects/entities.json', 'player')
+playerData = query_dataset(config.ENTITY_DATA,'player')
 player = Entity(int(config.SCREEN_HEIGHT / 2),
-                int(config.SCREEN_HEIGHT / 2), GetEntityData(playerData))
+                int(config.SCREEN_HEIGHT / 2), get_entity_data(playerData))
 
 
 # An immobile entity that blocks
-npcData = LoadDataSet('data/gameobjects/entities.json', 'npc')
+npcData = query_dataset(config.ENTITY_DATA,'npc')
 npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5),
-             int(config.SCREEN_HEIGHT / 2), GetEntityData(npcData))
+             int(config.SCREEN_HEIGHT / 2), get_entity_data(npcData))
 
 
 # Create the arrays of tiles
