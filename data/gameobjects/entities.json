@@ -3,8 +3,10 @@
     "character": "@",
     "color": "player",
     "name": "Player",
+    "render_order": "ACTOR",
     "description": "The player description",
     "blocks": "True",
+    "has_dna": "True",
     "blocks_sight": "False",
     "components": {
       "mover": {
@@ -21,7 +23,9 @@
     "character": "A",
     "color": "player",
     "name": "The Other Alvaro",
+    "render_order": "ACTOR",
     "description": "Alvaro's description",
+    "has_dna": "True",
     "blocks": "True",
     "blocks_sight": "False",
     "components": {
@@ -39,6 +43,8 @@
     "character": "#",
     "color": "dark_wall",
     "name": "wall",
+    "render_order": "ACTOR",
+    "has_dna": "True",
     "description": "A simple wall description",
     "blocks": "True",
     "blocks_sight": "True",

@@ -1,4 +1,5 @@
 from config.config import *
+from render_functions import RenderOrder
 
 
 class Entity:
@@ -12,6 +13,7 @@ class Entity:
         # Attributes
         self.char = data['attributes']['character']
         self.color = config.COLORS[data['attributes']['color']]
+        self.render_order = RenderOrder[data['attributes']['render_order']]
         self.name = data['attributes']['name']
         self.description = data['attributes']['description']
         self.blocks = data['attributes']['blocks']

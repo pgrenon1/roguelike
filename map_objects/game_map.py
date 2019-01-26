@@ -21,3 +21,10 @@ class GameMap:
             if entity.blocks:
                 return True
         return False
+
+    def check_block_sight(self, x, y):
+        tile = self.tiles[x][y]
+        for entity in tile.entities:
+            if entity.block_sight:
+                return True
+        return False

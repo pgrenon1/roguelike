@@ -12,18 +12,14 @@ def render_all(con, entities, game_map, screen_width, screen_height, colors):
     # Draw all the tiles in the game map
     for y in range(game_map.height):
         for x in range(game_map.width):
-            wall = game_map.tiles[x][y].block_sight
+            libtcod.console_set_char_background(
+                con, x, y, colors.get('dark_ground'), libtcod.BKGND_SET)
 
-            if wall:
-                libtcod.console_set_char_background(
-                    con, x, y, colors.get('dark_wall'), libtcod.BKGND_SET)
-                # libtcod.console_put_char(con, x, y, ".")
-            else:
-                libtcod.console_set_char_background(
-                    con, x, y, colors.get('dark_ground'), libtcod.BKGND_SET)
+    entities_in_render_order = sorted(
+        entities, key=lambda x: x.render_order.value)
 
     # Draw all entities in the list
-    for entity in entities:
+    for entity in entities_in_render_order:
         draw_entity(con, entity)
 
     libtcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)

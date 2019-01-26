@@ -42,6 +42,12 @@ def CreateMapEntities():
 # Initialize a simple map
 mapEntities = CreateMapEntities()
 
-entities = mapEntities + [npc, player]
+entities = []
+
+entities.append(npc)
+entities.append(player)
+entities.extend(mapEntities)
+
+# entities = mapEntities + [npc, player]
 
 # Initialize entity groups
