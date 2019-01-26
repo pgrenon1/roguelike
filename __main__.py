@@ -2,10 +2,6 @@ import engine
 
 
 def main():
-
-
-
-
     engine.rungame()
 
 
