@@ -8,5 +8,4 @@ def main():
 
 
 if __name__ == '__main__':
-   # fetcher.print_classes()
     main()

@@ -1,4 +1,4 @@
-from config import *
+from config.config import *
 
 
 class Entity:
@@ -16,6 +16,7 @@ class Entity:
         self.description = data['attributes']['description']
         self.blocks = data['attributes']['blocks']
         # Componenents
+
         if ('mover' in data['components']):
             self.mover = data['components']['mover']
             if self.mover:
