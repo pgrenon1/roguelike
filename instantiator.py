@@ -21,6 +21,7 @@ def LoadDataSet(repertory):
 
 def QueryDataSet(data,query):
     """Query the dataset you loaded with LoadDataSet"""
+    print(data[query])
     return data[query]
 
 def GetEntityData(data):
@@ -40,7 +41,7 @@ def GetEntityData(data):
                 _newComponent = _entityType(args)
                 _newData['components'][value] = _newComponent
 
-            print(_newData)
+            #print(_newData)
 
     return _newData
 

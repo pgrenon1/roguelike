@@ -8,13 +8,13 @@ from instantiator import *
 
 
 # Initialize player entities
-playerData = LoadDataSet('data/gameobjects/entities.json', 'player')
+playerData = QueryDataSet(config.ENTITY_DATA,'player')
 player = Entity(int(config.SCREEN_HEIGHT / 2),
                 int(config.SCREEN_HEIGHT / 2), GetEntityData(playerData))
 
 
 # An immobile entity that blocks
-npcData = LoadDataSet('data/gameobjects/entities.json', 'npc')
+npcData = QueryDataSet(config.ENTITY_DATA,'npc')
 npc = Entity(int(config.SCREEN_HEIGHT / 2 - 5),
              int(config.SCREEN_HEIGHT / 2), GetEntityData(npcData))
 
