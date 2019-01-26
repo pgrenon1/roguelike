@@ -1,7 +1,10 @@
 {
   "player": {
+    "character": "@",
+    "color": "player",
     "name": "Player",
     "description": "The player description",
+    "blocks": "True",
     "components": {
       "mover": {
         "speed": 2

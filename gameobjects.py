@@ -4,13 +4,17 @@ from entity import Entity
 from map_objects.game_map import GameMap
 from components.mover import Mover
 from components.fighter import Fighter
+from instantiator import *
 
 
 # Initialize player entities
+playerData = LoadDataSet('data/gameobjects/entities.json', 'player')
+# player = GetEntityData(playerData)
+
 player_mover_component = Mover()
 player_fighter_component = Fighter(100, 0, 1)
 player = Entity(int(config.SCREEN_HEIGHT / 2),
-                int(config.SCREEN_HEIGHT / 2), '@', libtcod.white, "Player", blocks=True, mover=player_mover_component, fighter=player_fighter_component)
+                int(config.SCREEN_HEIGHT / 2), GetEntityData(playerData))
 
 
 # An immobile entity that blocks

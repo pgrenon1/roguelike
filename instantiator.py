@@ -1,12 +1,12 @@
 import json
 from components.fighter import *
 from components.mover import *
-import Process
+
 
 NAMED_COMPONENTS = {'fighter' : Fighter, 'mover' : Mover}
 
-#maybe have a more generic function that loads these items when needed
-#A repertory contains templates of entities (player, monsters, items, etc)
+# maybe have a more generic function that loads these items when needed
+# A repertory contains templates of entities (player, monsters, items, etc)
 
 
 class ProcessDirector:
@@ -25,14 +25,12 @@ def LoadDataSet(repertory,entity):
         return data[entity]
 
 
-
 def GetEntityData(data):
     _newData = {"attributes": {}, "components": {}}
     print(type(_newData))
 
-
-     #TO BE IMPLEMENTED :
-     #loop through all data recursively
+    # TO BE IMPLEMENTED :
+    # loop through all data recursively
 #      #assign components as needed
 # def myprint(d):
 #   for k, v in d.items():
@@ -45,6 +43,7 @@ def GetEntityData(data):
             _newData["attributes"][key] = data[key]
             print(_newData)
         else:
+            for value in _newData["components"]:
                 if value == "mover":
                     _newData["components"]["mover"].append(Mover())
                 elif value == "fighter": 
@@ -57,9 +56,8 @@ def GetEntityData(data):
 
     return _newData
 
-#Initialize a component without knowing what the component is
-#Fill the component parameters
+# Initialize a component without knowing what the component is
+# Fill the component parameters
 
 # def assign_components(components):
 #     for component in components:
-        
