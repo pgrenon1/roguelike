@@ -11,13 +11,13 @@ class GameMap:
         tiles = [[Tile(False) for y in range(self.height)]
                  for x in range(self.width)]
 
-        # tiles[1][1].blocked = True
-        # tiles[1][1].block_sight = True
-
         return tiles
 
     def is_blocked(self, x, y):
-        if self.tiles[x][y].blocked:
+        tile = self.tiles[x][y]
+        if tile.meta_blocks:
             return True
-
+        for entity in tile.entities:
+            if entity.blocks:
+                return True
         return False
