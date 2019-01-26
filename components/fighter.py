@@ -1,7 +1,7 @@
 class Fighter:
     def __init__(self, args):
       
-        self.max_hp = 100
+        #self.max_hp = args['max_hp']
         self.hp = args['hp']
         self.defense = args['defense']
         self.power = args['power']

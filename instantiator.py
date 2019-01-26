@@ -3,8 +3,6 @@ from components.fighter import *
 from components.mover import *
 
 
-
-
 def Factory(class_name):
     components = {"fighter":Fighter, "mover":Mover}
     return components[class_name]
