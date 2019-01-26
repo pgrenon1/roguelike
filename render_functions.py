@@ -1,4 +1,11 @@
 import tcod as libtcod
+from enum import Enum
+
+
+class RenderOrder(Enum):
+    CORPSE = 1
+    ITEM = 2
+    ACTOR = 3
 
 
 def render_all(con, entities, game_map, screen_width, screen_height, colors):
@@ -8,9 +15,11 @@ def render_all(con, entities, game_map, screen_width, screen_height, colors):
             wall = game_map.tiles[x][y].block_sight
 
             if wall:
-                libtcod.console_set_char_background(con, x, y, colors.get('dark_wall'), libtcod.BKGND_SET)
+                libtcod.console_set_char_background(
+                    con, x, y, colors.get('dark_wall'), libtcod.BKGND_SET)
             else:
-                libtcod.console_set_char_background(con, x, y, colors.get('dark_ground'), libtcod.BKGND_SET)
+                libtcod.console_set_char_background(
+                    con, x, y, colors.get('dark_ground'), libtcod.BKGND_SET)
 
     # Draw all entities in the list
     for entity in entities:
@@ -26,7 +35,8 @@ def clear_all(con, entities):
 
 def draw_entity(con, entity):
     libtcod.console_set_default_foreground(con, entity.color)
-    libtcod.console_put_char(con, entity.x, entity.y, entity.char, libtcod.BKGND_NONE)
+    libtcod.console_put_char(con, entity.x, entity.y,
+                             entity.char, libtcod.BKGND_NONE)
 
 
 def clear_entity(con, entity):
