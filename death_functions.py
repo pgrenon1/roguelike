@@ -15,7 +15,7 @@ def kill_player(player):
 def kill_monster(monster):
     death_message = '{0} is dead!'.format(monster.name.capitalize())
 
-    monster.char = '%'
+    monster.char = chr(240)
     monster.color = libtcod.dark_red
     monster.blocks = False
     monster.fighter = None
@@ -24,3 +24,11 @@ def kill_monster(monster):
     monster.render_order = RenderOrder.CORPSE
 
     return death_message
+
+
+def destroy_object(obj):
+    destroy_message = '{0} is destroyed!'.format(monster.name.capitalize())
+
+    obj.char = ''
+
+    return destroy_message

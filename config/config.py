@@ -23,6 +23,7 @@ libtcod.console_set_custom_font(DEFAULT_FONT, 2)
 
 libtcod.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, 'ROGUELIKE', FULLSCREEN)
 con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
+# console_map_ascii_code_to_font("∞", fontCharX, fontCharY)
 
 KEY = libtcod.Key()
 MOUSE = libtcod.Mouse()
