@@ -1,9 +1,10 @@
 class Fighter:
-    def __init__(self, hp, defense, power):
-        self.max_hp = hp
-        self.hp = hp
-        self.defense = defense
-        self.power = power
+    def __init__(self, args):
+      
+        #self.max_hp = args['max_hp']
+        self.hp = args['hp']
+        self.defense = args['defense']
+        self.power = args['power']
 
     def take_damage(self, amount):
         results = []

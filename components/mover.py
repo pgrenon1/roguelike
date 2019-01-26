@@ -1,7 +1,8 @@
 class Mover:
 
-    def __init__(self, speed=None):
-        self.speed = speed
+    def __init__(self, args):
+     #   print(args)
+       self.speed =  args['speed']
 
     def move(self, action):
         pass
