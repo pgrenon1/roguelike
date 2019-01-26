@@ -45,6 +45,8 @@ def get_entity_data(data):
                 for param in data["components"][value]:
                     args[param] = data["components"][value][param]
                 _newComponent = _entityType(args)
+                print("!!!!")
+                print(_newComponent)
                 _newData['components'][value] = _newComponent
     print(_newData)
     return _newData

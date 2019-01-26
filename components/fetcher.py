@@ -17,10 +17,12 @@ def fetch_directory_components(directory):
             clean_component_list.append(component_string.strip('.py'))
     return clean_component_list
 
-
+#refactor this shittttttttt
 def create_master_component_dataset(comp_list):
     for component_string in comp_list:
         my_class_module = locate('components.' + component_string)
         my_class = inspect.getmembers(my_class_module, inspect.isclass)
-        master_component_dataset[component_string] = type(my_class)
+        print(my_class)
+        master_component_dataset[component_string] = my_class[0][1]
+    print("master component dataset :  " , master_component_dataset)
     return master_component_dataset
