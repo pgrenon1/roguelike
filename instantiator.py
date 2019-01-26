@@ -14,24 +14,29 @@ def LoadDataSet(repertory,entity):
 
 def GetEntityData(data):
     _newData = {"attributes": {}, "components": []}
-    _attributes = {}
-    _components = []
+    print(type(_newData))
 
 
      #TO BE IMPLEMENTED :
      #loop through all data recursively
-     #assign components as needed
-
+#      #assign components as needed
+# def myprint(d):
+#   for k, v in d.items():
+#     if isinstance(v, dict):
+#       myprint(v)
+#     else:
+#       print("{0} : {1}".format(k, v))
     for key in data:
-        if key != "components":
+        if key == "attributes":
             _newData["attributes"][key] = data[key]
         else:
 
             #We scan for components
             for value in data["components"]:
+
                 if value == "mover":
                     _newData["components"].append(Mover())
-                elif value == "fighter":
+                elif value == "fighter": 
                     _tempComponent = data["components"]["fighter"]
                     _newData["components"].append(Fighter(_tempComponent["hp"]
                                                ,_tempComponent["defense"]
@@ -44,3 +49,6 @@ def GetEntityData(data):
 #Initialize a component without knowing what the component is
 #Fill the component parameters
 
+# def assign_components(components):
+#     for component in components:
+        
