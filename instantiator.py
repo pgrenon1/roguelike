@@ -43,13 +43,13 @@ def GetEntityData(data):
             _newData["attributes"][key] = data[key]
             # print(_newData)
         else:
-            for value in _newData["components"]:
+            for value in data["components"]:
                 if value == "mover":
-                    _newData["components"]["mover"].append(Mover())
+                    _newData["components"]["mover"] = Mover()
                 elif value == "fighter":
                     _tempComponent = data["components"]["fighter"]
-                    _newData["components"]["fighter"].append(Fighter(
-                        _tempComponent["hp"], _tempComponent["defense"], _tempComponent["power"]))
+                    _newData["components"]["fighter"] = Fighter(
+                        _tempComponent["hp"], _tempComponent["defense"], _tempComponent["power"])
                 else:
                     print(value + "does not exist")
 

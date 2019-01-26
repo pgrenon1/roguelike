@@ -14,6 +14,7 @@ class Entity:
         # self.fighter = data['components']['fighter']
         print(data['components']['mover'])
 
+
     # def __init__(self, x, y, char, color, name, description, blocks=False, mover=None, fighter=None):
     #     self.x = x
     #     self.y = y
