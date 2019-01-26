@@ -1,4 +1,5 @@
 import json
+from components.fighter import *
 from components.mover import *
 
 #maybe have a more generic function that loads these items when needed
@@ -17,20 +18,27 @@ def GetEntityData(data):
     _components = []
 
 
+     #TO BE IMPLEMENTED :
+     #loop through all data recursively
+     #assign components as needed
 
     for key in data:
         if key != "components":
             _attributes[key] = data[key]
         else:
+
             #We scan for components
             for value in data["components"]:
                 if value == "mover":
                     _components.append(Mover())
-                elif key == "other":
-                    print("other")
+                elif value == "fighter":
+                    _tempComponent = data["components"]["fighter"]
+                    _components.append(Fighter(_tempComponent["hp"]
+                                               ,_tempComponent["defense"]
+                                               ,_tempComponent["power"]))
+                else:
+                    print(value + "does not exist")
 
-
-    print(_attributes,_components)
     return _attributes, _components
 
 #Initialize a component without knowing what the component is
