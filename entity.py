@@ -9,19 +9,21 @@ class Entity:
     def __init__(self, x, y, data):
         self.x = x
         self.y = y
+        # Attributes
         self.char = data['attributes']['character']
         self.color = config.COLORS[data['attributes']['color']]
         self.name = data['attributes']['name']
         self.description = data['attributes']['description']
         self.blocks = data['attributes']['blocks']
-        self.mover = data['components']['mover']
-        self.fighter = data['components']['fighter']
-
-        if self.mover:
-            self.mover.owner = self
-
-        if self.fighter:
-            self.fighter.owner = self
+        # Componenents
+        if ('mover' in data['components']):
+            self.mover = data['components']['mover']
+            if self.mover:
+                self.mover.owner = self
+        if ('fighter' in data['components']):
+            self.fighter = data['components']['fighter']
+            if self.fighter:
+                self.fighter.owner = self
 
     def move(self, dx, dy):
         # Move the entity by a given amount
