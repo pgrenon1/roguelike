@@ -42,6 +42,12 @@
     "description": "A simple wall description",
     "blocks": "True",
     "blocks_sight": "True",
-    "components": {}
+    "components": {
+      "fighter": {
+        "hp": 3,
+        "defense": 1,
+        "power": 1
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ import tcod as libtcod
 from input_handlers import handle_keys
 from config import config
 from render_functions import clear_all, render_all
-import gameobjects
+import game_objects
 import action_handler
 from entity import get_blocking_entities_at_location
 from death_functions import *
@@ -17,12 +17,12 @@ def run_game():
     while not libtcod.console_is_window_closed():
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
-        render_all(config.con, gameobjects.entities, gameobjects.game_map,
+        render_all(config.con, game_objects.entities, game_objects.game_map,
                    config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)
 
         libtcod.console_flush()
 
-        clear_all(config.con, gameobjects.entities)
+        clear_all(config.con, game_objects.entities)
 
         # TO BE WRAPPED OUT
         action = handle_keys(config.KEY)
@@ -35,20 +35,20 @@ def run_game():
 
         if move:
             dx, dy = move
-            destination_x = gameobjects.player.x + dx
-            destination_y = gameobjects.player.y + dy
+            destination_x = game_objects.player.x + dx
+            destination_y = game_objects.player.y + dy
 
-            if not gameobjects.game_map.is_blocked(destination_x, destination_y):
-                target = get_blocking_entities_at_location(
-                    gameobjects.entities, destination_x, destination_y)
+            # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
+            target = get_blocking_entities_at_location(
+                game_objects.entities, destination_x, destination_y)
 
-                if target:
-                    attack_results = gameobjects.player.fighter.attack(target)
-                    player_turn_results.extend(attack_results)
-                else:
-                    gameobjects.player.move(dx, dy)
+            if target:
+                attack_results = game_objects.player.fighter.attack(target)
+                player_turn_results.extend(attack_results)
+            else:
+                game_objects.player.move(dx, dy)
 
-                    fov_recompute = True
+                fov_recompute = True
 
         if exit:
             return True
@@ -64,7 +64,7 @@ def run_game():
                 print(message)
 
             if dead_entity:
-                if dead_entity == gameobjects.player:
+                if dead_entity == game_objects.player:
                     message, game_state = kill_player(dead_entity)
                 else:
                     message = kill_monster(dead_entity)
