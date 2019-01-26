@@ -1,5 +1,6 @@
 import tcod as libtcod
 from instantiator import *
+from components import fetcher
 
 SCREEN_WIDTH = 100
 SCREEN_HEIGHT = 70
@@ -14,7 +15,8 @@ COLORS = {
 }
 
 ENTITY_DATA = load_dataset('data/gameobjects/entities.json')
-COMPONENT_LIST_DATA = fetch_all_components()
+data_list = fetcher.fetch_directory_components('components')
+MASTER_COMPONENT_DATASET = fetcher.create_master_component_dataset(data_list)
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 
