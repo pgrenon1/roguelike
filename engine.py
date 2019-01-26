@@ -4,16 +4,18 @@ from config import config
 from render_functions import clear_all, render_all
 import gameobjects
 import action_handler
+from entity import get_blocking_entities_at_location
 
 
-#libtcod.sys_(30,30)
+# libtcod.sys_(30,30)
 #libtcod.console_init_root(400, 400, "", True)
 
 
 def run_game():
 
     while not libtcod.console_is_window_closed():
-        libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
+        libtcod.sys_check_for_event(
+            libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
         render_all(config.con, gameobjects.entities, gameobjects.game_map,
                    config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)
 
@@ -30,12 +32,20 @@ def run_game():
 
         if move:
             dx, dy = move
+            destination_x = gameobjects.player.x + dx
+            destination_y = gameobjects.player.y + dy
 
+            if not gameobjects.game_map.is_blocked(destination_x, destination_y):
+                target = get_blocking_entities_at_location(
+                    gameobjects.entities, destination_x, destination_y)
 
-        if action_handler.exit:
+                if target:
+                    print('You kick the ' + target.name +
+                          ' in the shins, much to its annoyance!')
+                else:
+                    gameobjects.player.move(dx, dy)
 
-            if not gameobjects.game_map.is_blocked(gameobjects.player.x + dx, gameobjects.player.y + dy):
-                gameobjects.player.move(dx, dy)
+                    fov_recompute = True
 
         if exit:
             return True
