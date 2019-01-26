@@ -1,13 +1,23 @@
 {
-    "Player": {
-      "Name": "Player",
-      "Description":  "The player description",
-      "Components" : ["comp1","comp2","comp3"]
-    },
-
-    "Enemy": {
-      "Name": "Enemy",
-      "Description": "This is a basic enemy",
-      "Components": ["comp1","comp2","comp3"]
+  "player": {
+    "name": "Player",
+    "description": "The player description",
+    "components": {
+      "mover": {
+        "speed": 2
+      }
     }
-}
+  },
+
+
+    "enemy": {
+      "name": "Enemy",
+      "description": "This is a basic enemy",
+      "components": [
+        "comp1",
+        "comp2",
+        "comp3"
+      ]
+    }
+  }
+
