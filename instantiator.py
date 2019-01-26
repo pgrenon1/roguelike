@@ -3,7 +3,7 @@ from components.fighter import *
 from components.mover import *
 
 
-NAMED_COMPONENTS = {'fighter' : Fighter, 'mover' : Mover}
+NAMED_COMPONENTS = {'fighter': Fighter, 'mover': Mover}
 
 # maybe have a more generic function that loads these items when needed
 # A repertory contains templates of entities (player, monsters, items, etc)
@@ -19,7 +19,7 @@ class ProcessDirector:
         self.allClasses.append(instance)
 
 
-def LoadDataSet(repertory,entity):
+def LoadDataSet(repertory, entity):
     with open(repertory) as f:
         data = json.load(f)
         return data[entity]
@@ -27,7 +27,7 @@ def LoadDataSet(repertory,entity):
 
 def GetEntityData(data):
     _newData = {"attributes": {}, "components": {}}
-    print(type(_newData))
+    # print(type(_newData))
 
     # TO BE IMPLEMENTED :
     # loop through all data recursively
@@ -41,16 +41,15 @@ def GetEntityData(data):
     for key in data:
         if key != "components":
             _newData["attributes"][key] = data[key]
-            print(_newData)
+            # print(_newData)
         else:
             for value in _newData["components"]:
                 if value == "mover":
                     _newData["components"]["mover"].append(Mover())
-                elif value == "fighter": 
+                elif value == "fighter":
                     _tempComponent = data["components"]["fighter"]
-                    _newData["components"]["fighter"].append(Fighter(_tempComponent["hp"]
-                                               ,_tempComponent["defense"]
-                                               ,_tempComponent["power"]))
+                    _newData["components"]["fighter"].append(Fighter(
+                        _tempComponent["hp"], _tempComponent["defense"], _tempComponent["power"]))
                 else:
                     print(value + "does not exist")
 

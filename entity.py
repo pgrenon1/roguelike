@@ -6,13 +6,13 @@ class Entity:
     def __init__(self, x, y, data):
         self.x = x
         self.y = y
-        print(data[0]['character'])
-
-        # self.char = data['attributes']['character']
-        # self.name = data['attributes']['name']
-        # self.description = data['attributes']['description']
-        # self.blocks = data['attributes']['blocks']
+        self.char = data['attributes']['character']
+        self.name = data['attributes']['name']
+        self.description = data['attributes']['description']
+        self.blocks = data['attributes']['blocks']
         # self.mover = data['components']['mover']
+        # self.fighter = data['components']['fighter']
+        print(data['components']['mover'])
 
     # def __init__(self, x, y, char, color, name, description, blocks=False, mover=None, fighter=None):
     #     self.x = x
