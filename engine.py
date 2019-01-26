@@ -30,6 +30,8 @@ def run_game():
         exit = action.get('exit')
         fullscreen = action.get('fullscreen')
 
+        player_turn_results = []
+
         if move:
             dx, dy = move
             destination_x = gameobjects.player.x + dx
@@ -40,8 +42,8 @@ def run_game():
                     gameobjects.entities, destination_x, destination_y)
 
                 if target:
-                    print('You kick the ' + target.name +
-                          ' in the shins, much to its annoyance!')
+                    attack_results = gameobjects.player.fighter.attack(target)
+                    player_turn_results.extend(attack_results)
                 else:
                     gameobjects.player.move(dx, dy)
 
@@ -52,4 +54,19 @@ def run_game():
 
         if fullscreen:
             libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
+
+        for player_turn_result in player_turn_results:
+            message = player_turn_result.get('message')
+            dead_entity = player_turn_result.get('dead')
+
+            if message:
+                print(message)
+
+            if dead_entity:
+                if dead_entity == player:
+                    message, game_state = kill_player(dead_entity)
+                else:
+                    message = kill_monster(dead_entity)
+
+                print(message)
         # TO BE WRAPPED OUT
