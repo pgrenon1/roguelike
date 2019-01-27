@@ -22,7 +22,8 @@
     "metadata": {
       "name": "Player",
       "description": "The player description"
-    }
+    },
+    "dna_absorber": {}
   },
   "npc": {
     "speed": {
@@ -46,6 +47,25 @@
       "description": "This is just an enemy"
     },
     "ai_randomwalk": {}
+  },
+  "npcdrop": {
+    "health": {
+      "max_health": 3,
+      "current_health": 1
+    },
+    "render": {
+      "character": ">",
+      "corpse_character": "%",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "block": {
+      "blocks": {}
+    },
+    "metadata": {
+      "name": "Dropper",
+      "description": "This is just an enemy"
+    }
   },
   "npc2": {
     "speed": {

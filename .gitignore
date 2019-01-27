@@ -10,6 +10,7 @@ __pycache__/
 # C extensions
 *.so
 
+
 # Distribution / packaging
 .Python
 env/
@@ -78,3 +79,4 @@ debian/files
 debian/python*
 .pytest_cache
 Thumbs.P
+settings.json

@@ -1,4 +1,3 @@
-class Dna():
-    def __init__(self,args):
-        pass
-
+class Dna:
+    def __init__(self, args):
+        self.dna_data = args['dna']['dna_data']

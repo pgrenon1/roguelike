@@ -11,7 +11,11 @@ from processors.render_processor import RenderProcessor
 from processors.ai_processor import AiProcessor
 from processors.damage_processor import DamageProcessor
 from processors.death_processor import DeathProcessor
+from processors.generatedna_processor import GenerateDnaProcessor
+from processors.dna_absorb_processor import DnaAbsorberProcessor
 from components.render import Render
+from components.generate_dna import GenerateDna
+from components.dna_absorber import DnaAbsorber
 from components.block import Block
 from components.metadata import Metadata
 from loader_functions.instantiator import *
@@ -37,20 +41,29 @@ def run_game():
     WORLD.add_processor(movement_processor)
 
     render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
-    ai_processor = AiProcessor()
-    damage_processor = DamageProcessor()
-    death_processor = DeathProcessor()
-    WORLD.add_processor(ai_processor)
     WORLD.add_processor(render_processor)
+
+    ai_processor = AiProcessor()
+    WORLD.add_processor(ai_processor)
+
+    damage_processor = DamageProcessor()
     WORLD.add_processor(damage_processor)
+
+    death_processor = DeathProcessor()
     WORLD.add_processor(death_processor)
 
-    # print(RenderOrder["ACTOR"])
+    generate_dna_processor = GenerateDnaProcessor()
+    WORLD.add_processor(generate_dna_processor)
+
+    absorb_dna_processor = DnaAbsorberProcessor()
+    WORLD.add_processor(absorb_dna_processor)
+
     player = instantiate_entity('player', 0, 0)
     npc2 = instantiate_entity('npc2', 1, 0)
     npc = instantiate_entity('npc', 1, 1)
 
    # entities = player,
+    npc3 = instantiate_entity('npcdrop', 0, 1)
 
     while not libtcod.console_is_window_closed():
         WORLD.process()
