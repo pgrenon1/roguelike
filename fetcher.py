@@ -14,9 +14,10 @@ def fetch_directory_components(directory):
     global clear_component_list
     component_list = os.listdir(directory)
     for component_string in component_list:
-        if "__" not in component_string and "fetcher" not in component_string:
+        if "__"  or "fetcher" or "fighter" or "mover" not in component_string:
 
-            clean_component_list.append(component_string.strip('.py'))
+            clean_component_list.append(component_string[-:2])
+            print(component_string)
     return clean_component_list
 
 #refactor this shittttttttt
