@@ -1,6 +1,4 @@
 import engine
-from loader_functions.instantiator import *
-from components import fetcher
 
 
 def main():
