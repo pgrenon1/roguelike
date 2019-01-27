@@ -28,11 +28,17 @@ class RenderProcessor(esper.Processor):
 
         entities = []
         for ent, (ren, pos) in self.world.get_components(Render, Position):
-            # entities.append(ent)
+            entities.append(ent)
+            print(ren.render_order)
 
-            #  sorted_renderable_entities = sorted(entities, key=lambda x: self.world.component_for_entity(x, Render).render_order)
+        sorted_entities = sorted(
+            entities, key=lambda x: self.world.component_for_entity(x, Render).render_order)
+
+        for enti in sorted_entities:
+            posi = self.world.component_for_entity(enti, Position)
+            rend = self.world.component_for_entity(enti, Render)
             libtcod.console_put_char(
-                self.console, pos.x, pos.y, ren.character, self.clear_color)
+                self.console, posi.x, posi.y, rend.character, self.clear_color)
 
         # print(renderable_entities)
 
@@ -44,6 +50,6 @@ class RenderProcessor(esper.Processor):
         # for enti in sorted_renderable_entities:
         #     rend = self.world.component_for_entity(enti, Render)
         #     posi = self.world.component_for_entity(enti, Position)
-            # libtcod.console_put_char(
-            #     self.console, posi.x, posi.y, rend.character, self.clear_color)
+        # libtcod.console_put_char(
+        #     self.console, posi.x, posi.y, rend.character, self.clear_color)
         libtcod.console_flush()
