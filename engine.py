@@ -21,6 +21,7 @@ from instantiator import *
 def run_game():
 
     global WORLD
+    global player
 
     # create world
     WORLD = esper.World()
@@ -48,13 +49,7 @@ def run_game():
 
         libtcod.console_blit(config.con, 0, 0, config.SCREEN_WIDTH,
                              config.SCREEN_HEIGHT, 0, 0, 0)
-        WORLD.process()
 
-        # render_all(config.con, entities, game_map,
-        #            config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)
+        # WORLD.process()
 
-        # libtcod.console_flush()
-
-        # clear_all(config.con, entities)
-
-        # action_handler.handle_player_actions()
+        action_handler.handle_player_actions()

@@ -4,6 +4,7 @@ import game_objects
 # from entity import get_blocking_entities_at_location
 from death_functions import *
 import engine
+from components.position import Position
 
 
 def handle_player_turn_results(player_turn_results):
@@ -35,6 +36,7 @@ def handle_player_actions():
         player_turn_results = []
 
         if move:
+            engine.WORLD.component_for_entity(engine.player, Position)
 
             dx, dy = move
             destination_x = game_objects.player.x + dx
