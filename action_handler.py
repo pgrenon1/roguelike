@@ -41,11 +41,16 @@ def handle_player_actions():
                 engine.player, Position)
 
             dx, dy = move
-            # destination_x = player_position_component.x + dx
-            # destination_y = player_position_component.y + dy
+            destination_x = player_position_component.x + dx
+            destination_y = player_position_component.y + dy
 
             engine.WORLD.add_component(engine.player, Movement(dx, dy))
             engine.WORLD.add_component(engine.npc, Ai_randomwalk(None))
+
+            # does is that spot blocked
+            
+
+                # is that thing a fighter
 
             # # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
             # target = get_blocking_entities_at_location(

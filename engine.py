@@ -13,9 +13,11 @@ from processors.movement_processor import MovementProcessor
 from processors.render_processor import RenderProcessor
 from processors.ai_processor import AiProcessor
 from components.render import Render
+from components.block import Block
 from components.metadata import Metadata
 from instantiator import *
 from loader_functions.entity_factory import *
+
 
 # libtcod.sys_(30,30)
 # libtcod.console_init_root(400, 400, "", True)
@@ -39,11 +41,8 @@ def run_game():
     WORLD.add_processor(ai_processor)
     WORLD.add_processor(render_processor)
 
-    player = instantiate_entity('player')
-    npc = instantiate_entity('npc')
-
-    WORLD.add_component(player,  Position({'position': {'x': 0, 'y': 0}}))
-    WORLD.add_component(npc,  Position({'position': {'x': 5, 'y': 0}}))
+    player = instantiate_entity('player', 0, 0)
+    npc = instantiate_entity('npc', 5, 0)
 
    #entities = player,
 

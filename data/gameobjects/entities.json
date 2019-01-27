@@ -9,6 +9,9 @@
       "render_order": "ACTOR",
       "color": "player"
     },
+    "block": {
+      "blocks": "True"
+    },
     "metadata": {
       "name": "Player",
       "description": "The player description"
@@ -23,6 +26,9 @@
       "corpse_character": "X",
       "render_order": "ACTOR",
       "color": "player"
+    },
+    "block": {
+      "blocks": "True"
     },
     "metadata": {
       "name": "Enemy",

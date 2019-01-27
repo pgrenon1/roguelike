@@ -1,5 +1,5 @@
 class Position:
-    def __init__(self, args):
+    def __init__(self, x, y):
         # print(args)
-        self.x = args['position']['x']
-        self.y = args['position']['y']
+        self.x = x
+        self.y = y
