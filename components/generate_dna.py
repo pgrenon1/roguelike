@@ -1,3 +1,3 @@
 class GenerateDna:
-    def __init__(self, args):
+    def __init__(self):
         pass

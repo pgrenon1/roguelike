@@ -12,7 +12,7 @@ class GenerateDnaProcessor(esper.Processor):
         super().__init__()
 
     def process(self):
-        for ent, (gendna) in self.world.get_components(GenerateDna):
+        for ent, (gendna) in self.world.get_component(GenerateDna):
             # generate dna
             _generatedDna = {'dna': {'dna_data': 'ok'}}
             engine.WORLD.add_component(ent, Dna(_generatedDna))

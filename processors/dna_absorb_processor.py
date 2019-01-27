@@ -8,5 +8,5 @@ class DnaAbsorberProcessor(esper.Processor):
         super().__init__()
 
     def process(self):
-        for ent, (dna) in self.world.get_components(Dna):
+        for ent, (dna) in self.world.get_component(Dna):
             print(dna.dna_data)
