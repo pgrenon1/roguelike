@@ -15,8 +15,7 @@ def render_all(con, entities, game_map, screen_width, screen_height, colors):
             libtcod.console_set_char_background(
                 con, x, y, colors.get('dark_ground'), libtcod.BKGND_SET)
 
-    entities_in_render_order = sorted(
-        entities, key=lambda x: x.render_order.value)
+    entities_in_render_order = sorted(entities, key=lambda x: x.render_order.value)
 
     # Draw all entities in the list
     for entity in entities_in_render_order:

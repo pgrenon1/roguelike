@@ -16,6 +16,7 @@ from components.block import Block
 from components.metadata import Metadata
 from loader_functions.instantiator import *
 from loader_functions.entity_factory import *
+from render_functions import RenderOrder
 
 
 # libtcod.sys_(30,30)
@@ -44,11 +45,12 @@ def run_game():
     WORLD.add_processor(damage_processor)
     WORLD.add_processor(death_processor)
 
+    # print(RenderOrder["ACTOR"])
     player = instantiate_entity('player', 0, 0)
-    npc = instantiate_entity('npc', 1, 1)
     npc2 = instantiate_entity('npc2', 1, 0)
+    npc = instantiate_entity('npc', 1, 1)
 
-   #entities = player,
+   # entities = player,
 
     while not libtcod.console_is_window_closed():
         WORLD.process()
