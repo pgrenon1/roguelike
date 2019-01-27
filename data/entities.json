@@ -46,7 +46,8 @@
       "name": "Alvaro",
       "description": "This is just an enemy"
     },
-    "ai_randomwalk": {}
+    "ai_randomwalk": {},
+    "dna_absorber": {}
   },
   "npcdrop": {
     "health": {
