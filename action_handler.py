@@ -5,6 +5,7 @@ import game_objects
 from death_functions import *
 import engine
 from components.position import Position
+from components.movement import Movement
 
 
 def handle_player_turn_results(player_turn_results):
@@ -36,21 +37,24 @@ def handle_player_actions():
         player_turn_results = []
 
         if move:
-            engine.WORLD.component_for_entity(engine.player, Position)
+            player_position_component = engine.WORLD.component_for_entity(
+                engine.player, Position)
 
             dx, dy = move
-            destination_x = game_objects.player.x + dx
-            destination_y = game_objects.player.y + dy
+            # destination_x = player_position_component.x + dx
+            # destination_y = player_position_component.y + dy
 
-            # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
-            target = get_blocking_entities_at_location(
-                game_objects.entities, destination_x, destination_y)
+            engine.WORLD.add_component(engine.player, Movement(dx, dy))
 
-            if target:
-                attack_results = game_objects.player.fighter.attack(target)
-                player_turn_results.extend(attack_results)
-            else:
-                game_objects.player.move(dx, dy)
+            # # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
+            # target = get_blocking_entities_at_location(
+            #     game_objects.entities, destination_x, destination_y)
+
+            # if target:
+            #     attack_results = game_objects.player.fighter.attack(target)
+            #     player_turn_results.extend(attack_results)
+            # else:
+            #     game_objects.player.move(dx, dy)
 
         if exit:
             return True
