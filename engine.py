@@ -21,6 +21,7 @@ from components.metadata import Metadata
 from loader_functions.instantiator import *
 from loader_functions.entity_factory import *
 from render_functions import RenderOrder
+from rect import *
 
 
 # libtcod.sys_(30,30)
@@ -61,6 +62,25 @@ def run_game():
     player = instantiate_entity('player', 0, 0)
     npc2 = instantiate_entity('npc2', 1, 0)
     npc = instantiate_entity('npc', 1, 1)
+
+    noise = libtcod.noise_new(2)
+    libtcod.noise_set_type(noise, libtcod.NOISE_SIMPLEX)
+
+    room = Rect(20, 20, 10, 15)
+
+    # level generation DUMMY
+    for x in range(0, config.MAP_WIDTH):
+        for y in range(0, config.MAP_HEIGHT):
+            if x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
+                if x not in range(room.x1+1, room.x2-1):
+                    wall = instantiate_entity('wall', x, y)
+                if y not in range(room.y1+1, room.y2-1):
+                    wall = instantiate_entity('wall', x, y)
+            else:
+                val = noise.get_point(x, y)
+                # print(val)
+                if val > 0.4:
+                    tree = instantiate_entity('tree', x, y)
 
    # entities = player,
     npc3 = instantiate_entity('npcdrop', 0, 1)
