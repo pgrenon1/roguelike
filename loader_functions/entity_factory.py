@@ -15,5 +15,5 @@ def instantiate_entity(query):
     new_entity = engine.WORLD.create_entity()
     for i in entityComponents:
         engine.WORLD.add_component(new_entity, entityComponents[i])
-        print(entityComponents[i])
+        # print(entityComponents[i])
     return new_entity
