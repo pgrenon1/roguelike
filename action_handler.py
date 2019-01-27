@@ -1,7 +1,5 @@
 from input_handlers import *
 from config import config
-import game_objects
-# from entity import get_blocking_entities_at_location
 import engine
 from components.position import Position
 from components.movement import Movement
@@ -46,9 +44,8 @@ def handle_player_actions():
             engine.WORLD.add_component(engine.player, Movement(dx, dy))
 
             # does is that spot blocked
-            
 
-                # is that thing a fighter
+            # is that thing a fighter
 
             # # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
             # target = get_blocking_entities_at_location(

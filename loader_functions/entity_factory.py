@@ -1,5 +1,5 @@
-from config.config import ENTITY_DATA
-from instantiator import *
+from config import ENTITY_DATA
+from loader_functions.instantiator import *
 import engine
 from components.position import Position
 
@@ -17,5 +17,5 @@ def instantiate_entity(query, x, y):
     engine.WORLD.add_component(new_entity, Position(x, y))
     for i in entityComponents:
         engine.WORLD.add_component(new_entity, entityComponents[i])
-        print(entityComponents[i])
+        # print(entityComponents[i])
     return new_entity

@@ -1,5 +1,5 @@
 import tcod as libtcod
-from instantiator import *
+from loader_functions.instantiator import *
 from components import fetcher
 
 SCREEN_WIDTH = 100
@@ -14,7 +14,7 @@ COLORS = {
     'player': libtcod.Color(255, 255, 255)
 }
 
-ENTITY_DATA = load_dataset('data/gameobjects/entities.json')
+ENTITY_DATA = load_dataset('data/entities.json')
 data_list = fetcher.fetch_directory_components('components')
 MASTER_COMPONENT_DATASET = fetcher.create_master_component_dataset(data_list)
 

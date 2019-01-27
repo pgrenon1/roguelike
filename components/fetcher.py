@@ -1,5 +1,5 @@
 import os
-import instantiator
+from loader_functions.instantiator import *
 from pydoc import locate
 import sys
 import inspect

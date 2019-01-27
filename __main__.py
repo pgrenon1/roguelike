@@ -1,5 +1,5 @@
 import engine
-from instantiator import *
+from loader_functions.instantiator import *
 from components import fetcher
 
 

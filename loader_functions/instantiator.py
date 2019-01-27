@@ -1,6 +1,5 @@
 import json
-
-from config import config
+import config
 
 
 def Factory(class_name):
@@ -34,7 +33,7 @@ def get_entity_data(data):
         for param in data[key]:
 
             args[key] = data[key]
-            
+
         _newComponent = _componentType(args)
         _newData[key] = _newComponent
     return _newData

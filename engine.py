@@ -1,10 +1,7 @@
 import tcod as libtcod
 from input_handlers import handle_keys
 from config import config
-from render_functions import clear_all, render_all
-# import game_objects
 import action_handler
-# from entity import get_blocking_entities_at_location
 from death_functions import *
 import esper
 from components.speed import Speed
@@ -14,7 +11,7 @@ from processors.render_processor import RenderProcessor
 from components.render import Render
 from components.block import Block
 from components.metadata import Metadata
-from instantiator import *
+from loader_functions.instantiator import *
 from loader_functions.entity_factory import *
 
 
