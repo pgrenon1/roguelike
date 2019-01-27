@@ -14,6 +14,5 @@ class DamageProcessor(esper.Processor):
         for ent, (dam, hp) in self.world.get_components(Damage, Health):
             hp.current_health -= dam.damage
             engine.WORLD.remove_component(ent, Damage)
-            print(hp.current_health)
             if (hp.current_health == 0):
                 engine.WORLD.add_component(ent, Death())

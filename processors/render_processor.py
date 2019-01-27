@@ -12,8 +12,14 @@ class RenderProcessor(esper.Processor):
 
     def process(self):
         libtcod.console_clear(self.console)
+        entities = []
         for ent, (ren, pos) in self.world.get_components(Render, Position):
-          #  print(type(ren.character))
+            #     entities.append(ent)
+            # print()
+            # sorted_entities = sorted(
+            #     entities, key=lambda x: x.render_order.value)
+            # for e in sorted_entities:
+
             libtcod.console_put_char(
                 self.console, pos.x, pos.y, ren.character, self.clear_color)
         libtcod.console_flush()
