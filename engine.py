@@ -8,6 +8,7 @@ from components.speed import Speed
 from components.position import Position
 from processors.movement_processor import MovementProcessor
 from processors.render_processor import RenderProcessor
+from processors.ai_processor import AiProcessor
 from components.render import Render
 from components.block import Block
 from components.metadata import Metadata
@@ -23,6 +24,7 @@ def run_game():
 
     global WORLD
     global player
+    global npc
 
     # create world
     WORLD = esper.World()
@@ -32,10 +34,12 @@ def run_game():
     WORLD.add_processor(movement_processor)
 
     render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
+    ai_processor = AiProcessor()
+    WORLD.add_processor(ai_processor)
     WORLD.add_processor(render_processor)
 
     player = instantiate_entity('player', 0, 0)
-    npc = instantiate_entity('npc', 5, 0)
+    npc = instantiate_entity('npc', 1, 1)
 
    #entities = player,
 

@@ -16,8 +16,8 @@ class MovementProcessor(esper.Processor):
             dy = pos.y + mov.y
             for other_ent, (other_pos, blo) in self.world.get_components(Position, Block):
                 if other_pos.x == dx and other_pos.y == dy:
-                    if blo.blocks:
-                        
+                    if blo:
+
                         engine.WORLD.remove_component(ent, Movement)
                         return
 

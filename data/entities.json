@@ -10,7 +10,7 @@
       "color": "player"
     },
     "block": {
-      "blocks": "True"
+      "blocks": {}
     },
     "metadata": {
       "name": "Player",
@@ -28,11 +28,12 @@
       "color": "player"
     },
     "block": {
-      "blocks": "True"
+      "blocks": {}
     },
     "metadata": {
       "name": "Enemy",
       "description": "This is an enemy"
-    }
+    },
+    "ai_randomwalk": {}
   }
 }
