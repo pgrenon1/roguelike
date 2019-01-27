@@ -15,10 +15,11 @@ class AiProcessor(esper.Processor):
 
     def process(self):
         for ent,  (mov, pos) in self.world.get_components(AiRandomwalk, Position):
-            if pos.x >=0 and pos.x < config.MAP_WIDTH and pos.y > 0 and pos.y < config.MAP_HEIGHT:
+          # if pos.x >=0 and pos.x < config.MAP_WIDTH and pos.y > 0 and pos.y < config.MAP_HEIGHT:
                 pos.x += random.randint(-1, 1)
                 pos.y += random.randint(-1, 1)
-            else:
+            #else:
+            #    pass
                 
 
                 engine.WORLD.remove_component(ent, AiRandomwalk)
