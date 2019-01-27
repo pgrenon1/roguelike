@@ -3,6 +3,7 @@ from config import config
 import game_objects
 # from entity import get_blocking_entities_at_location
 from death_functions import *
+import engine
 
 
 def handle_player_turn_results(player_turn_results):
@@ -24,33 +25,37 @@ def handle_player_turn_results(player_turn_results):
 
 def handle_player_actions():
     action = handle_keys(config.KEY)
-    move = action.get('move')
-    exit = action.get('exit')
-    fullscreen = action.get('fullscreen')
 
-    player_turn_results = []
+    if action:
 
-    if move:
-        dx, dy = move
-        destination_x = game_objects.player.x + dx
-        destination_y = game_objects.player.y + dy
+        move = action.get('move')
+        exit = action.get('exit')
+        fullscreen = action.get('fullscreen')
 
-        # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
-        target = get_blocking_entities_at_location(
-            game_objects.entities, destination_x, destination_y)
+        player_turn_results = []
 
-        if target:
-            attack_results = game_objects.player.fighter.attack(target)
-            player_turn_results.extend(attack_results)
-        else:
-            game_objects.player.move(dx, dy)
+        if move:
 
-            fov_recompute = True
+            dx, dy = move
+            destination_x = game_objects.player.x + dx
+            destination_y = game_objects.player.y + dy
 
-    if exit:
-        return True
+            # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
+            target = get_blocking_entities_at_location(
+                game_objects.entities, destination_x, destination_y)
 
-    if fullscreen:
-        libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
+            if target:
+                attack_results = game_objects.player.fighter.attack(target)
+                player_turn_results.extend(attack_results)
+            else:
+                game_objects.player.move(dx, dy)
 
-    handle_player_turn_results(player_turn_results)
+        if exit:
+            return True
+
+        if fullscreen:
+            libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
+
+        engine.WORLD.process()
+
+        handle_player_turn_results(player_turn_results)
