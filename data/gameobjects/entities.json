@@ -10,7 +10,7 @@
       "color": "player"
     },
     "block": {
-      "blocks": "True"
+      "blocks": {}
     },
     "metadata": {
       "name": "Player",
@@ -28,7 +28,7 @@
       "color": "player"
     },
     "block": {
-      "blocks": "True"
+      "blocks": {}
     },
     "metadata": {
       "name": "Enemy",

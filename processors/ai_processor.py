@@ -16,6 +16,5 @@ class AiProcessor(esper.Processor):
         for ent,  (mov, pos) in self.world.get_components(Ai_randomwalk, Position):
             pos.x += random.randint(-1, 1)
             pos.y += random.randint(-1, 1)
-            instantiate_entity('npc', pos.x, pos.y)
 
             engine.WORLD.remove_component(ent, Ai_randomwalk)

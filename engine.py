@@ -42,7 +42,7 @@ def run_game():
     WORLD.add_processor(render_processor)
 
     player = instantiate_entity('player', 0, 0)
-    npc = instantiate_entity('npc', 5, 0)
+    npc = instantiate_entity('npc', 1, 1)
 
    #entities = player,
 
