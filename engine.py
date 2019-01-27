@@ -11,7 +11,8 @@ from components.speed import Speed
 from components.position import Position
 from processors.movement_processor import MovementProcessor
 from processors.render_processor import RenderProcessor
-
+from components.render import Render
+from instantiator import *
 
 # libtcod.sys_(30,30)
 #libtcod.console_init_root(400, 400, "", True)
@@ -27,19 +28,27 @@ def run_game():
     # create and add processors
     movement_processor = MovementProcessor()
     WORLD.add_processor(movement_processor)
-    render_Processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
-    WORLD.add_processor = render_Processor
+
+    render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
+    WORLD.add_processor(render_processor)
 
     # create testing entities and add components to them
+    playerData = query_dataset(config.ENTITY_DATA, 'player')
+    args = get_entity_data(playerData)
     player = WORLD.create_entity()
     WORLD.add_component(player, Speed({'x': 0.9, 'y': 1.2}))
     WORLD.add_component(player, Position({'x': 5, 'y': 5}))
+    WORLD.add_component(player, Render(args))
 
     entities = player
 
     while not libtcod.console_is_window_closed():
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
+
+        libtcod.console_blit(config.con, 0, 0, config.SCREEN_WIDTH,
+                             config.SCREEN_HEIGHT, 0, 0, 0)
+        WORLD.process()
 
         # render_all(config.con, entities, game_map,
         #            config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)

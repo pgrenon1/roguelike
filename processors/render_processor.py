@@ -1,5 +1,7 @@
 import esper
 import tcod as libtcod
+from components.render import Render
+from components.position import Position
 
 
 class RenderProcessor(esper.Processor):

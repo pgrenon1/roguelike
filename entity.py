@@ -10,7 +10,7 @@ class Entity:
     def __init__(self, x, y, data):
         self.x = x
         self.y = y
-        print(data)
+        # print(data)
         # Attributes
 #         self.char = data['character']
 #         self.color = config.COLORS[data['color']]
