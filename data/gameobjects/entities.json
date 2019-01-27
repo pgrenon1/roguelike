@@ -18,5 +18,25 @@
       "name": "Player",
       "description": "The player description"
     }
+  },
+  "npc": {
+    "position": {
+      "x": 3,
+      "y": 3
+    },
+    "speed": {
+      "x": 0,
+      "y": 0
+    },
+    "render": {
+      "character": "$",
+      "corpse_character": "%",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "metadata": {
+      "name": "Alvaro",
+      "description": "The npc description"
+    }
   }
 }
