@@ -40,6 +40,7 @@ def run_game():
 
     player = instantiate_entity('player', 0, 0)
     npc = instantiate_entity('npc', 1, 1)
+    npc2 = instantiate_entity('npc2', 1, 0)
 
    #entities = player,
 

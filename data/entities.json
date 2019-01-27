@@ -3,9 +3,16 @@
     "speed": {
       "speed": 0
     },
+    "damage_dealer": {
+      "damage": 1
+    },
+    "health": {
+      "max_health": 3,
+      "current_health": 3
+    },
     "render": {
       "character": "@",
-      "corpse_character": "X",
+      "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "player"
     },
@@ -21,9 +28,13 @@
     "speed": {
       "speed": 0
     },
+    "health": {
+      "max_health": 3,
+      "current_health": 2
+    },
     "render": {
-      "character": "O",
-      "corpse_character": "X",
+      "character": "A",
+      "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "player"
     },
@@ -31,9 +42,31 @@
       "blocks": {}
     },
     "metadata": {
-      "name": "Enemy",
-      "description": "This is an enemy"
+      "name": "Alvaro",
+      "description": "This is just an enemy"
     },
     "ai_randomwalk": {}
+  },
+  "npc2": {
+    "speed": {
+      "speed": 0
+    },
+    "health": {
+      "max_health": 3,
+      "current_health": 3
+    },
+    "render": {
+      "character": "P",
+      "corpse_character": "%",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "block": {
+      "blocks": {}
+    },
+    "metadata": {
+      "name": "Phil",
+      "description": "This is THE enemy"
+    }
   }
 }

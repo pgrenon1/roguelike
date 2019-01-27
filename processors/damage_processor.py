@@ -1,26 +1,17 @@
-import esper
-from components.speed import Speed
-from components.position import Position
-from components.movement import Movement
-from components.block import Block
+from components.health import Health
+from components.damage import Damage
+from components.death import Death
+from components.metadata import Metadata
 import engine
 
 
-class MovementProcessor(esper.Processor):
+class DamageProcessor(esper.Processor):
     def __init__(self):
         super().__init__()
 
     def process(self):
-        for ent, (mov, pos) in self.world.get_components(Movement, Position):
-            dx = pos.x + mov.x
-            dy = pos.y + mov.y
-            for other_ent, (other_pos, blo) in self.world.get_components(Position, Block):
-                if other_pos.x == dx and other_pos.y == dy:
-                    if blo.blocks:
-                        
-                        engine.WORLD.remove_component(ent, Movement)
-                        return
-
-            pos.x = dx
-            pos.y = dy
-            engine.WORLD.remove_component(ent, Movement)
+        for ent, (dam, hp) in self.world.get_components(Damage, Health):
+            hp.current_health -= dam.damage
+            # print(engine.WORLD.try_component(ent, Metadata))
+            if (hp.current_health == 0):
+                engine.WORLD.add_component(ent, Death())
