@@ -2,8 +2,6 @@ import tcod as libtcod
 from config import config
 from entity import Entity
 from map_objects.game_map import GameMap
-from components.mover import Mover
-from components.fighter import Fighter
 from instantiator import *
 from map_objects.tile import Tile
 

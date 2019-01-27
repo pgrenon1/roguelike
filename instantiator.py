@@ -1,6 +1,5 @@
 import json
-from components.fighter import *
-from components.mover import *
+
 from config import config
 
 
@@ -25,29 +24,23 @@ def query_dataset(data, query):
     return data[query]
 
 
-def fetch_all_components():
-    pass
-
-
 def get_entity_data(data):
     """We create a dataset to be used as an argument to be used when creating a new entity"""
-    _newData = {"attributes": {}, "components": {}}
+    _newData = {}
 
     for key in data:
-        if key != "components":
-            _newData["attributes"][key] = data[key]
-        else:
-            for value in data["components"]:
-                _entityType = Factory(value)
-                args = {}
+        for value in data:
+            _componentType = Factory(value)
+            #print(_entityType)
+            args = {}
 
-                for param in data["components"][value]:
-                    args[param] = data["components"][value][param]
-                _newComponent = _entityType(args)
-                #print("!!!!")
-                #print(_newComponent)
-                _newData['components'][value] = _newComponent
-    return _newData
+            for param in data[value]:
+
+                args[param] = data[value][param]
+                print(args)
+            _newComponent = _componentType(args)
+    #print(_newData)
+    return _newComponent
 
 # Initialize a component without knowing what the component is
 # Fill the component parameters

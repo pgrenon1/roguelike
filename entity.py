@@ -11,12 +11,12 @@ class Entity:
         self.x = x
         self.y = y
         # Attributes
-        self.char = data['attributes']['character']
-        self.color = config.COLORS[data['attributes']['color']]
-        self.render_order = RenderOrder[data['attributes']['render_order']]
-        self.name = data['attributes']['name']
-        self.description = data['attributes']['description']
-        self.blocks = data['attributes']['blocks']
+        self.char = data['character']
+        self.color = config.COLORS[data['color']]
+        self.render_order = RenderOrder[data['render_order']]
+        self.name = data['name']
+        self.description = data['description']
+        self.blocks = data['blocks']
         # Componenents
 
         if ('mover' in data['components']):
