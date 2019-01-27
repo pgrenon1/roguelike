@@ -1,15 +1,19 @@
 import esper
 from components.speed import Speed
 from components.position import Position
-from components.dropsdna import DropsDna
+from components.generate_dna import GenerateDna
 from components.dna import Dna
 from components.block import Block
 import engine
 
 
-class GenerateDna(esper.Processor):
+class GenerateDnaProcessor(esper.Processor):
     def __init__(self):
         super().__init__()
 
     def process(self):
-        pass
+        for ent, (gendna) in self.world.get_components(GenerateDna):
+            # generate dna
+            _generatedDna = {'dna': {'dna_data': 'ok'}}
+            engine.WORLD.add_component(ent, Dna(_generatedDna))
+            engine.WORLD.remove_component(ent, GenerateDna)
