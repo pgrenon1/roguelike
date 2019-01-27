@@ -1,6 +1,8 @@
 import esper
 from components.speed import Speed
 from components.position import Position
+from components.movement import Movement
+import engine
 
 
 class MovementProcessor(esper.Processor):
@@ -8,8 +10,7 @@ class MovementProcessor(esper.Processor):
         super().__init__()
 
     def process(self):
-        for ent, (vel, pos) in self.world.get_components(Speed, Position):
-            pass
-            # pos.x += vel.x
-            # pos.y += vel.y
-            # print("Current Position: {}".format((int(pos.x), int(pos.y))))
+        for ent, (mov, pos) in self.world.get_components(Movement, Position):
+            pos.x += mov.x
+            pos.y += mov.y
+            engine.WORLD.remove_component(ent, Movement)
