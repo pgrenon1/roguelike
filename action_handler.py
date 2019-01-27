@@ -5,6 +5,7 @@ import game_objects
 import engine
 from components.position import Position
 from components.movement import Movement
+from components.ai_randomwalk import Ai_randomwalk
 
 
 def handle_player_turn_results(player_turn_results):
@@ -44,6 +45,7 @@ def handle_player_actions():
             # destination_y = player_position_component.y + dy
 
             engine.WORLD.add_component(engine.player, Movement(dx, dy))
+            engine.WORLD.add_component(engine.npc, Ai_randomwalk(None))
 
             # # if not gameobjects.game_map.is_blocked(destination_x, destination_y):
             # target = get_blocking_entities_at_location(

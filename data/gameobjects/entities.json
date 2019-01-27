@@ -27,6 +27,7 @@
     "metadata": {
       "name": "Enemy",
       "description": "This is an enemy"
-    }
+    },
+    "ai_randomwalk": {}
   }
 }
