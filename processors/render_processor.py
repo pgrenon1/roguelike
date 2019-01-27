@@ -16,6 +16,16 @@ class RenderProcessor(esper.Processor):
         libtcod.console_clear(self.console)
         # sorted(self.world.get_components(
         # Render, Position), key=lambda x: RenderOrder[self.world.component_for_entity(ent, Render).render_order].value)
+        allComponents = self.world._get_components(Render,Position)
+        ordered_list = []
+        for i in allComponents:
+            for j in i:
+                if type(j) == list:
+                    for x in j:
+                        if type(x) == Render:
+                            ordered_list = sorted(j, key=lambda k: x.render_order.value)
+                            
+
         entities = []
         for ent, (ren, pos) in self.world.get_components(Render, Position):
             # entities.append(ent)
