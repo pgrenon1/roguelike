@@ -5,6 +5,7 @@ from components.render import Render
 from components.dna import Dna
 from components.block import Block
 from components.death import Death
+from components.remains import Remains
 import engine
 
 
@@ -14,6 +15,9 @@ class DeathProcessor(esper.Processor):
 
     def process(self):
         for ent, (death, ren) in self.world.get_components(Death, Render):
-            if(death):
-                ren.character = ren.corpse_character
-                #engine.WORLD.remove_component(ent, Movement)
+            ren.character = ren.corpse_character
+            engine.WORLD.add_component(ent, Remains)
+            if engine.WORLD.try_component(ent, Block):
+                engine.WORLD.remove_component(ent, Block)
+
+            engine.WORLD.remove_component(ent, Death)

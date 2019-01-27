@@ -9,6 +9,8 @@ from components.position import Position
 from processors.movement_processor import MovementProcessor
 from processors.render_processor import RenderProcessor
 from processors.ai_processor import AiProcessor
+from processors.damage_processor import DamageProcessor
+from processors.death_processor import DeathProcessor
 from components.render import Render
 from components.block import Block
 from components.metadata import Metadata
@@ -35,8 +37,12 @@ def run_game():
 
     render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
     ai_processor = AiProcessor()
+    damage_processor = DamageProcessor()
+    death_processor = DeathProcessor()
     WORLD.add_processor(ai_processor)
     WORLD.add_processor(render_processor)
+    WORLD.add_processor(damage_processor)
+    WORLD.add_processor(death_processor)
 
     player = instantiate_entity('player', 0, 0)
     npc = instantiate_entity('npc', 1, 1)

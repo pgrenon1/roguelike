@@ -1,6 +1,6 @@
 import tcod as libtcod
 from loader_functions.instantiator import *
-from components import fetcher
+from loader_functions.fetcher import *
 
 SCREEN_WIDTH = 100
 SCREEN_HEIGHT = 70
@@ -15,8 +15,8 @@ COLORS = {
 }
 
 ENTITY_DATA = load_dataset('data/entities.json')
-data_list = fetcher.fetch_directory_components('components')
-MASTER_COMPONENT_DATASET = fetcher.create_master_component_dataset(data_list)
+data_list = fetch_directory_components('components')
+MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 

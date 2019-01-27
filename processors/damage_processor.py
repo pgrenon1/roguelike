@@ -3,6 +3,7 @@ from components.damage import Damage
 from components.death import Death
 from components.metadata import Metadata
 import engine
+import esper
 
 
 class DamageProcessor(esper.Processor):
@@ -12,6 +13,7 @@ class DamageProcessor(esper.Processor):
     def process(self):
         for ent, (dam, hp) in self.world.get_components(Damage, Health):
             hp.current_health -= dam.damage
-            # print(engine.WORLD.try_component(ent, Metadata))
+            engine.WORLD.remove_component(ent, Damage)
+            print(hp.current_health)
             if (hp.current_health == 0):
                 engine.WORLD.add_component(ent, Death())

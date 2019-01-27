@@ -3,6 +3,8 @@ from components.speed import Speed
 from components.position import Position
 from components.movement import Movement
 from components.block import Block
+from components.damage_dealer import DamageDealer
+from components.damage import Damage
 import engine
 
 
@@ -17,9 +19,13 @@ class MovementProcessor(esper.Processor):
             for other_ent, (other_pos, blo) in self.world.get_components(Position, Block):
                 if other_pos.x == dx and other_pos.y == dy:
                     if blo:
-
-                        engine.WORLD.remove_component(ent, Movement)
-                        return
+                        damage = engine.WORLD.component_for_entity(ent,
+                                                                   DamageDealer).damage
+                        if damage:
+                            engine.WORLD.add_component(
+                                other_ent, Damage(damage))
+                    engine.WORLD.remove_component(ent, Movement)
+                    return
 
             pos.x = dx
             pos.y = dy
