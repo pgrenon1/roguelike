@@ -6,6 +6,7 @@ class Fighter:
         self.defense = args['defense']
         self.power = args['power']
 
+
     def take_damage(self, amount):
         results = []
 

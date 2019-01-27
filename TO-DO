@@ -7,4 +7,12 @@
 - Map generation
 - 
 - Inventory system?
-- 
+
+Components : 
+- Destructible 
+- Item user
+- Item picker
+- AI_Behaviours
+   -  Random walker
+   -  Player seeker
+   -  Player avoider
