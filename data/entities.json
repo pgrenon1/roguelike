@@ -107,5 +107,24 @@
       "name": "Wall",
       "description": "This is a wall"
     }
+  },
+  "tree": {
+    "health": {
+      "max_health": 3,
+      "current_health": 3
+    },
+    "render": {
+      "character": "t",
+      "corpse_character": "%",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "block": {
+      "blocks": {}
+    },
+    "metadata": {
+      "name": "Tree",
+      "description": "This is a tree"
+    }
   }
 }
