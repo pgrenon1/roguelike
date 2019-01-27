@@ -19,10 +19,16 @@ from processors.rendering_processor import RenderingProcessor
 
 def run_game():
 
+    global WORLD
+
+    # create world
     WORLD = esper.World()
 
+    # create and add processors
     movement_processor = MovementProcessor()
     WORLD.add_processor(movement_processor)
+
+    # create testing entities and add components to them
     player = WORLD.create_entity()
     WORLD.add_component(player, Velocity(x=0.9, y=1.2))
     WORLD.add_component(player, Position(x=5, y=5))
@@ -34,8 +40,6 @@ def run_game():
                    config.SCREEN_WIDTH, config.SCREEN_HEIGHT, config.COLORS)
 
         libtcod.console_flush()
-
-        WORLD.process()
 
         clear_all(config.con, game_objects.entities)
 
