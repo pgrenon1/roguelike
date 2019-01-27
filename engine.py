@@ -61,6 +61,7 @@ def run_game():
     player = instantiate_entity('player', 0, 0)
     npc2 = instantiate_entity('npc2', 1, 0)
     npc = instantiate_entity('npc', 1, 1)
+    wall = instantiate_entity('wall', 3, 3)
 
    # entities = player,
     npc3 = instantiate_entity('npcdrop', 0, 1)

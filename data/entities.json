@@ -88,5 +88,24 @@
       "name": "Phil",
       "description": "This is THE enemy"
     }
+  },
+  "wall": {
+    "health": {
+      "max_health": 5,
+      "current_health": 5
+    },
+    "render": {
+      "character": "#",
+      "corpse_character": "%",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "block": {
+      "blocks": {}
+    },
+    "metadata": {
+      "name": "Wall",
+      "description": "This is a wall"
+    }
   }
 }
