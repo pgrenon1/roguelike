@@ -19,7 +19,7 @@ class DeathProcessor(esper.Processor):
     def process(self):
         for ent, (death, ren) in self.world.get_components(Death, Render):
             ren.character = ren.corpse_character
-            ren.render_order = RenderOrder.REMAINS
+            ren.render_order = RenderOrder.REMAINS.value
             engine.WORLD.add_component(ent, Remains)
             engine.WORLD.add_component(ent, GenerateDna)
 
