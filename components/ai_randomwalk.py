@@ -1,3 +1,3 @@
-class Ai_randomwalk:
+class AiRandomwalk:
     def __init__(self, args):
         pass

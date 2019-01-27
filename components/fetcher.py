@@ -20,13 +20,15 @@ def fetch_directory_components(directory):
     return clean_component_list
 
 # refactor this shittttttttt
-
-
 def create_master_component_dataset(comp_list):
     for component_string in comp_list:
         my_class_module = locate('components.' + component_string)
         my_class = inspect.getmembers(my_class_module, inspect.isclass)
         # print(my_class)
         master_component_dataset[component_string] = my_class[0][1]
+
+        #implement a way to make sure this list is clean
+
+
     #print("master component dataset :  " , master_component_dataset)
-    return master_component_dataset
+    return master_component_datasets

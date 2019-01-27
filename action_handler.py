@@ -3,7 +3,7 @@ from config import config
 import engine
 from components.position import Position
 from components.movement import Movement
-from components.ai_randomwalk import Ai_randomwalk
+from components.ai_randomwalk import AiRandomwalk
 
 
 def handle_player_turn_results(player_turn_results):
@@ -43,7 +43,7 @@ def handle_player_actions():
             destination_y = player_position_component.y + dy
 
             engine.WORLD.add_component(engine.player, Movement(dx, dy))
-            engine.WORLD.add_component(engine.npc, Ai_randomwalk(None))
+            engine.WORLD.add_component(engine.npc, AiRandomwalk(None))
 
             # does is that spot blocked
 
