@@ -15,5 +15,5 @@ class RenderProcessor(esper.Processor):
         for ent, (ren, pos) in self.world.get_components(Render, Position):
           #  print(type(ren.character))
             libtcod.console_put_char(
-                self.console, pos.x, pos.y, "@", self.clear_color)
+                self.console, pos.x, pos.y, ren.character, self.clear_color)
         libtcod.console_flush()

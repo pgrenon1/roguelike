@@ -1,12 +1,7 @@
 {
   "player": {
-    "position": {
-      "x": 0,
-      "y": 0
-    },
     "speed": {
-      "x": 0,
-      "y": 0
+      "speed": 0
     },
     "render": {
       "character": "@",
@@ -17,6 +12,21 @@
     "metadata": {
       "name": "Player",
       "description": "The player description"
+    }
+  },
+  "npc": {
+    "speed": {
+      "speed": 0
+    },
+    "render": {
+      "character": "O",
+      "corpse_character": "X",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "metadata": {
+      "name": "Enemy",
+      "description": "This is an enemy"
     }
   }
 }
