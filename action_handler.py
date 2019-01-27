@@ -1,7 +1,7 @@
 from input_handlers import *
 from config import config
 import game_objects
-from entity import get_blocking_entities_at_location
+# from entity import get_blocking_entities_at_location
 from death_functions import *
 
 

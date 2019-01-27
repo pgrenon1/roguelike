@@ -4,10 +4,10 @@ from config import config
 from render_functions import clear_all, render_all
 import game_objects
 import action_handler
-from entity import get_blocking_entities_at_location
+# from entity import get_blocking_entities_at_location
 from death_functions import *
 import esper
-from components.velocity import Velocity
+from components.speed import Speed
 from components.position import Position
 from processors.movement_processor import MovementProcessor
 from processors.rendering_processor import RenderingProcessor
@@ -24,8 +24,8 @@ def run_game():
     movement_processor = MovementProcessor()
     WORLD.add_processor(movement_processor)
     player = WORLD.create_entity()
-    WORLD.add_component(player, Velocity(x=0.9, y=1.2))
-    WORLD.add_component(player, Position(x=5, y=5))
+    WORLD.add_component(player, Speed({'x':0.9, 'y':1.2}))
+    WORLD.add_component(player, Position({'x':5, 'y':5}))
 
     while not libtcod.console_is_window_closed():
         libtcod.sys_check_for_event(

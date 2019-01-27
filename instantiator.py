@@ -37,7 +37,7 @@ def get_entity_data(data):
             for param in data[value]:
 
                 args[param] = data[value][param]
-                print(args)
+              #  print(args)
             _newComponent = _componentType(args)
     #print(_newData)
     return _newComponent
