@@ -3,3 +3,4 @@ class Render:
         self.character = args['character']
         self.corpse_character = args['corpse_character']
         self.render_order = args['render_order']
+        self.color = args['color']
