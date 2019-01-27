@@ -80,3 +80,4 @@ debian/python*
 .pytest_cache
 Thumbs.P
 settings.json
+.vscode/settings.json

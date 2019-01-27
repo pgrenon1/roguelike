@@ -1,6 +1,7 @@
 import esper
 import engine
 from components.dna import Dna
+from components.dna_absorber import DnaAbsorber
 
 
 class DnaAbsorberProcessor(esper.Processor):
@@ -8,5 +9,5 @@ class DnaAbsorberProcessor(esper.Processor):
         super().__init__()
 
     def process(self):
-        for ent, (dna) in self.world.get_component(Dna):
-            print(dna.dna_data)
+        for ent, (absorb, position) in self.world.get_components(Dna, DnaAbsorber):
+            pass
