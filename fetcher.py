@@ -30,5 +30,5 @@ def create_master_component_dataset(directory, comp_list):
         my_class = inspect.getmembers(my_class_module, inspect.isclass)
         # print(my_class)
         master_component_dataset[component_string] = my_class[0][1]
-    print("master component dataset :  " , master_component_dataset)
+    # print("master component dataset :  " , master_component_dataset)
     return master_component_dataset

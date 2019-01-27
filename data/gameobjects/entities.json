@@ -1,12 +1,7 @@
 {
   "player": {
-    "position": {
-      "x": 0,
-      "y": 0
-    },
     "speed": {
-      "x": 0,
-      "y": 0
+      "speed": 0
     },
     "render": {
       "character": "@",
@@ -14,29 +9,30 @@
       "render_order": "ACTOR",
       "color": "player"
     },
+    "block": {
+      "blocks": "True"
+    },
     "metadata": {
       "name": "Player",
       "description": "The player description"
     }
   },
   "npc": {
-    "position": {
-      "x": 3,
-      "y": 3
-    },
     "speed": {
-      "x": 0,
-      "y": 0
+      "speed": 0
     },
     "render": {
-      "character": "$",
-      "corpse_character": "%",
+      "character": "O",
+      "corpse_character": "X",
       "render_order": "ACTOR",
       "color": "player"
     },
+    "block": {
+      "blocks": "True"
+    },
     "metadata": {
-      "name": "Alvaro",
-      "description": "The npc description"
+      "name": "Enemy",
+      "description": "This is an enemy"
     }
   }
 }

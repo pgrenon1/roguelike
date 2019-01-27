@@ -15,10 +15,11 @@ from components.render import Render
 from components.block import Block
 from components.metadata import Metadata
 from instantiator import *
+from loader_functions.entity_factory import *
 
 
 # libtcod.sys_(30,30)
-#libtcod.console_init_root(400, 400, "", True)
+# libtcod.console_init_root(400, 400, "", True)
 
 
 def run_game():
@@ -36,24 +37,10 @@ def run_game():
     render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
     WORLD.add_processor(render_processor)
 
-    # create testing entities and add components to them
-    playerData = query_dataset(config.ENTITY_DATA, 'player')
-    playerComponents = get_entity_data(playerData)
-    player = WORLD.create_entity()
-    WORLD.add_component(player, playerComponents['position'])
-    WORLD.add_component(player, playerComponents['render'])
-    WORLD.add_component(player, playerComponents['metadata'])
-    WORLD.add_component(player, playerComponents['speed'])
-    WORLD.add_component(player, Block(True))
+    player = instantiate_entity('player', 0, 0)
+    npc = instantiate_entity('npc', 5, 0)
 
-    npcData = query_dataset(config.ENTITY_DATA, 'npc')
-    npcComponents = get_entity_data(npcData)
-    npc = WORLD.create_entity()
-    WORLD.add_component(npc, npcComponents['position'])
-    WORLD.add_component(npc, npcComponents['render'])
-    WORLD.add_component(npc, npcComponents['metadata'])
-    WORLD.add_component(npc, npcComponents['speed'])
-    WORLD.add_component(npc, Block(True))
+   #entities = player,
 
     while not libtcod.console_is_window_closed():
         WORLD.process()
