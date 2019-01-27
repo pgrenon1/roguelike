@@ -30,6 +30,7 @@
 #     mapEntities = []
 
 #     for x in range(0, 5):
+
 #         wall = Entity(x, 1, get_entity_data(wallData))
 #         mapEntities.append(wall)
 #         game_map.tiles[x][1].entities.append(wall)
