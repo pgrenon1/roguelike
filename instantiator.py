@@ -29,18 +29,15 @@ def get_entity_data(data):
     _newData = {}
 
     for key in data:
-        for value in data:
-            _componentType = Factory(value)
-            #print(_entityType)
-            args = {}
+        _componentType = Factory(key)
+        args = {}
+        for param in data[key]:
 
-            for param in data[value]:
-
-                args[param] = data[value][param]
-              #  print(args)
-            _newComponent = _componentType(args)
-    #print(_newData)
-    return _newComponent
+            args[key] = data[key]
+            
+        _newComponent = _componentType(args)
+        _newData[key] = _newComponent
+    return _newData
 
 # Initialize a component without knowing what the component is
 # Fill the component parameters

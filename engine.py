@@ -12,6 +12,7 @@ from components.position import Position
 from processors.movement_processor import MovementProcessor
 from processors.render_processor import RenderProcessor
 from components.render import Render
+from components.metadata import Metadata
 from instantiator import *
 
 # libtcod.sys_(30,30)
@@ -35,15 +36,20 @@ def run_game():
 
     # create testing entities and add components to them
     playerData = query_dataset(config.ENTITY_DATA, 'player')
-    args = get_entity_data(playerData)
+    playerComponents = get_entity_data(playerData)
+    
     player = WORLD.create_entity()
-    WORLD.add_component(player, Speed({'x': 0.9, 'y': 1.2}))
-    WORLD.add_component(player, Position({'x': 5, 'y': 5}))
-    WORLD.add_component(player, Render(args))
+ 
+    WORLD.add_component(player, playerComponents['position'])
+    WORLD.add_component(player, playerComponents['render'])
+    WORLD.add_component(player, playerComponents['metadata'])
+    WORLD.add_component(player, playerComponents['speed'])
 
     entities = player
-
+    
     while not libtcod.console_is_window_closed():
+        WORLD.process()
+
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
 
