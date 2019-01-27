@@ -20,8 +20,6 @@ def fetch_directory_components(directory):
     return clean_component_list
 
 # refactor this shittttttttt
-
-
 def create_master_component_dataset(comp_list):
     for component_string in comp_list:
         my_class_module = locate('components.' + component_string)
