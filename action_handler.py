@@ -29,10 +29,8 @@ def handle_player_actions():
     action = handle_keys(config.KEY)
 
     if action:
-        engine.WORLD.process()
         engine.TICK += 1
-
-        print('Current tick : ', engine.TICK)
+        # print('Current tick : ', engine.TICK)
 
         move = action.get('move')
         exit = action.get('exit')
@@ -71,4 +69,5 @@ def handle_player_actions():
         if fullscreen:
             libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
 
+        engine.WORLD.process()
         handle_player_turn_results(player_turn_results)

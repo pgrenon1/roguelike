@@ -25,30 +25,68 @@ from loader_functions.instantiator import *
 from loader_functions.entity_factory import *
 from render_functions import RenderOrder
 from rect import *
+from config import COLORS
 
 
-# libtcod.sys_(30,30)
-# libtcod.console_init_root(400, 400, "", True)
 global TICK
 TICK = 0
+
+WORLD = esper.World()
+global player
+global npc
 
 
 def run_game():
 
-    global WORLD
-    global TICK
-    global player
-    global npc
+    world_created = False
+    while not libtcod.console_is_window_closed():
 
+        libtcod.sys_check_for_event(
+            libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
+
+        libtcod.console_blit(config.con, 0, 0, config.SCREEN_WIDTH,
+                             config.SCREEN_HEIGHT, 0, 0, 0)
+
+        if not world_created:
+            create_world()
+            world_created = True
+
+        render_all()
+
+        action_handler.handle_player_actions()
+
+
+def render_all():
+    libtcod.console_clear(config.con)
+    entities = []
+    for ent, (ren, pos) in WORLD.get_components(Render, Position):
+        entities.append(ent)
+
+    sorted_entities = sorted(
+        entities, key=lambda x: WORLD.component_for_entity(x, Render).render_order, reverse=True)
+
+    for enti in sorted_entities:
+        posi = WORLD.component_for_entity(enti, Position)
+        rend = WORLD.component_for_entity(enti, Render)
+
+        libtcod.console_put_char_ex(
+            config.con, posi.x, posi.y, rend.character,
+            COLORS[rend.color], COLORS[rend.background_color])
+
+    libtcod.console_flush()
+
+
+def create_world():
+    print("create")
     # create world
-    WORLD = esper.World()
-
+    # WORLD = esper.World()
+    global player
     # create and add processors
     movement_processor = MovementProcessor()
     WORLD.add_processor(movement_processor)
 
-    render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
-    WORLD.add_processor(render_processor)
+    # render_processor = RenderProcessor(config.con, libtcod.BKGND_NONE)
+    # WORLD.add_processor(render_processor)
 
     ai_processor = AiProcessor()
     WORLD.add_processor(ai_processor)
@@ -82,6 +120,7 @@ def run_game():
     # level generation DUMMY
     for x in range(0, config.MAP_WIDTH):
         for y in range(0, config.MAP_HEIGHT):
+
             if x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
                 if x not in range(room.x1+1, room.x2-1):
                     wall = instantiate_entity('wall', x, y)
@@ -97,14 +136,6 @@ def run_game():
    # entities = player,
     npc3 = instantiate_entity('npcdrop', 0, 1)
 
-    while not libtcod.console_is_window_closed():
+    # WORLD.process()
 
-        libtcod.sys_check_for_event(
-            libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
-
-        libtcod.console_blit(config.con, 0, 0, config.SCREEN_WIDTH,
-                             config.SCREEN_HEIGHT, 0, 0, 0)
-
-        # WORLD.process()
-
-        action_handler.handle_player_actions()
+    # world_created = True

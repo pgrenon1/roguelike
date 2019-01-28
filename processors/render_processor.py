@@ -15,7 +15,6 @@ class RenderProcessor(esper.Processor):
 
     def process(self):
         libtcod.console_clear(self.console)
-
         entities = []
         for ent, (ren, pos) in self.world.get_components(Render, Position):
             entities.append(ent)

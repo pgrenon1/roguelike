@@ -21,8 +21,12 @@ class DeathProcessor(esper.Processor):
         for ent, (death, ren) in self.world.get_components(Death, Render):
             ren.character = ren.corpse_character
             ren.render_order = RenderOrder.REMAINS.value
-            engine.WORLD.add_component(ent, Remains())
-            engine.WORLD.add_component(ent, GenerateDna())
+
+            if self.world.has_component(ent, AiRandomwalk):
+                self.world.remove_component(ent, AiRandomwalk)
+
+            self.world.add_component(ent, Remains())
+            self.world.add_component(ent, GenerateDna())
 
             block = engine.WORLD.try_component(ent, Block)
             if block:
