@@ -13,7 +13,7 @@ MASTER_SEED = None
 
 
 COLORS = {
-    'none': libtcod.black,
+    'none': libtcod.Color(0, 0, 0),
     'dark_wall': libtcod.Color(255, 255, 255),
     'dark_ground': libtcod.Color(0, 50, 10),
     'player': libtcod.Color(0, 255, 255),

@@ -75,8 +75,7 @@ def run_game():
     npc = instantiate_entity(
         'npc', 1 + config.MAP_WIDTH//2, 2 + config.MAP_HEIGHT//2)
 
-    noise = libtcod.noise_new(2)
-    libtcod.noise_set_type(noise, libtcod.NOISE_SIMPLEX)
+    noise = libtcod.noise_new(2, 5.0, 0.9)
 
     room = Rect(20, 20, 10, 15)
     # test
@@ -89,9 +88,10 @@ def run_game():
                 if y not in range(room.y1+1, room.y2-1):
                     wall = instantiate_entity('wall', x, y)
             else:
-                val = noise.get_point(x, y)
-                # print(val)
-                if val > 0.4:
+                val = libtcod.noise_get_fbm(
+                    noise, [x, y], 32.0, libtcod.NOISE_PERLIN)
+                print(val)
+                if val > 0.5 and val < 1:
                     tree = instantiate_entity('tree', x, y)
 
    # entities = player,

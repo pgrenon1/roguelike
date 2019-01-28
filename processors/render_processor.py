@@ -27,6 +27,7 @@ class RenderProcessor(esper.Processor):
         for enti in sorted_entities:
             posi = self.world.component_for_entity(enti, Position)
             rend = self.world.component_for_entity(enti, Render)
+
             libtcod.console_put_char_ex(
                 self.console, posi.x, posi.y, rend.character,
                 COLORS[rend.color], COLORS[rend.background_color])
