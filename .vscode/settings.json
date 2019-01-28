@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "C:\\Users\\pgren\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
-    "files.autoSave": "afterDelay",
-    "python.linting.pylintEnabled": false,
-    "python.formatting.provider": "autopep8"
-}
