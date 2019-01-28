@@ -4,6 +4,7 @@ from config import config
 import action_handler
 from death_functions import *
 import esper
+import sys
 from components.speed import Speed
 from components.position import Position
 from processors.movement_processor import MovementProcessor
@@ -14,6 +15,7 @@ from processors.death_processor import DeathProcessor
 from processors.generatedna_processor import GenerateDnaProcessor
 from processors.dna_absorb_processor import DnaAbsorberProcessor
 from components.render import Render
+from config import random
 from components.generate_dna import GenerateDna
 from components.dna_absorber import DnaAbsorber
 from components.block import Block

@@ -1,12 +1,16 @@
 import tcod as libtcod
 from loader_functions.instantiator import *
 from loader_functions.fetcher import *
+import random
 
 SCREEN_WIDTH = 100
 SCREEN_HEIGHT = 70
 MAP_WIDTH = SCREEN_WIDTH
 MAP_HEIGHT = SCREEN_HEIGHT - 20
 FULLSCREEN = False
+
+MASTER_SEED = None
+
 
 COLORS = {
     'dark_wall': libtcod.Color(255, 255, 255),
