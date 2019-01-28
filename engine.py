@@ -69,7 +69,7 @@ def run_game():
     libtcod.noise_set_type(noise, libtcod.NOISE_SIMPLEX)
 
     room = Rect(20, 20, 10, 15)
-
+    # test
     # level generation DUMMY
     for x in range(0, config.MAP_WIDTH):
         for y in range(0, config.MAP_HEIGHT):
