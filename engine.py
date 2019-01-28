@@ -90,7 +90,7 @@ def run_game():
             else:
                 val = libtcod.noise_get_fbm(
                     noise, [x, y], 32.0, libtcod.NOISE_PERLIN)
-                print(val)
+                # print(val)
                 if val > 0.5 and val < 1:
                     tree = instantiate_entity('tree', x, y)
 
