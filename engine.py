@@ -4,6 +4,7 @@ from config import config
 import action_handler
 from death_functions import *
 import esper
+import sys
 from components.speed import Speed
 from components.position import Position
 from processors.movement_processor import MovementProcessor
@@ -14,6 +15,7 @@ from processors.death_processor import DeathProcessor
 from processors.generatedna_processor import GenerateDnaProcessor
 from processors.dna_absorb_processor import DnaAbsorberProcessor
 from components.render import Render
+from config import random
 from components.generate_dna import GenerateDna
 from components.dna_absorber import DnaAbsorber
 from components.block import Block
@@ -67,7 +69,7 @@ def run_game():
     libtcod.noise_set_type(noise, libtcod.NOISE_SIMPLEX)
 
     room = Rect(20, 20, 10, 15)
-
+    # test
     # level generation DUMMY
     for x in range(0, config.MAP_WIDTH):
         for y in range(0, config.MAP_HEIGHT):
