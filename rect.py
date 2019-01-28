@@ -21,4 +21,3 @@ class Rect:
             if y > self.y1 and y < self.y2:
                 return True
             return False
-# tes
