@@ -34,7 +34,7 @@
       "current_health": 2
     },
     "render": {
-      "character": "A",
+      "character": "L",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "player"
@@ -44,6 +44,32 @@
     },
     "metadata": {
       "name": "Alvaro",
+      "description": "This is just an enemy"
+    },
+    "ai_randomwalk": {},
+    "dna_absorber": {},
+    "spawner": {},
+    "spawner_event": {}
+  },
+  "npcwalk": {
+    "speed": {
+      "speed": 0
+    },
+    "health": {
+      "max_health": 3,
+      "current_health": 1
+    },
+    "render": {
+      "character": "-",
+      "corpse_character": "%",
+      "render_order": "ACTOR",
+      "color": "player"
+    },
+    "block": {
+      "blocks": {}
+    },
+    "metadata": {
+      "name": "baby",
       "description": "This is just an enemy"
     },
     "ai_randomwalk": {},

@@ -7,7 +7,7 @@ from components.block import Block
 import engine
 
 
-class GenerateDnaProcessor(esper.Processor):
+class DnaGeneratorProcessor(esper.Processor):
     def __init__(self):
         super().__init__()
 

@@ -7,9 +7,11 @@ import tcod as libtcod
 
 def main():
     engine.run_game()
+    # engine.WORLD.process()
 
 
 if __name__ == '__main__':
+    """We setup the randomness of the game as soon as we run it for now"""
     if len(sys.argv) > 1:
         random.seed(int(sys.argv[1]))
         config.LIBTCOD_RANDOM = libtcod.random_new_from_seed(int(sys.argv[1]))

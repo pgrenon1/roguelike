@@ -24,6 +24,8 @@ def handle_player_turn_results(player_turn_results):
 
 
 def handle_player_actions():
+
+    engine.WORLD.process()
     action = handle_keys(config.KEY)
 
     if action:
@@ -64,7 +66,5 @@ def handle_player_actions():
 
         if fullscreen:
             libtcod.console_set_fullscreen(not libtcod.console_is_fullscreen())
-
-        engine.WORLD.process()
 
         handle_player_turn_results(player_turn_results)

@@ -12,8 +12,9 @@ from processors.render_processor import RenderProcessor
 from processors.ai_processor import AiProcessor
 from processors.damage_processor import DamageProcessor
 from processors.death_processor import DeathProcessor
-from processors.generatedna_processor import GenerateDnaProcessor
+from processors.dnagenerator_processor import DnaGeneratorProcessor
 from processors.dna_absorb_processor import DnaAbsorberProcessor
+from processors.spawner_processor import SpawnerProcessor
 from components.render import Render
 from config import random
 from components.generate_dna import GenerateDna
@@ -28,7 +29,6 @@ from rect import *
 
 # libtcod.sys_(30,30)
 # libtcod.console_init_root(400, 400, "", True)
-
 
 def run_game():
 
@@ -55,11 +55,14 @@ def run_game():
     death_processor = DeathProcessor()
     WORLD.add_processor(death_processor)
 
-    generate_dna_processor = GenerateDnaProcessor()
+    generate_dna_processor = DnaGeneratorProcessor()
     WORLD.add_processor(generate_dna_processor)
 
     absorb_dna_processor = DnaAbsorberProcessor()
     WORLD.add_processor(absorb_dna_processor)
+
+    spawner_processor = SpawnerProcessor()
+    WORLD.add_processor(spawner_processor)
 
     player = instantiate_entity('player', 0, 0)
     npc2 = instantiate_entity('npc2', 1, 0)
@@ -88,7 +91,7 @@ def run_game():
     npc3 = instantiate_entity('npcdrop', 0, 1)
 
     while not libtcod.console_is_window_closed():
-        WORLD.process()
+       # WORLD.process()
 
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
