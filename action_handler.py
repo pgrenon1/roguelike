@@ -29,7 +29,7 @@ def handle_player_actions():
     action = handle_keys(config.KEY)
 
     if action:
-        #engine.WORLD.process()
+        # engine.WORLD.process()
         engine.TICK += 1
 
         print('Current tick : ', engine.TICK)
@@ -49,7 +49,7 @@ def handle_player_actions():
             destination_y = player_position_component.y + dy
 
             engine.WORLD.add_component(engine.player, Movement(dx, dy))
-            engine.WORLD.add_component(engine.npc, AiRandomwalk(None))
+            # engine.WORLD.add_component(engine.npc, AiRandomwalk(None))
 
             # does is that spot blocked
 

@@ -24,10 +24,17 @@ class AiProcessor(esper.Processor):
             # this AI is attached to.
             # It doesn't make sense to make things move in this class, it's against the design of the system I think?
 
-            dx = pos.x
-            dy = pos.y
+            """ ouais j'avais pas verifier ce processor. je l'aurais fait comme tu dit en effet. ça aurait du pas être une interaction
+            avec le component Position, mais bien juste d'ajouter un Movement flag
+            la fonction get_components va pouvoir servir ici pas juste à faire interagir des pairs de components,
+            ca peut aussi prendre n'importe quel nombre d'arguments, so tu peux get tout les components.
+            maintenant, ça va etre de determiner comment stocker et coder les comportements. genre est-ce que le ai_processor
+            va contenir un genre de switch case? il me semble que ça serait bizarre? maybe not"""
 
-            if dx >= config.MAP_WIDTH:
+            dx = 0
+            dy = 0
+
+            if pos.x >= config.MAP_WIDTH:
                 dx -= 1
             elif pos.x <= 0:
                 dx += 1
@@ -38,18 +45,20 @@ class AiProcessor(esper.Processor):
             else:
                 dx += random.randint(-1, 1)
                 dy += random.randint(-1, 1)
+
+            self.world.add_component(ent, Movement(dx, dy))
         # else:
         #    pass
-            for other_ent, (other_pos, blo) in self.world.get_components(Position, Block):
-                if other_pos.x == dx and other_pos.y == dy:
-                    if blo:
-                        damage = engine.WORLD.component_for_entity(ent,
-                                                                   DamageDealer).damage
-                        if damage:
-                            engine.WORLD.add_component(
-                                other_ent, Damage(damage))
-                    return
-            pos.x = dx
-            pos.y = dy
+            # for other_ent, (other_pos, blo) in self.world.get_components(Position, Block):
+            #     if other_pos.x == dx and other_pos.y == dy:
+            #         if blo:
+            #             damage = engine.WORLD.component_for_entity(ent,
+            #                                                        DamageDealer).damage
+            #             if damage:
+            #                 engine.WORLD.add_component(
+            #                     other_ent, Damage(damage))
+            #         return
+            # pos.x = dx
+            # pos.y = dy
 
-            engine.WORLD.remove_component(ent, AiRandomwalk)
+            # engine.WORLD.remove_component(ent, AiRandomwalk)
