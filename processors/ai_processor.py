@@ -6,6 +6,9 @@ from components.ai_randomwalk import AiRandomwalk
 import engine
 import random
 from loader_functions.entity_factory import instantiate_entity
+from components.damage_dealer import DamageDealer
+from components.damage import Damage
+from components.block import Block
 import config
 
 
@@ -14,12 +17,39 @@ class AiProcessor(esper.Processor):
         super().__init__()
 
     def process(self):
-        for ent,  (mov, pos) in self.world.get_components(AiRandomwalk, Position):
-          # if pos.x >=0 and pos.x < config.MAP_WIDTH and pos.y > 0 and pos.y < config.MAP_HEIGHT:
-                pos.x += random.randint(-1, 1)
-                pos.y += random.randint(-1, 1)
-            #else:
-            #    pass
-                
+        for ent,  (ai, pos) in self.world.get_components(AiRandomwalk, Position):
+            # Seems to me like the AI should use the movement component, since that one
+            # checks for block? Or else we'd be duplicating code
+            # I think the AIprocessor should be a place where we use the components attached to the NPC
+            # this AI is attached to.
+            # It doesn't make sense to make things move in this class, it's against the design of the system I think?
 
-                engine.WORLD.remove_component(ent, AiRandomwalk)
+            dx = pos.x
+            dy = pos.y
+
+            if dx >= config.MAP_WIDTH:
+                dx -= 1
+            elif pos.x <= 0:
+                dx += 1
+            elif pos.y >= config.MAP_HEIGHT:
+                dy -= 1
+            elif pos.y <= 0:
+                dy += 1
+            else:
+                dx += random.randint(-1, 1)
+                dy += random.randint(-1, 1)
+        # else:
+        #    pass
+            for other_ent, (other_pos, blo) in self.world.get_components(Position, Block):
+                if other_pos.x == dx and other_pos.y == dy:
+                    if blo:
+                        damage = engine.WORLD.component_for_entity(ent,
+                                                                   DamageDealer).damage
+                        if damage:
+                            engine.WORLD.add_component(
+                                other_ent, Damage(damage))
+                    return
+            pos.x = dx
+            pos.y = dy
+
+            engine.WORLD.remove_component(ent, AiRandomwalk)

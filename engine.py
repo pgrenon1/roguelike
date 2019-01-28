@@ -29,10 +29,14 @@ from rect import *
 
 # libtcod.sys_(30,30)
 # libtcod.console_init_root(400, 400, "", True)
+global TICK
+TICK = 0
+
 
 def run_game():
 
     global WORLD
+    global TICK
     global player
     global npc
 
@@ -64,9 +68,12 @@ def run_game():
     spawner_processor = SpawnerProcessor()
     WORLD.add_processor(spawner_processor)
 
-    player = instantiate_entity('player', 0, 0)
-    npc2 = instantiate_entity('npc2', 1, 0)
-    npc = instantiate_entity('npc', 1, 1)
+    player = instantiate_entity(
+        'player', config.MAP_WIDTH//2, config.MAP_HEIGHT//2)
+    npc2 = instantiate_entity(
+        'npc2', 4 + config.MAP_WIDTH//2, 5 + config.MAP_HEIGHT//2)
+    npc = instantiate_entity(
+        'npc', 1 + config.MAP_WIDTH//2, 2 + config.MAP_HEIGHT//2)
 
     noise = libtcod.noise_new(2)
     libtcod.noise_set_type(noise, libtcod.NOISE_SIMPLEX)
@@ -91,7 +98,8 @@ def run_game():
     npc3 = instantiate_entity('npcdrop', 0, 1)
 
     while not libtcod.console_is_window_closed():
-       # WORLD.process()
+        if(TICK > 0):
+            WORLD.process()
 
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)

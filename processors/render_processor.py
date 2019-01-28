@@ -4,6 +4,7 @@ from components.render import Render
 from components.position import Position
 from render_functions import RenderOrder
 import engine
+from config import COLORS
 
 
 class RenderProcessor(esper.Processor):
@@ -18,7 +19,7 @@ class RenderProcessor(esper.Processor):
         entities = []
         for ent, (ren, pos) in self.world.get_components(Render, Position):
             entities.append(ent)
-            #print(ren.render_order)
+            # print(ren.render_order)
 
         sorted_entities = sorted(
             entities, key=lambda x: self.world.component_for_entity(x, Render).render_order)
@@ -26,7 +27,8 @@ class RenderProcessor(esper.Processor):
         for enti in sorted_entities:
             posi = self.world.component_for_entity(enti, Position)
             rend = self.world.component_for_entity(enti, Render)
-            libtcod.console_put_char(
-                self.console, posi.x, posi.y, rend.character, self.clear_color)
+            libtcod.console_put_char_ex(
+                self.console, posi.x, posi.y, rend.character,
+                COLORS[rend.color], COLORS[rend.background_color])
 
         libtcod.console_flush()

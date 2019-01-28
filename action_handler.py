@@ -24,11 +24,15 @@ def handle_player_turn_results(player_turn_results):
 
 
 def handle_player_actions():
+    # Process the world the moment you're doing an action
 
-    engine.WORLD.process()
     action = handle_keys(config.KEY)
 
     if action:
+        #engine.WORLD.process()
+        engine.TICK += 1
+
+        print('Current tick : ', engine.TICK)
 
         move = action.get('move')
         exit = action.get('exit')

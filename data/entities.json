@@ -14,7 +14,8 @@
       "character": "@",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "player",
+      "background_color": "none"
     },
     "block": {
       "blocks": {}
@@ -29,6 +30,9 @@
     "speed": {
       "speed": 0
     },
+    "damage_dealer": {
+      "damage": 1
+    },
     "health": {
       "max_health": 3,
       "current_health": 2
@@ -37,7 +41,8 @@
       "character": "L",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "npc",
+      "background_color": "none"
     },
     "block": {
       "blocks": {}
@@ -63,13 +68,17 @@
       "character": "-",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "npc",
+      "background_color": "none"
+    },
+    "damage_dealer": {
+      "damage": 1
     },
     "block": {
       "blocks": {}
     },
     "metadata": {
-      "name": "baby",
+      "name": "some fucker",
       "description": "This is just an enemy"
     },
     "ai_randomwalk": {},
@@ -84,7 +93,8 @@
       "character": ">",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "npc",
+      "background_color": "none"
     },
     "block": {
       "blocks": {}
@@ -106,7 +116,8 @@
       "character": "P",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "npc",
+      "background_color": "none"
     },
     "block": {
       "blocks": {}
@@ -125,7 +136,8 @@
       "character": "#",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "wall",
+      "background_color": "wallbg"
     },
     "block": {
       "blocks": {}
@@ -144,7 +156,8 @@
       "character": "t",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player"
+      "color": "tree",
+      "background_color": "treebg"
     },
     "block": {
       "blocks": {}

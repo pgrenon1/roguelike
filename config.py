@@ -13,9 +13,15 @@ MASTER_SEED = None
 
 
 COLORS = {
+    'none': libtcod.black,
     'dark_wall': libtcod.Color(255, 255, 255),
-    'dark_ground': libtcod.Color(0, 10, 10),
-    'player': libtcod.Color(255, 255, 255)
+    'dark_ground': libtcod.Color(0, 50, 10),
+    'player': libtcod.Color(0, 255, 255),
+    'npc': libtcod.Color(100, 25, 80),
+    'wall': libtcod.Color(192, 192, 192),
+    'tree': libtcod.Color(34, 139, 34),
+    'treebg': libtcod.Color(0, 30, 0),
+    'wallbg': libtcod.dark_grey
 }
 
 ENTITY_DATA = load_dataset('data/entities.json')

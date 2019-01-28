@@ -24,4 +24,4 @@ class SpawnerProcessor(esper.Processor):
                 pos.x + random.choice([-1, 1]),
                 pos.y+random.choice([-1, 1]))
 
-            #self.world.remove_component(ent, SpawnerEvent)
+            self.world.remove_component(ent, SpawnerEvent)
