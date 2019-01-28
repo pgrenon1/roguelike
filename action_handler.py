@@ -29,7 +29,7 @@ def handle_player_actions():
     action = handle_keys(config.KEY)
 
     if action:
-        # engine.WORLD.process()
+        engine.WORLD.process()
         engine.TICK += 1
 
         print('Current tick : ', engine.TICK)
