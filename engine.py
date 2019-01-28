@@ -98,8 +98,8 @@ def run_game():
     npc3 = instantiate_entity('npcdrop', 0, 1)
 
     while not libtcod.console_is_window_closed():
-        if(TICK > 0):
-            WORLD.process()
+
+        WORLD.process()
 
         libtcod.sys_check_for_event(
             libtcod.EVENT_KEY_PRESS, config.KEY, config.MOUSE)
