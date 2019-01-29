@@ -7,11 +7,13 @@ from processors.dna_absorb_processor import DnaAbsorberProcessor
 from processors.movement_processor import MovementProcessor
 from processors.render_processor import RenderProcessor
 from processors.spawner_processor import SpawnerProcessor
+from processors.render_console_processor import RenderConsole
 from scene_manager import SceneManager
 
 PROCESSOR_GROUP = {
     'player_turn': [
         RenderProcessor(config.con, config.COLORS['none']),
+        RenderConsole(),
         MovementProcessor(),
         DeathProcessor()
     ],
