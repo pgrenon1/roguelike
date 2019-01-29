@@ -12,6 +12,9 @@ class Gameplay(Scene):
         self.processor_group = processors.PROCESSOR_GROUP
         self.world = world
 
+        self.processor_group = processors.PROCESSOR_GROUP
+        self.change_processors('player_turn')
+
         if world is None:
             """We can use esper.CachedWorld to get the last world that was assigned to esper (not 100% sure)"""
             """We should set self.world = esper.World() to whatefver is the first scene we start with I think"""
