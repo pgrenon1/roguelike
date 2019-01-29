@@ -3,10 +3,12 @@ import sys
 import config
 import random
 import tcod as libtcod
+from scene_manager import SceneManager
 
 
 def main():
-    engine.run_game()
+    pass
+    # engine.run_game()
     # engine.WORLD.process()
 
 
@@ -22,4 +24,6 @@ if __name__ == '__main__':
         config.MASTER_SEED = randomseed
         random.seed(randomseed)
 
-    main()
+    app = SceneManager(state='gameplay')
+    app.run()
+    # main()
