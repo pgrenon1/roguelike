@@ -13,7 +13,7 @@ class Gameplay(Scene):
         self.world = world
 
         self.processor_group = processors.PROCESSOR_GROUP
-        self.change_processors('player_turn')
+        self.world = world
 
         if world is None:
             """We can use esper.CachedWorld to get the last world that was assigned to esper (not 100% sure)"""
