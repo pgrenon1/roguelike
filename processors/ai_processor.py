@@ -1,14 +1,16 @@
 import esper
-from components.speed import Speed
-from components.position import Position
-from components.movement import Movement
-from components.ai_randomwalk import AiRandomwalk
+from components import (
+    Speed,
+    Position,
+    Movement,
+    AiRandomwalk,
+    DamageDealer,
+    Damage,
+    Block
+)
 import engine
 import random
-from loader_functions.entity_factory import instantiate_entity
-from components.damage_dealer import DamageDealer
-from components.damage import Damage
-from components.block import Block
+# from loader_functions.entity_factory import instantiate_entity
 import config
 
 

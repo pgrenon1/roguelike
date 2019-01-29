@@ -1,10 +1,12 @@
 import esper
-from components.speed import Speed
-from components.position import Position
-from components.movement import Movement
-from components.block import Block
-from components.damage_dealer import DamageDealer
-from components.damage import Damage
+from components import (
+    Speed,
+    Position,
+    Movement,
+    Block,
+    DamageDealer,
+    Damage
+)
 import engine
 
 

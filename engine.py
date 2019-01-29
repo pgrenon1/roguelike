@@ -1,28 +1,29 @@
 import tcod as libtcod
 from input_handlers import handle_keys
-from config import config
+import config
 import action_handler
 from death_functions import *
 import esper
 import sys
-from components.speed import Speed
-from components.position import Position
-from processors.movement_processor import MovementProcessor
-from processors.render_processor import RenderProcessor
-from processors.ai_processor import AiProcessor
-from processors.damage_processor import DamageProcessor
-from processors.death_processor import DeathProcessor
-from processors.dnagenerator_processor import DnaGeneratorProcessor
-from processors.dna_absorb_processor import DnaAbsorberProcessor
-from processors.spawner_processor import SpawnerProcessor
-from components.render import Render
-from config import random
-from components.generate_dna import GenerateDna
-from components.dna_absorber import DnaAbsorber
-from components.block import Block
-from components.metadata import Metadata
-from loader_functions.instantiator import *
-from loader_functions.entity_factory import *
+from components import (
+    Renderable,
+    Position,
+    GenerateDna,
+    DnaAbsorber,
+    Block,
+    Metadata
+)
+# from processors.movement_processor import MovementProcessor
+# from processors.render_processor import RenderProcessor
+# from processors.ai_processor import AiProcessor
+# from processors.damage_processor import DamageProcessor
+# from processors.death_processor import DeathProcessor
+# from processors.dnagenerator_processor import DnaGeneratorProcessor
+# from processors.dna_absorb_processor import DnaAbsorberProcessor
+# from processors.spawner_processor import SpawnerProcessor
+# from config import random
+# from loader_functions.instantiator import *
+# from loader_functions.entity_factory import *
 from render_functions import RenderOrder
 from rect import *
 from config import COLORS

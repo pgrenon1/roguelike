@@ -1,7 +1,9 @@
-from components.health import Health
-from components.damage import Damage
-from components.death import Death
-from components.metadata import Metadata
+from components import (
+    Health,
+    Damage,
+    Death,
+    Metadata
+)
 import engine
 import esper
 

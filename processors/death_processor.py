@@ -1,15 +1,20 @@
 import esper
-from components.speed import Speed
-from components.position import Position
-from components.render import Render
-from components.dna import Dna
-from components.generate_dna import GenerateDna
-from components.movement import Movement
-from components.block import Block
-from components.death import Death
-from components.remains import Remains
+
+from components import (
+    Speed,
+    Position,
+    Render,
+    Dna,
+    GenerateDna,
+    Movement,
+    Block,
+    Death,
+    Remains,
+    RenderOrder,
+    AiRandomwalk
+)
+
 from render_functions import RenderOrder
-from components.ai_randomwalk import AiRandomwalk
 import engine
 
 

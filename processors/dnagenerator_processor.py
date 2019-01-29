@@ -1,9 +1,11 @@
 import esper
-from components.speed import Speed
-from components.position import Position
-from components.generate_dna import GenerateDna
-from components.dna import Dna
-from components.block import Block
+from components import (
+    Speed,
+    Position,
+    GenerateDna,
+    Dna,
+    Block
+)
 import engine
 
 

@@ -1,10 +1,13 @@
 import esper
 import tcod as libtcod
-from components.render import Render
-from components.position import Position
+from components import (
+    Render,
+    Position)
 from render_functions import RenderOrder
 import engine
 from config import COLORS
+
+"""THIS IS THE OLD PROCESSOR FOR REFERENCE, the new one is in render.py"""
 
 
 class RenderProcessor(esper.Processor):

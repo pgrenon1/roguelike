@@ -1,12 +1,14 @@
 import esper
-from components.speed import Speed
-from components.position import Position
-from components.movement import Movement
-from components.block import Block
-from components.damage_dealer import DamageDealer
-from components.damage import Damage
-from components.spawner import Spawner
-from components.spawner_event import SpawnerEvent
+from components import (
+    Speed,
+    Position,
+    Movement,
+    Block,
+    DamageDealer,
+    Damage,
+    Spawner,
+    SpawnerEvent
+)
 import engine
 from loader_functions.entity_factory import *
 import random

@@ -1,9 +1,11 @@
 import esper
 import engine
-from components.dna import Dna
-from components.dna_absorber import DnaAbsorber
-from components.position import Position
-from components.metadata import Metadata
+from components import (
+    Dna,
+    DnaAbsorber,
+    Position,
+    Metadata
+)
 
 
 class DnaAbsorberProcessor(esper.Processor):

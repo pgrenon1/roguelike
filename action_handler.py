@@ -1,9 +1,12 @@
 from input_handlers import *
-from config import config
+import config
 import engine
-from components.position import Position
-from components.movement import Movement
-from components.ai_randomwalk import AiRandomwalk
+from components import (
+    Position, Movement, AiRandomwalk
+)
+# from components.position import Position
+# from components.movement import Movement
+# from components.ai_randomwalk import AiRandomwalk
 
 
 def handle_player_turn_results(player_turn_results):
