@@ -41,13 +41,18 @@ class Gameplay(Scene):
     global noise
     noise = libtcod.noise_new(2, 5.0, 0.9)
 
+    # !!PLACEHOLDER ENTITY
+    # JUST FOR TESTING THE ARCHITECTURE!!
+    """Tout les components sont maintenant dans un seul file."""
+
     def _create_level(self):
         global room
         global noise
         for x in range(0, config.MAP_WIDTH):
             for y in range(0, config.MAP_HEIGHT):
-
-                if x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
+                if x == 0 and y == 0:
+                    player = instantiate_entity(self.world, 'player', 0, 0)
+                elif x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
                     if x not in range(room.x1+1, room.x2-1):
                         wall = instantiate_entity(self.world, 'wall', x, y)
                     if y not in range(room.y1+1, room.y2-1):
@@ -64,11 +69,6 @@ class Gameplay(Scene):
             height=config.MAP_HEIGHT
         )
 
-        # !!PLACEHOLDER ENTITY
-        # JUST FOR TESTING THE ARCHITECTURE!!
-        """Tout les components sont maintenant dans un seul file."""
-        player = instantiate_entity(self.world, 'player', 0, 0)
-
     def change_processors(self, state):
         self.world_processors = self.processor_group[state]
         for processor_instance in self.processor_group[state]:
@@ -83,5 +83,5 @@ class Gameplay(Scene):
                 proc.scene = self
 
     def update(self):
-        print("Processing world")
+        # print("Processing world")
         self.world.process()

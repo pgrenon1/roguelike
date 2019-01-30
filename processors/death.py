@@ -26,7 +26,7 @@ class Death(esper.Processor):
             # print(rend.character)
             rend.character = '%'
             # rend.foreground_color = libtcod.dark_red
-            # rend.layer = const.LAYER_CORPSE
+            rend.render_order = config.RenderOrder.REMAINS.value
             self.try_removing(ent, c.Collidable)
             # self.try_removing(ent, c.Stats)
             self.try_removing(ent, c.Movable)
