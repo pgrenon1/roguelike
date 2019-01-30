@@ -7,31 +7,34 @@ import ast
 # GETTING ALL THE COMPONENTS
 
 
-class Block:
-    def __init__(self, args):
+class Collidable:
+    def __init__(self):
         pass
 
 
-class Dnaabsorber:
-    def __init__(self, args):
+class DnaAbsorber:
+    def __init__(self):
         pass
 
 
-class Damagedealer:
+class Stats:
     def __init__(self, args):
-        self.damage = args['damagedealer']['damage']
+        self.max_health = args['Stats']['max_health']
+        self.health = args['Stats']['health']
+        self.defense = args['Stats']['defense']
+        self.damage = args['Stats']['damage']
 
 
 class Dna:
     def __init__(self, args):
         self.dna_raw = args
-        self.dna_data = args['dna']['dna_data']
+        self.dna_data = args['Dna']['dna_data']
 
 
 class Metadata:
     def __init__(self, args):
-        self.name = args['metadata']['name']
-        self.description = args['metadata']['description']
+        self.name = args['Metadata']['name']
+        self.description = args['Metadata']['description']
 
 
 class Position:
@@ -46,22 +49,23 @@ class Remains:
 
 
 class Spawner:
-    def __init__(self, args):
+    def __init__(self):
         pass
 
 
 class Speed:
     def __init__(self, args):
-        self.speed = args['speed']
+        self.speed = args['Speed']
 
 
 class Renderable:
     def __init__(self, args):
-        self.character = args['renderable']['character']
-        self.color = args['renderable']['color']
-        self.background_color = args['renderable']['background_color']
-        self.corpse_character = args['renderable']['corpse_character']
-        #self.render_order = RenderOrder['renderable']['render_order'].value
+        self.character = args['Renderable']['character']
+        self.color = args['Renderable']['color']
+        self.background_color = args['Renderable']['background_color']
+        self.corpse_character = args['Renderable']['corpse_character']
+        self.render_order = config.RenderOrder[args['Renderable']
+                                               ['render_order']].value
 #        self.foreground_color = args['render']['foreground_color']
 
 
@@ -75,8 +79,13 @@ class PlayerTurn:
         pass
 
 
-class Airandomwalk:
-    def __init__(self, args):
+class EnemyTurn:
+    def __init__(self):
+        pass
+
+
+class AiRandomWalk:
+    def __init__(self):
         pass
 
 
@@ -90,23 +99,11 @@ class Death:
         pass
 
 
-class Generatedna:
+class GenerateDna:
     def __init__(self):
         pass
 
 
-class Health:
-    def __init__(self, args):
-        self.max_health = args['health']['max_health']
-        self.current_health = args['health']['current_health']
-
-
-class Movement:
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
-
-
-class Spawnerevent:
-    def __init__(self, args):
+class SpawnerEvent:
+    def __init__(self):
         pass

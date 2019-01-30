@@ -19,7 +19,7 @@ class StatePlayerTurn(esper.Processor):
             if all(key in ['move', 'pickup'] for key in self.scene.action.keys()):
                 self.scene.change_processors('enemy_turn')
 
-            # might not end up using any of these!
+            # might not end up using any of these!?
             # if self.scene.action.get('show_inventory'):
             #     self.scene.change_processors('show_inventory')
 

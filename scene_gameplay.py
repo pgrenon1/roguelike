@@ -83,5 +83,5 @@ class Gameplay(Scene):
                 proc.scene = self
 
     def update(self):
-        print("Updating gameplay scene")
+        print("Processing world")
         self.world.process()

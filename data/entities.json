@@ -1,168 +1,146 @@
 {
   "player": {
-    "speed": {
-      "speed": 0
-    },
-    "damagedealer": {
+    "Stats": {
+      "max_health": 3,
+      "health": 3,
+      "defense": 1,
       "damage": 1
     },
-    "health": {
-      "max_health": 3,
-      "current_health": 3
+    "Speed": {
+      "speed": 0
     },
-    "renderable": {
+    "Renderable": {
       "character": "@",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "player",
       "background_color": "none"
     },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
+    "Collidable": {},
+    "Metadata": {
       "name": "Player",
       "description": "The player description"
     },
-    "dnaabsorber": {}
+    "DnaAbsorber": {},
+    "PlayerTurn": {},
+    "Movable": {}
   },
   "npc": {
-    "speed": {
+    "EnemyTurn": {},
+    "Stats": {
+      "max_health": 1,
+      "health": 1,
+      "defense": 0,
+      "damage": 0
+    },
+    "Speed": {
       "speed": 0
     },
-    "damagedealer": {
-      "damage": 1
-    },
-    "health": {
-      "max_health": 3,
-      "current_health": 2
-    },
-    "renderable": {
+    "Renderable": {
       "character": "L",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
       "background_color": "none"
     },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
+    "Collidable": {},
+    "Metadata": {
       "name": "Alvaro",
       "description": "This is just an enemy"
     },
-    "airandomwalk": {},
-    "dnaabsorber": {},
-    "spawner": {},
-    "spawner_event": {}
+    "Airandomwalk": {},
+    "Dnaabsorber": {},
+    "Spawner": {},
+    "Spawner_event": {}
   },
-  "npcwalk": {
-    "speed": {
+  "Npcwalk": {
+    "EnemyTurn": {},
+    "Stats": {
+      "max_health": 1,
+      "health": 1,
+      "defense": 0,
+      "damage": 0
+    },
+    "Speed": {
       "speed": 0
     },
-    "health": {
-      "max_health": 3,
-      "current_health": 1
-    },
-    "renderable": {
+    "Renderable": {
       "character": "-",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
       "background_color": "none"
     },
-    "damagedealer": {
+    "DamageDealer": {
       "damage": 1
     },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
+    "Collidable": {},
+    "Metadata": {
       "name": "some fucker",
       "description": "This is just an enemy"
     },
-    "airandomwalk": {},
-    "dnaabsorber": {}
+    "AiRandomWalk": {},
+    "DnaAbsorber": {}
   },
-  "npcdrop": {
-    "health": {
-      "max_health": 3,
-      "current_health": 1
+  "Npcdrop": {
+    "EnemyTurn": {},
+    "Stats": {
+      "max_health": 1,
+      "health": 1,
+      "defense": 0,
+      "damage": 0
     },
-    "renderable": {
+    "Renderable": {
       "character": ">",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
       "background_color": "none"
     },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
+    "Collidable": {},
+    "Metadata": {
       "name": "Dropper",
       "description": "This is just an enemy"
     }
   },
-  "npc2": {
-    "speed": {
-      "speed": 0
-    },
-    "health": {
-      "max_health": 3,
-      "current_health": 3
-    },
-    "renderable": {
-      "character": "P",
-      "corpse_character": "%",
-      "render_order": "ACTOR",
-      "color": "npc",
-      "background_color": "none"
-    },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
-      "name": "Phil",
-      "description": "This is THE enemy"
-    }
-  },
   "wall": {
-    "health": {
-      "max_health": 5,
-      "current_health": 5
+    "EnemyTurn": {},
+    "Stats": {
+      "max_health": 1,
+      "health": 1,
+      "defense": 0,
+      "damage": 0
     },
-    "renderable": {
+    "Renderable": {
       "character": "#",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "wall",
       "background_color": "wallbg"
     },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
+    "Collidable": {},
+    "Metadata": {
       "name": "Wall",
       "description": "This is a wall"
     }
   },
   "tree": {
-    "health": {
-      "max_health": 3,
-      "current_health": 3
+    "EnemyTurn": {},
+    "Stats": {
+      "max_health": 1,
+      "health": 1,
+      "defense": 0,
+      "damage": 0
     },
-    "renderable": {
+    "Renderable": {
       "character": "t",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "tree",
       "background_color": "treebg"
     },
-    "block": {
-      "blocks": {}
-    },
-    "metadata": {
+    "Collidable": {},
+    "Metadata": {
       "name": "Tree",
       "description": "This is a tree"
     }

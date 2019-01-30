@@ -42,8 +42,7 @@ data_list = fill_data_list('components')
 MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
-con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
 # console_map_ascii_code_to_font("∞", fontCharX, fontCharY)
 
 KEY = libtcod.Key()
-MOUSE = libtcod.Mouse()
+# MOUSE = libtcod.Mouse()

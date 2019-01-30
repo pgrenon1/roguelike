@@ -36,5 +36,4 @@ def create_master_component_dataset(comp_list):
                 sys.modules['components'], comp_name)
 
         # implement a way to make sure this list is clean
-
     return component_dataset

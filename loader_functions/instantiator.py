@@ -4,7 +4,7 @@ import config
 
 def Factory(class_name):
     # print(config.MASTER_COMPONENT_DATASET)
-    return config.MASTER_COMPONENT_DATASET[class_name.capitalize()]
+    return config.MASTER_COMPONENT_DATASET[class_name]
 
 
 # # maybe have a more generic function that loads these items when needed
@@ -35,7 +35,11 @@ def get_entity_data(data):
 
             args[key] = data[key]
 
-        _newComponent = _componentType(args)
+        if args:
+            _newComponent = _componentType(args)
+        else:
+            _newComponent = _componentType()
+
         _newData[key] = _newComponent
     return _newData
 

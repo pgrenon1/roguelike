@@ -7,6 +7,7 @@ from .states import (
     StatePlayerTurn,
     StateEnemyTurn
 )
+from .death import Death
 from .input_handler import InputPlayer
 from .render import RenderConsole
 from .move_player import MovePlayer
@@ -20,7 +21,7 @@ PROCESSOR_GROUP = {
         InputPlayer(),
         MovePlayer(),
         # giving the player experience should be here if we ever do that
-        # checking death should be here
+        Death(),
         # picking up stuff should be here
         # changing level such as a dungeon level should be here, aka stairs
         # checking "out game" player actions that involve the console should be here, that means going full screen, save and exit, etc
@@ -28,7 +29,7 @@ PROCESSOR_GROUP = {
         StatePlayerTurn()
     ],
     'enemy_turn': [
-        RenderConsole(),
+        Death(),
         StateEnemyTurn()
     ]
 }
