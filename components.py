@@ -1,4 +1,10 @@
-from render_functions import RenderOrder
+# This should possibly be somewhere that isn't config.
+from config import *
+import sys
+import inspect
+import ast
+
+# GETTING ALL THE COMPONENTS
 
 
 class Block:
@@ -6,14 +12,14 @@ class Block:
         pass
 
 
-class DnaAbsorber:
+class Dnaabsorber:
     def __init__(self, args):
         pass
 
 
-class DamageDealer:
+class Damagedealer:
     def __init__(self, args):
-        self.damage = args['damage_dealer']['damage']
+        self.damage = args['damagedealer']['damage']
 
 
 class Dna:
@@ -51,12 +57,12 @@ class Speed:
 
 class Renderable:
     def __init__(self, args):
-        self.character = args['render']['character']
-        self.color = args['render']['color']
-        self.background_color = args['render']['background_color']
-        self.corpse_character = args['render']['corpse_character']
-        self.render_order = RenderOrder[args['render']['render_order']].value
-        # self.foreground_color = args['render']['foreground_color']
+        self.character = args['renderable']['character']
+        self.color = args['renderable']['color']
+        self.background_color = args['renderable']['background_color']
+        self.corpse_character = args['renderable']['corpse_character']
+        #self.render_order = RenderOrder['renderable']['render_order'].value
+#        self.foreground_color = args['render']['foreground_color']
 
 
 class Movable:
@@ -69,7 +75,7 @@ class PlayerTurn:
         pass
 
 
-class AiRandomwalk:
+class Airandomwalk:
     def __init__(self, args):
         pass
 
@@ -84,13 +90,7 @@ class Death:
         pass
 
 
-class Dna:
-    def __init__(self, args):
-        self.dna_raw = args
-        self.dna_data = args['dna']['dna_data']
-
-
-class GenerateDna:
+class Generatedna:
     def __init__(self):
         pass
 
@@ -107,6 +107,6 @@ class Movement:
         self.y = y
 
 
-class SpawnerEvent:
+class Spawnerevent:
     def __init__(self, args):
         pass

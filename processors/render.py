@@ -22,7 +22,7 @@ class RenderConsole(esper.Processor):
         # not optimal, but it works! === not Phil's comment!
         iterable = list(self.world.get_components(c.Renderable, c.Position))
         # I confess I don't understand row[1][0] yet
-        iterable.sort(key=lambda row: row[1][0].render_order)
+#        iterable.sort(key=lambda row: row[1][0].render_order)
         for _, (rend, pos) in iterable:
             yield (rend, pos)
 

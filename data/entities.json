@@ -3,14 +3,14 @@
     "speed": {
       "speed": 0
     },
-    "damage_dealer": {
+    "damagedealer": {
       "damage": 1
     },
     "health": {
       "max_health": 3,
       "current_health": 3
     },
-    "render": {
+    "renderable": {
       "character": "@",
       "corpse_character": "%",
       "render_order": "ACTOR",
@@ -24,20 +24,20 @@
       "name": "Player",
       "description": "The player description"
     },
-    "dna_absorber": {}
+    "dnaabsorber": {}
   },
   "npc": {
     "speed": {
       "speed": 0
     },
-    "damage_dealer": {
+    "damagedealer": {
       "damage": 1
     },
     "health": {
       "max_health": 3,
       "current_health": 2
     },
-    "render": {
+    "renderable": {
       "character": "L",
       "corpse_character": "%",
       "render_order": "ACTOR",
@@ -51,8 +51,8 @@
       "name": "Alvaro",
       "description": "This is just an enemy"
     },
-    "ai_randomwalk": {},
-    "dna_absorber": {},
+    "airandomwalk": {},
+    "dnaabsorber": {},
     "spawner": {},
     "spawner_event": {}
   },
@@ -64,14 +64,14 @@
       "max_health": 3,
       "current_health": 1
     },
-    "render": {
+    "renderable": {
       "character": "-",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
       "background_color": "none"
     },
-    "damage_dealer": {
+    "damagedealer": {
       "damage": 1
     },
     "block": {
@@ -81,15 +81,15 @@
       "name": "some fucker",
       "description": "This is just an enemy"
     },
-    "ai_randomwalk": {},
-    "dna_absorber": {}
+    "airandomwalk": {},
+    "dnaabsorber": {}
   },
   "npcdrop": {
     "health": {
       "max_health": 3,
       "current_health": 1
     },
-    "render": {
+    "renderable": {
       "character": ">",
       "corpse_character": "%",
       "render_order": "ACTOR",
@@ -112,7 +112,7 @@
       "max_health": 3,
       "current_health": 3
     },
-    "render": {
+    "renderable": {
       "character": "P",
       "corpse_character": "%",
       "render_order": "ACTOR",
@@ -132,7 +132,7 @@
       "max_health": 5,
       "current_health": 5
     },
-    "render": {
+    "renderable": {
       "character": "#",
       "corpse_character": "%",
       "render_order": "ACTOR",
@@ -152,7 +152,7 @@
       "max_health": 3,
       "current_health": 3
     },
-    "render": {
+    "renderable": {
       "character": "t",
       "corpse_character": "%",
       "render_order": "ACTOR",

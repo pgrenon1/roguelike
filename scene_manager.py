@@ -12,6 +12,7 @@ class SceneManager:
     def __init__(self, state='gameplay'):
         print("Scene manager initialized")
         libtcod.console_set_custom_font(DEFAULT_FONT, 2)
+
         self.root_console = libtcod.console_init_root(
             SCREEN_WIDTH, SCREEN_HEIGHT, 'ROGUELIKE', FULLSCREEN)
         # self.con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -21,6 +22,7 @@ class SceneManager:
             'gameplay': Gameplay()
 
         }
+
         self.current_scene = self.scenes[state]
         Scene.manager = self
 
@@ -30,5 +32,3 @@ class SceneManager:
     def run(self):
         while not libtcod.console_is_window_closed():
             self.current_scene.update()
-
-            

@@ -1,4 +1,4 @@
-from map_objects.tile import Tile
+from .tile import Tile
 
 
 class GameMap:

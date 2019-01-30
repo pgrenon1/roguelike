@@ -1,6 +1,9 @@
 import tcod as libtcod
 from loader_functions.instantiator import *
 from loader_functions.fetcher import *
+from enum import Enum
+import components
+from components import *
 
 
 import random
@@ -26,10 +29,17 @@ COLORS = {
     'wallbg': libtcod.Color(10, 10, 10)
 }
 
-"""THIS IS COMMENTED OUT TO ISOLATE WHAT I WAS WORKING ON! its also commented out in their respective files under loader_functions"""
-# ENTITY_DATA = load_dataset('data/entities.json')
-# data_list = fetch_directory_components('components')
-# MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
+
+class RenderOrder(Enum):
+    REMAINS = 1
+    ITEM = 2
+    ACTOR = 3
+
+
+ENTITY_DATA = load_dataset('data/entities.json')
+data_list = fill_data_list('components')
+
+MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)

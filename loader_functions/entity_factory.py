@@ -1,22 +1,21 @@
-"""Commented this out so I can isolate what I was working on"""
-# from config import ENTITY_DATA
-# from loader_functions.instantiator import *
-# import engine
-# from components.position import Position
+from config import ENTITY_DATA
+from loader_functions.instantiator import *
+from components import Position
 
 
-# def find_request_components(request):
-#     requestData = query_dataset(config.ENTITY_DATA, request)
-#     requestedComponents = get_entity_data(requestData)
+def find_request_components(request):
+    requestData = query_dataset(config.ENTITY_DATA, request)
+    requestedComponents = get_entity_data(requestData)
 
-#     return requestedComponents
+    return requestedComponents
 
 
-# def instantiate_entity(query, x, y):
-#     entityComponents = find_request_components(query)
-#     new_entity = engine.WORLD.create_entity()
-#     engine.WORLD.add_component(new_entity, Position(x, y))
-#     for i in entityComponents:
-#         engine.WORLD.add_component(new_entity, entityComponents[i])
-#         # print(entityComponents[i])
-#     return new_entity
+def instantiate_entity(world, query, x, y):
+
+    entityComponents = find_request_components(query)
+    new_entity = world.create_entity()
+    world.add_component(new_entity, Position(x, y))
+    for i in entityComponents:
+        world.add_component(new_entity, entityComponents[i])
+    # print(new_entity)
+    return new_entity
