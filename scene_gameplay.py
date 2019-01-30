@@ -63,11 +63,14 @@ class Gameplay(Scene):
                     # print(val)
                     if val > 0.8 and val < 1:
                         tree = instantiate_entity(self.world, 'tree', x, y)
+        # libtcod.sys_set_renderer(2)
 
         self.con = libtcod.console.Console(
             width=config.MAP_WIDTH,
             height=config.MAP_HEIGHT
         )
+
+        # print(libtcod.sys_get_renderer())
 
     def change_processors(self, state):
         self.world_processors = self.processor_group[state]
