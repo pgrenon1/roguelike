@@ -61,8 +61,9 @@ class Speed:
 class Renderable:
     def __init__(self, args):
         self.character = args['Renderable']['character']
-        self.color = args['Renderable']['color']
-        self.background_color = args['Renderable']['background_color']
+        self.color = config.COLORS[args['Renderable']['color']]
+        self.background_color = config.COLORS[args['Renderable']
+                                              ['background_color']]
         self.corpse_character = args['Renderable']['corpse_character']
         self.render_order = config.RenderOrder[args['Renderable']
                                                ['render_order']].value

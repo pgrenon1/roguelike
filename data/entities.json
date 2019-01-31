@@ -48,12 +48,12 @@
       "name": "Alvaro",
       "description": "This is just an enemy"
     },
-    "Airandomwalk": {},
-    "Dnaabsorber": {},
+    "AiRandomWalk": {},
+    "DnaAbsorber": {},
     "Spawner": {},
-    "Spawner_event": {}
+    "SpawnerEvent": {}
   },
-  "Npcwalk": {
+  "npcwalk": {
     "EnemyTurn": {},
     "Stats": {
       "max_health": 1,
@@ -71,7 +71,7 @@
       "color": "npc",
       "background_color": "none"
     },
-    "DamageDealer": {
+    "Damage": {
       "damage": 1
     },
     "Collidable": {},
@@ -82,7 +82,7 @@
     "AiRandomWalk": {},
     "DnaAbsorber": {}
   },
-  "Npcdrop": {
+  "npcdrop": {
     "EnemyTurn": {},
     "Stats": {
       "max_health": 1,

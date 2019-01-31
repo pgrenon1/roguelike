@@ -21,6 +21,7 @@ def load_dataset(repertory):
 
 
 def query_dataset(data, query):
+    # print(data[query])
     return data[query]
 
 

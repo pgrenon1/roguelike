@@ -1,29 +1,43 @@
-#import engine
+# import engine
 import sys
 import config
 import random
 import tcod as libtcod
 from scene_manager import SceneManager
+import getopt
+import argparse
+from helpers import *
 
 
-def main():
-    pass
-    # engine.run_game()
-    # engine.WORLD.process()
+def main(argv):
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-v', dest='verbose', action='store_true')
+    parser.add_argument('-s', dest='seed', action='store')
+    args = parser.parse_args()
 
-if __name__ == '__main__':
-    """We setup the randomness of the game as soon as we run it for now"""
-    if len(sys.argv) > 1:
-        random.seed(int(sys.argv[1]))
-        config.LIBTCOD_RANDOM = libtcod.random_new_from_seed(int(sys.argv[1]))
-        config.MASTER_SEED = int(sys.argv[1])
+    if args.verbose:
+        config.VERBOSE_MODE = True
+        debug("VERBOSE MODE ACTIVE FOR THIS INSTANCE")
+
+    if args.seed:
+        seed = int(args.seed)
+        config.MASTER_SEED = seed
+
+        debug("we're on main")
+        #config.LIBTCOD_RANDOM = libtcod.random_new_from_seed(seed)
+        # random.seed(config.MASTER_SEED)
+
     else:
-        randomseed = random.randint(0, 1000)
-        LIBTCOD_RANDOM = libtcod.random_new()
+        randomseed = random.randint(0, 10000)
         config.MASTER_SEED = randomseed
-        random.seed(randomseed)
+        #config.LIBTCOD_RANDOM = libtcod.random_new()
 
     app = SceneManager(state='gameplay')
     app.run()
     # main()
+
+
+if __name__ == '__main__':
+    """We setup the randomness of the game as soon as we run it for now"""
+    main(sys.argv[1:])

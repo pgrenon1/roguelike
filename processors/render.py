@@ -42,9 +42,11 @@ class RenderConsole(esper.Processor):
             # if self.scene.game_map.fov[pos.y, pos.x]:
             # self.scene.con.default_fg = rend.fg
             # self.scene.con.default_bg = rend.bg
-            # JE SAIS PAS NON PLUS POURQUOI IL UTILISE PRINT_ YA VRAIMENT BEAUCOUP DE DIFFERENTES FACON DE PRINT DES CHAR ON DIRAIT
-            self.scene.con.print_(
-                x=pos.x, y=pos.y, string=rend.character, bg_blend=libtcod.BKGND_NONE)
+            # # JE SAIS PAS NON PLUS POURQUOI IL UTILISE PRINT_ YA VRAIMENT BEAUCOUP DE DIFFERENTES FACON DE PRINT DES CHAR ON DIRAIT
+            # self.scene.con.print_(
+            #     x=pos.x, y=pos.y, string=rend.character, bg_blend=rend.BKGND_NONE)
+            libtcod.console_put_char_ex(
+                self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
 
     def blit_console(self):
         self.scene.con.blit(
