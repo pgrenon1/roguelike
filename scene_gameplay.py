@@ -41,13 +41,13 @@ class Gameplay(Scene):
     room = Rect(20, 20, 10, 15)
     global noise
 
-    noise = libtcod.noise_new(2, 5.0, 0.9, random=config.LIBTCOD_RANDOM)
-
     # !!PLACEHOLDER ENTITY
     # JUST FOR TESTING THE ARCHITECTURE!!
     """Tout les components sont maintenant dans un seul file."""
 
     def _create_level(self):
+
+        noise = libtcod.noise_new(2, 5.0, 0.9, random=config.LIBTCOD_RANDOM)
 
         for x in range(0, config.MAP_WIDTH):
             for y in range(0, config.MAP_HEIGHT):

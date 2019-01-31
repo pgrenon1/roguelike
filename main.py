@@ -28,6 +28,7 @@ def main(argv):
         debug("This game will have a deterministic seed")
         debug(seed)
         config.LIBTCOD_RANDOM = libtcod.random_new_from_seed(seed)
+        debug(config.LIBTCOD_RANDOM)
         random.seed(config.MASTER_SEED)
 
     else:
