@@ -12,20 +12,10 @@ class SceneManager:
     def __init__(self, state='gameplay'):
         print("Scene manager initialized")
 
-        random.seed(config.MASTER_SEED)
-        config.LIBTCOD_RANDOM = libtcod.random_new_from_seed(MASTER_SEED)
-
         libtcod.console_set_custom_font(DEFAULT_FONT, 2)
 
         self.root_console = libtcod.console_init_root(
             SCREEN_WIDTH, SCREEN_HEIGHT, 'ROGUELIKE', FULLSCREEN, renderer=libtcod.RENDERER_GLSL)
-
-        # libtcod.random_new(config.MASTER_SEED)
-        # libtcod.sys_set_renderer(3)
-        # self.con = libtcod.console_new(SCREEN_WIDTH, SCREEN_HEIGHT)
-        #libtcod.console_s(0, 0, 100, 100)
-
-        # print(MASTER_SEED)
 
         self.scenes = {
             # We currently only have gameplay, no menues or anything like that, but we would add them here.

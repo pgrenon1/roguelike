@@ -41,7 +41,6 @@ class Gameplay(Scene):
     room = Rect(20, 20, 10, 15)
     global noise
 
-    print(config.LIBTCOD_RANDOM)
     noise = libtcod.noise_new(2, 5.0, 0.9, random=config.LIBTCOD_RANDOM)
 
     # !!PLACEHOLDER ENTITY
