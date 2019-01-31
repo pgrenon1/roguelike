@@ -41,6 +41,7 @@ class MovePlayer(esper.Processor):
                 # self.scene.fov_compute = True
                 player_pos.x = new_x
                 player_pos.y = new_y
+                #self.scene.messages = []
                 self.scene.messages.append(
                     "We moved to {}, {}".format(new_x, new_y))
 
@@ -51,6 +52,7 @@ class MovePlayer(esper.Processor):
             c.Metadata,
             c.Stats
         )
+
         is_collided = False
         for other_entity, (_, other_pos, other_metadata, other_stats) in collidable_c:
             # If it's not the same entity and if the new position would be the position of the other entity

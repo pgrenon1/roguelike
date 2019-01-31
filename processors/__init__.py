@@ -12,6 +12,9 @@ from .input_handler import InputPlayer
 from .render import RenderConsole
 from .render import RenderPanel
 from .move_player import MovePlayer
+from .dna_absorb_processor import DnaAbsorberProcessor
+from .dnagenerator_processor import DnaGeneratorProcessor
+#from .ai_processor import AiRandomwalk
 import config
 
 
@@ -22,6 +25,8 @@ PROCESSOR_GROUP = {
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
+        DnaAbsorberProcessor(),
+        # DnaGeneratorProcessor(),
         # giving the player experience should be here if we ever do that
         Death(),
         # picking up stuff should be here
