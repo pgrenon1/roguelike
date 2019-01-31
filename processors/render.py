@@ -52,7 +52,7 @@ class RenderConsole(esper.Processor):
         self.scene.con.blit(
             dest=self.scene.manager.root_console,
             width=self.width,
-            height=self.height
+            height=self.height-4
         )
 
     def flush_console(self):
@@ -65,3 +65,38 @@ class RenderConsole(esper.Processor):
             # ca change rien si personne bouge, mais si qqun bouge, on doit l'effacer de là ou il était
             self.scene.con.print_(
                 x=pos.x, y=pos.y, string=' ', bg_blend=libtcod.BKGND_NONE)
+
+
+class RenderPanel(esper.Processor):
+    scene = None
+
+    def __init__(self):
+        super().__init__()
+        self.display_message = ["hello"]
+        self.msg_width = 10
+        self.msg_height = 4
+        self.msg_x = None
+
+    def render_message(self):
+        for line in self.scene.messages:
+            libtcod.console_print_ex(
+                self.scene.panel, 3, 1, libtcod.BKGND_NONE, libtcod.LEFT,  line)
+
+    def blit_panel(self):
+        self.scene.panel.blit(
+            dest=self.scene.manager.root_console,
+            dest_x=0,
+            dest_y=config.SCREEN_HEIGHT-4,
+            src_x=0,
+            src_y=0,
+            width=config.SCREEN_WIDTH,
+            height=4,
+            fg_alpha=1.0,
+            bg_alpha=1.0,
+            key_color=None)
+        self.scene.panel.default_bg = libtcod.grey
+        self.scene.panel.clear()
+
+    def process(self):
+        self.blit_panel()
+        self.render_message()

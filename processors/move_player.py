@@ -41,6 +41,8 @@ class MovePlayer(esper.Processor):
                 # self.scene.fov_compute = True
                 player_pos.x = new_x
                 player_pos.y = new_y
+                self.scene.messages.append(
+                    "We moved to {}, {}".format(new_x, new_y))
 
     def collide_on_entity(self, entity, new_x, new_y, player_stats, player_metadata):
         collidable_c = self.world.get_components(

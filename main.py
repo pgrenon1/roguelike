@@ -39,7 +39,6 @@ def main(argv):
 
     app = SceneManager(state='gameplay')
     app.run()
-    # main()
 
 
 if __name__ == '__main__':

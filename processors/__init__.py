@@ -10,12 +10,14 @@ from .states import (
 from .death import Death
 from .input_handler import InputPlayer
 from .render import RenderConsole
+from .render import RenderPanel
 from .move_player import MovePlayer
 import config
 
 
 PROCESSOR_GROUP = {
     'player_turn': [
+        RenderPanel(),
         # computing FOV should be here
         RenderConsole(),
         InputPlayer(),

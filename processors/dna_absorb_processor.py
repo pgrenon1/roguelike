@@ -1,5 +1,5 @@
 import esper
-import engine
+
 from components import (
     Dna,
     DnaAbsorber,
@@ -22,6 +22,6 @@ class DnaAbsorberProcessor(esper.Processor):
                         ent, Metadata)
                     dna_nam = engine.WORLD.component_for_entity(
                         ent, Dna)
-                    print(entity_name.name,
-                          "picked up some dna containing", dna_nam.dna_data)
+                    self.scene.messages.append(entity_name.name,
+                                               "picked up some dna containing", dna_nam.dna_data)
                     engine.WORLD.remove_component(otherent, Dna)

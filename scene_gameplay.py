@@ -21,6 +21,11 @@ class Gameplay(Scene):
         self.processor_group = processors.PROCESSOR_GROUP
 
         self.game_map = game_map
+        self.panel = libtcod.console.Console(
+            config.SCREEN_WIDTH,
+            config.PANEL_HEIGHT
+        )
+        self.messages = []
 
         self.world = world
         if world is None:
