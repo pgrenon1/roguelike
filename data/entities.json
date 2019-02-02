@@ -145,7 +145,7 @@
       "description": "This is a tree"
     },
     "Dna": {
-      "dna_data": "yea"
+      "component": "<class 'Position>"
     }
   }
 }

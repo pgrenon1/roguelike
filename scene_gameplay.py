@@ -27,6 +27,11 @@ class Gameplay(Scene):
             config.PANEL_HEIGHT
         )
 
+        self.con = libtcod.console.Console(
+            width=config.MAP_WIDTH,
+            height=config.MAP_HEIGHT
+        )
+
         # This is just a simple data type with a pop func
         self.messages = collections.deque()
 
@@ -42,7 +47,9 @@ class Gameplay(Scene):
 
         self.add_processors()
         self.change_processors('player_turn')
-        self.action = {}  # mon seul ajout so far, c'est necessaire pour que tout les processors
+        self.action = {}
+
+        # mon seul ajout so far, c'est necessaire pour que tout les processors
 
         # aillent accès à quelle key vient d'être pressed et qu'est-ce que cette clef veut dire. i.e. une action typique ressemble à { 'move' : (0,1)}
     global room
@@ -76,14 +83,10 @@ class Gameplay(Scene):
 
         self.populate_world()
 
-        self.con = libtcod.console.Console(
-            width=config.MAP_WIDTH,
-            height=config.MAP_HEIGHT
-        )
-
         # print(libtcod.sys_get_renderer())
 
     #"""Placeholder class for instantiating one of each entity declared in the entities.JSON file"""
+
     def populate_world(self):
         for entity in config.ENTITY_DATA:
             if(entity != 'player'):
@@ -104,5 +107,6 @@ class Gameplay(Scene):
                 proc.scene = self
 
     def update(self):
+
         # print("Processing world")
         self.world.process()

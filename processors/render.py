@@ -99,7 +99,7 @@ class RenderPanel(esper.Processor):
 
             color_map = libtcod.color_gen_map(self.col, self.idx)
             self.scene.panel.default_fg = color_map[y]
-
+            # Mayabe format the most current action in some special way, like with "[{}]".format(var) or something
             libtcod.console_print_ex(
                 self.scene.panel, self.msg_x, y+1, libtcod.BKGND_NONE, libtcod.LEFT,  message)
 

@@ -13,7 +13,7 @@ from .render import RenderConsole
 from .render import RenderPanel
 from .move_player import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
-from .dnagenerator_processor import DnaGeneratorProcessor
+#from .dnagenerator_processor import DnaGeneratorProcessor
 #from .ai_processor import AiRandomwalk
 import config
 
@@ -21,8 +21,8 @@ import config
 PROCESSOR_GROUP = {
     'player_turn': [
         # computing FOV should be here
-        RenderConsole(),
         RenderPanel(),
+        RenderConsole(),
         InputPlayer(),
         MovePlayer(),
         DnaAbsorberProcessor(),
@@ -36,6 +36,7 @@ PROCESSOR_GROUP = {
         StatePlayerTurn()
     ],
     'enemy_turn': [
+        # RenderPanel(),
         Death(),
         StateEnemyTurn()
     ]

@@ -27,8 +27,8 @@ class Stats:
 
 class Dna:
     def __init__(self, args):
-        self.dna_raw = args
-        self.dna_data = args['Dna']['dna_data']
+        # The DNA is just a holder that contains ONE component chosen on generation
+        self.dna_data = args['Dna']['component']
 
 
 class Metadata:
@@ -44,6 +44,11 @@ class Position:
 
 
 class Remains:
+    def __init__(self):
+        pass
+
+
+class Decay:
     def __init__(self):
         pass
 
