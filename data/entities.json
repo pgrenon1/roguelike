@@ -143,6 +143,9 @@
     "Metadata": {
       "name": "Tree",
       "description": "This is a tree"
+    },
+    "Dna": {
+      "dna_data": "yea"
     }
   }
 }

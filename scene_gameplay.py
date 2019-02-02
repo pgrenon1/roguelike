@@ -9,6 +9,7 @@ from map_generation.rect import Rect
 from map_generation.game_map import GameMap
 from loader_functions.entity_factory import *
 import random
+import collections
 
 
 # from components.render import Render
@@ -25,7 +26,9 @@ class Gameplay(Scene):
             config.SCREEN_WIDTH,
             config.PANEL_HEIGHT
         )
-        self.messages = []
+
+        # This is just a simple data type with a pop func
+        self.messages = collections.deque()
 
         self.world = world
         if world is None:
