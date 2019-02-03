@@ -12,11 +12,6 @@ class Collidable:
         pass
 
 
-class DnaAbsorber:
-    def __init__(self):
-        pass
-
-
 class Stats:
     def __init__(self, args):
         self.max_health = args['Stats']['max_health']
@@ -26,9 +21,14 @@ class Stats:
 
 
 class Dna:
-    def __init__(self, args):
+    def __init__(self, component):
         # The DNA is just a holder that contains ONE component chosen on generation
-        self.dna_data = args['Dna']['component']
+        self.component = component
+
+
+class DnaAbsorber:
+    def __init__(self):
+        pass
 
 
 class Metadata:
@@ -70,6 +70,7 @@ class Renderable:
         self.background_color = config.COLORS[args['Renderable']
                                               ['background_color']]
         self.corpse_character = args['Renderable']['corpse_character']
+        self.corpse_color = config.COLORS['dead']
         self.render_order = config.RenderOrder[args['Renderable']
                                                ['render_order']].value
 #        self.foreground_color = args['render']['foreground_color']
@@ -109,7 +110,14 @@ class GenerateDna:
     def __init__(self):
         pass
 
+# These are just a set of components that don't do much. Just using them to test Absorb + Generation
 
-class SpawnerEvent:
+
+class Hard:
+    def __init__(self):
+        pass
+
+
+class Wood:
     def __init__(self):
         pass

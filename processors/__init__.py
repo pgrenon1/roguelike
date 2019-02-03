@@ -13,6 +13,8 @@ from .render import RenderConsole
 from .render import RenderPanel
 from .move_player import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
+from .move_enemy import MoveEnemy
+from .spawner_processor import SpawnerProcessor
 #from .dnagenerator_processor import DnaGeneratorProcessor
 #from .ai_processor import AiRandomwalk
 import config
@@ -25,6 +27,7 @@ PROCESSOR_GROUP = {
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
+        SpawnerProcessor(),
         DnaAbsorberProcessor(),
         # DnaGeneratorProcessor(),
         # giving the player experience should be here if we ever do that
@@ -36,8 +39,9 @@ PROCESSOR_GROUP = {
         StatePlayerTurn()
     ],
     'enemy_turn': [
-        # RenderPanel(),
+        MoveEnemy(),
         Death(),
+        SpawnerProcessor(),
         StateEnemyTurn()
     ]
 }

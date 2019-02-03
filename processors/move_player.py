@@ -13,6 +13,7 @@ class MovePlayer(esper.Processor):
         super().__init__()
 
     def process(self):
+
         if self.scene.action.get('move'):
             player_c = self.world.get_components(
                 c.PlayerTurn,
@@ -25,6 +26,7 @@ class MovePlayer(esper.Processor):
             )
             # ici on ajoutera après player_pos metadata pour le nom + stats pour le damage etc.
             for player, (_, _, player_pos, player_stats, player_metadata) in player_c:
+                # print(self.scene.world.components_for_entity(player))
                 new_x = player_pos.x + self.scene.action.get('move')[0]
                 new_y = player_pos.y + self.scene.action.get('move')[1]
 
@@ -41,6 +43,7 @@ class MovePlayer(esper.Processor):
                 # self.scene.fov_compute = True
                 player_pos.x = new_x
                 player_pos.y = new_y
+
                 self.scene.messages.append(
                     ("We moved to ({},{})".format(new_x, new_y), libtcod.light_cyan))
 

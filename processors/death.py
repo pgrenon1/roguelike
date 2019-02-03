@@ -34,17 +34,20 @@ class Death(esper.Processor):
         # We will store all components contained by the entity, except Renderable, position, metadata and stats here
         clean_components = []
 
-        if self.world.has_component(ent, c.Dna):
+        if self.world.has_component(ent, c.GenerateDna):
             # We generate the DNA right before adding it
             current_components = self.world.components_for_entity(ent)
             for component in current_components:
-                if not (component, (c.Renderable, c.Position, c.Metadata, c.Stats)):
+                if not isinstance(component, (c.Renderable, c.Position, c.Metadata, c.Stats, c.AiRandomWalk, c.Damage, c.Speed, c.GenerateDna, c.Decay, c.Dna)):
                     clean_components.append(component)
+                    print(clean_components)
+                    # print(clean_components)
 
             if(len(clean_components) > 0):
+                # We just get all the components that aren't the forbidden ones and we pass it as an argument to DNA.
+                # DNA is basically just a 1 slot inventory that remains have.
                 drop_dna = random.choice(clean_components)
-                dna_data = {'Dna': {'dna_data': drop_dna}}
-                self.world.add_component(ent, c.Dna(dna_data))
+                self.world.add_component(ent, c.Dna(drop_dna))
             else:
                 pass
 
@@ -57,6 +60,8 @@ class Death(esper.Processor):
                 # print(rend.character)
             rend.character = '%'
             # rend.foreground_color = libtcod.dark_red
+            rend.color = rend.corpse_color
+
             rend.render_order = config.RenderOrder.REMAINS.value
 
             # We remove the absorber ability from the corpse, just in case
@@ -70,9 +75,6 @@ class Death(esper.Processor):
             self.try_removing(ent, c.PlayerTurn)
             self.try_removing(ent, c.EnemyTurn)
             self.world.add_component(ent, c.Decay())
-            # self.scene.message.append(
-            #     ('{} is dead!'.format(desc.name.capitalize()), tcod.orange)
-            # )
 
     def process(self):
         self.process_death()

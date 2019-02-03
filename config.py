@@ -30,7 +30,8 @@ COLORS = {
     'wall': libtcod.Color(192, 192, 192),
     'tree': libtcod.Color(34, 139, 34),
     'treebg': libtcod.Color(0, 30, 0),
-    'wallbg': libtcod.Color(10, 10, 10)
+    'wallbg': libtcod.Color(10, 10, 10),
+    'dead': libtcod.Color(100, 20, 10)
 }
 
 
@@ -47,6 +48,8 @@ MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 # console_map_ascii_code_to_font("∞", fontCharX, fontCharY)
+
+TICK = 0
 
 KEY = libtcod.Key()
 # MOUSE = libtcod.Mouse()

@@ -6,7 +6,7 @@ from components import Position
 def find_request_components(request):
     requestData = query_dataset(config.ENTITY_DATA, request)
     requestedComponents = get_entity_data(requestData)
-    
+
     return requestedComponents
 
 

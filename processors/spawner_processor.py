@@ -1,29 +1,31 @@
 import esper
-from components import (
-    Speed,
-    Position,
-    Movement,
-    Block,
-    DamageDealer,
-    Damage,
-    Spawner,
-    SpawnerEvent
-)
-import engine
-from loader_functions.entity_factory import *
+import components as c
 import random
+import config
+from loader_functions.entity_factory import instantiate_entity
 
 
 class SpawnerProcessor(esper.Processor):
     def __init__(self):
         super().__init__()
 
-    def process(self):
-        for ent, (spawner, pos) in self.world.get_components(SpawnerEvent, Position):
-            # print(pos)
-            instantiate_entity(
-                'npcwalk',
-                pos.x + random.choice([-1, 1]),
-                pos.y+random.choice([-1, 1]))
+    def get_spawners(self):
+        spawners = self.world.get_components(
+            c.Position,
+            c.Spawner
+        )
 
-            self.world.remove_component(ent, SpawnerEvent)
+        for spawner, (pos, spawn) in spawners:
+            yield spawner, (pos, spawn)
+
+    def spawn_children(self):
+        for spawner, (pos, spawn) in self.get_spawners():
+
+            instantiate_entity(self.scene.world, 'npcwalk', pos.x + random.randint(-1, 1),
+                               pos.y + random.randint(-1, 1))
+
+    def process(self):
+        if(config.TICK % 10 == 0):
+            self.spawn_children()
+
+        # self.world.remove_component(ent, SpawnerEvent)

@@ -36,9 +36,14 @@ class DnaAbsorberProcessor(esper.Processor):
         for other_ent, otherpos, dna, meta in self.get_dna():
             if((x, y) == (otherpos.x, otherpos.y)) and other_ent != entity:
                 # We add the component contained in the enemy's dna here
-                self.scene.world.add_component(entity, dna)
+                # The reality is that we should NOT add the component directly
+                # But pass it into a dictionary with some value, and eventually add it to the player if a certain value is reached
+                # For now, however, this is a nice proof of concept
+                self.scene.world.add_component(entity, dna.component)
                 # And we remove it
                 self.try_removing(other_ent, c.Dna)
+                self.try_removing(other_ent, c.GenerateDna)
+                # print(len(self.scene.world.components_for_entity(entity)))
 
                 self.scene.messages.append(
                     ("Absorbed " + meta.name.lower() + "'s DNA", libtcod.lightest_chartreuse))
