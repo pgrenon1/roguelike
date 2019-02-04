@@ -26,6 +26,7 @@ PROCESSOR_GROUP = {
         RenderPanel(),
         RenderConsole(),
         RenderPanel(),
+        RenderConsole(),
         InputPlayer(),
         MovePlayer(),
         SpawnerProcessor(),
