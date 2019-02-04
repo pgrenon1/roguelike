@@ -22,10 +22,10 @@ import config
 
 PROCESSOR_GROUP = {
     'player_turn': [
-        RenderPanel(),
         # computing FOV should be here
         RenderPanel(),
         RenderConsole(),
+        RenderPanel(),
         InputPlayer(),
         MovePlayer(),
         SpawnerProcessor(),
