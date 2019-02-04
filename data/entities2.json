@@ -1,0 +1,148 @@
+{
+    "player": {
+        "Stats": {
+            "max_health": 3,
+            "health": 3,
+            "defense": 1,
+            "damage": 1
+        },
+        "Speed": {
+            "speed": 0
+        },
+        "Renderable": {
+            "character": "@",
+            "corpse_character": "%",
+            "render_order": "ACTOR",
+            "color": "player",
+            "background_color": "none"
+        },
+        "Collidable": {},
+        "Metadata": {
+            "name": "Player",
+            "description": "The player description"
+        },
+        "DnaAbsorber": {},
+        "PlayerTurn": {},
+        "Movable": {}
+    },
+    "npc": {
+        "EnemyTurn": {},
+        "Stats": {
+            "max_health": 1,
+            "health": 1,
+            "defense": 0,
+            "damage": 0
+        },
+        "Speed": {
+            "speed": 0
+        },
+        "Renderable": {
+            "character": "L",
+            "corpse_character": "%",
+            "render_order": "ACTOR",
+            "color": "npc",
+            "background_color": "none"
+        },
+        "Collidable": {},
+        "Metadata": {
+            "name": "Alvaro",
+            "description": "This is just an enemy"
+        },
+        "AiRandomWalk": {},
+        "DnaAbsorber": {},
+        "Spawner": {},
+        "SpawnerEvent": {}
+    },
+    "npcwalk": {
+        "EnemyTurn": {},
+        "Stats": {
+            "max_health": 1,
+            "health": 1,
+            "defense": 0,
+            "damage": 0
+        },
+        "Speed": {
+            "speed": 0
+        },
+        "Renderable": {
+            "character": "-",
+            "corpse_character": "%",
+            "render_order": "ACTOR",
+            "color": "npc",
+            "background_color": "none"
+        },
+        "Damage": {
+            "damage": 1
+        },
+        "Collidable": {},
+        "Metadata": {
+            "name": "some fucker",
+            "description": "This is just an enemy"
+        },
+        "AiRandomWalk": {},
+        "DnaAbsorber": {}
+    },
+    "npcdrop": {
+        "EnemyTurn": {},
+        "Stats": {
+            "max_health": 1,
+            "health": 1,
+            "defense": 0,
+            "damage": 0
+        },
+        "Renderable": {
+            "character": ">",
+            "corpse_character": "%",
+            "render_order": "ACTOR",
+            "color": "npc",
+            "background_color": "none"
+        },
+        "Collidable": {},
+        "Metadata": {
+            "name": "Dropper",
+            "description": "This is just an enemy"
+        }
+    },
+    "wall": {
+        "EnemyTurn": {},
+        "Stats": {
+            "max_health": 1,
+            "health": 1,
+            "defense": 0,
+            "damage": 0
+        },
+        "Renderable": {
+            "character": "#",
+            "corpse_character": "%",
+            "render_order": "ACTOR",
+            "color": "wall",
+            "background_color": "wallbg"
+        },
+        "Collidable": {},
+        "Metadata": {
+            "name": "Wall",
+            "description": "This is a wall"
+        }
+    },
+    "tree": {
+        "EnemyTurn": {},
+        "Stats": {
+            "max_health": 1,
+            "health": 1,
+            "defense": 0,
+            "damage": 0
+        },
+        "Renderable": {
+            "character": "t",
+            "corpse_character": "%",
+            "render_order": "ACTOR",
+            "color": "tree",
+            "background_color": "treebg"
+        },
+        "Collidable": {},
+        "Metadata": {
+            "name": "Tree",
+            "description": "This is a tree"
+        }
+    }
+}

@@ -39,9 +39,9 @@ class RenderOrder(Enum):
 
 
 ENTITY_DATA = load_dataset('data/entities.json')
-data_list = fill_data_list('components')
+# data_list = fill_data_list('components')
 
-MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
+# MASTER_COMPONENT_DATASET = create_master_component_dataset(data_list)
 
 DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 # console_map_ascii_code_to_font("∞", fontCharX, fontCharY)

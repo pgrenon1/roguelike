@@ -18,27 +18,29 @@ class DnaAbsorber:
 
 
 class Stats:
-    def __init__(self, args):
-        self.max_health = args['Stats']['max_health']
-        self.health = args['Stats']['health']
-        self.defense = args['Stats']['defense']
-        self.damage = args['Stats']['damage']
+    def __init__(self, max_health: int, health: int, defense: int, damage: int):
+        self.max_health = max_health
+        self.health = health
+        self.defense = defense
+        self.damage = damage
+        self.speed = speed
 
 
-class Dna:
-    def __init__(self, args):
-        self.dna_raw = args
-        self.dna_data = args['Dna']['dna_data']
+# class Dna:
+#     def __init__(self, args):
+#         """This should just be created at run time, because the components of a entity might change"""
+#         self.dna_raw = args
+#         self.dna_data = args['Dna']['dna_data']
 
 
 class Metadata:
-    def __init__(self, args):
-        self.name = args['Metadata']['name']
-        self.description = args['Metadata']['description']
+    def __init__(self, name: str, description: str):
+        self.name: str = args['Metadata']['name']
+        self.description: str = args['Metadata']['description']
 
 
 class Position:
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         self.x = x
         self.y = y
 
@@ -53,20 +55,17 @@ class Spawner:
         pass
 
 
-class Speed:
-    def __init__(self, args):
-        self.speed = args['Speed']
-
-
 class Renderable:
-    def __init__(self, args):
-        self.character = args['Renderable']['character']
-        self.color = config.COLORS[args['Renderable']['color']]
-        self.background_color = config.COLORS[args['Renderable']
-                                              ['background_color']]
-        self.corpse_character = args['Renderable']['corpse_character']
-        self.render_order = config.RenderOrder[args['Renderable']
-                                               ['render_order']].value
+    def __init__(self, character: str, corpse_character: str, color: str, background_color: str, render_order: int):
+        self.character = character
+        # config.COLORS[args['Renderable']['color']]
+        self.color = color
+        self.background_color = background_color
+        # self.background_color: libtcod.color = config.COLORS[args['Renderable']
+        #                                                      ['background_color']]
+        self.corpse_character = corpse_character
+        self.render_order = render_order
+        # config.RenderOrder[args['Renderable']['render_order']].value
 #        self.foreground_color = args['render']['foreground_color']
 
 
@@ -86,16 +85,6 @@ class EnemyTurn:
 
 
 class AiRandomWalk:
-    def __init__(self):
-        pass
-
-
-class Damage:
-    def __init__(self, damage):
-        self.damage = damage
-
-
-class Death:
     def __init__(self):
         pass
 
