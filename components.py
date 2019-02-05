@@ -102,6 +102,11 @@ class AiRandomWalk:
         pass
 
 
+class AiChild:
+    def __init__(self):
+        pass
+
+
 class Damage:
     def __init__(self, damage):
         self.damage = damage

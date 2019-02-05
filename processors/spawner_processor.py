@@ -25,15 +25,16 @@ class SpawnerProcessor(esper.Processor):
 
         for spawner, (pos, spawn, stats,  metadata) in self.get_spawners():
             # we check if the entity has less than 3 children. This could be an arg, of course.
-            # if len(spawn.children) < 3:
+            if len(spawn.children) < 3:
 
-            child = instantiate_entity(self.scene.world, spawn.child_type, pos.x + random.randint(-2, 2),
-                                       pos.y + random.randint(-2, 2))
-            spawn.children.append(child)
+                child = instantiate_entity(self.scene.world, spawn.child_type, pos.x + random.randint(-2, 2),
+                                           pos.y + random.randint(-2, 2))
+                spawn.children.append(child)
 
-            childComponent = c.Child()
-            childComponent.parent = spawner
-            self.scene.world.add_component(child, childComponent)
+                childComponent = c.Child()
+                childComponent.parent = spawner
+                print(childComponent.parent)
+                self.scene.world.add_component(child, childComponent)
 
             self.scene.messages.append((
                 "A moth (*) came out of {}".format(metadata.name), libtcod.yellow))
