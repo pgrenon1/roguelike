@@ -43,7 +43,6 @@ class MovePlayer(esper.Processor):
                 # self.scene.fov_compute = True
                 player_pos.x = new_x
                 player_pos.y = new_y
-        
 
                 self.scene.messages.append(
                     ("We moved to ({},{})".format(new_x, new_y), libtcod.light_cyan))

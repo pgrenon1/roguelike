@@ -4,9 +4,9 @@ import processors
 import config
 from scene import Scene
 import components as c
-from map_generation.tile import Tile
-from map_generation.rect import Rect
-from map_generation.game_map import GameMap
+#from map_generation.tile import Tile
+from map_generation import Rect
+#from map_generation.game_map import GameMap
 from loader_functions.entity_factory import *
 import random
 import collections

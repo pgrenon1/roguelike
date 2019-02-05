@@ -40,7 +40,7 @@ class Death(esper.Processor):
             for component in current_components:
                 if not isinstance(component, (c.Renderable, c.Position, c.Metadata, c.Stats, c.AiRandomWalk, c.Damage, c.Speed, c.GenerateDna, c.Decay, c.Dna)):
                     clean_components.append(component)
-                    print(clean_components)
+                    # print(clean_components)
                     # print(clean_components)
 
             if(len(clean_components) > 0):
@@ -64,17 +64,69 @@ class Death(esper.Processor):
 
             rend.render_order = config.RenderOrder.REMAINS.value
 
+            self.handleSpawners()
             # We remove the absorber ability from the corpse, just in case
             self.try_removing(ent, c.DnaAbsorber)
+
             # we process dna generation at this point, right before we start removing components
             self.process_dnageneration(ent)
 
             self.try_removing(ent, c.Collidable)
-            # self.try_removing(ent, c.Stats)
             self.try_removing(ent, c.Movable)
             self.try_removing(ent, c.PlayerTurn)
             self.try_removing(ent, c.EnemyTurn)
+            self.try_removing(ent, c.Spawner)
+            self.try_removing(ent, c.Child)
+
+            # We check if this entity is someone's children, if so, we remove it
+
             self.world.add_component(ent, c.Decay())
+
+    def get_spawners(self):
+        iterable = []
+        iterable = self.scene.world.get_components(
+            c.Spawner,
+            c.Stats
+        )
+        for ent, (spawner_component, spawner_stats) in iterable:
+            yield ent, (spawner_component, spawner_stats)
+
+    def get_children(self):
+        iterable = []
+        iterable = self.scene.world.get_components(
+            c.Child,
+            c.Stats
+        )
+
+        for ent, (child_component, stats) in iterable:
+            yield ent, (child_component, stats)
+
+    def handleSpawners(self):
+
+        # Is this entity a parent?
+
+        # We remove the children entity from the parent list, so it can spawn an additional one
+        # We check that the parent of this thing is not dead also
+        for spawner, (spawner_component, spawner_stats) in self.get_spawners():
+            for child, (child_component, child_stats) in self.get_children():
+                #print(child, child_component.parent)
+                if spawner_stats.health <= 0 and child in spawner_component.children:
+                    child_stats.health = 0
+                    if child in spawner_component.children:
+
+                        spawner_component.children.remove(child)
+
+                        # if child_stats.health <= 0 and child in spawner_component.children:
+                        #     #child_component.parent = None
+                        #     print("YUooo")
+                        #     print(child)
+                        #     spawner_component.children.remove(child)
+                        # if child_stats.health <= 0 and child in spawner_component.children:
+                        #     spawner_component.children.remove(child)
+                        #     print("children killed and removed by itself")
+
+                else:
+                    break
 
     def process(self):
         self.process_death()

@@ -41,6 +41,7 @@ PROCESSOR_GROUP = {
         StatePlayerTurn()
     ],
     'enemy_turn': [
+
         MoveEnemy(),
         Death(),
         SpawnerProcessor(),

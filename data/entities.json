@@ -39,7 +39,7 @@
       "speed": 0
     },
     "Renderable": {
-      "character": "L",
+      "character": "O",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
@@ -47,13 +47,13 @@
     },
     "Collidable": {},
     "Metadata": {
-      "name": "Alvaro",
+      "name": "The Light",
       "description": "This is just an enemy"
     },
     "DnaAbsorber": {},
     "Spawner": {}
   },
-  "npcwalk": {
+  "child": {
     "EnemyTurn": {},
     "Stats": {
       "max_health": 1,
