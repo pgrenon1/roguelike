@@ -55,7 +55,13 @@ class Decay:
 
 class Spawner:
     def __init__(self):
-        pass
+        self.children = []
+        self.child_type = 'child'
+
+
+class Child:
+    def __init__(self):
+        self.parent = None
 
 
 class Speed:
@@ -92,6 +98,11 @@ class EnemyTurn:
 
 
 class AiRandomWalk:
+    def __init__(self):
+        pass
+
+
+class AiChild:
     def __init__(self):
         pass
 

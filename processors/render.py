@@ -126,6 +126,6 @@ class RenderPanel(esper.Processor):
         self.scene.panel.clear()
 
     def process(self):
+        self.blit_panel()
 
         self.render_message()
-        self.blit_panel()
