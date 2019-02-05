@@ -9,23 +9,21 @@ from .states import (
 )
 from .death import Death
 from .input_handler import InputPlayer
-from .render import RenderConsole
-from .render import RenderPanel
+from .render import (
+    RenderConsole,
+    RenderPanel
+)
+from .fov import Fov
 from .move_player import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
 from .move_enemy import MoveEnemy
 from .spawner_processor import SpawnerProcessor
-#from .dnagenerator_processor import DnaGeneratorProcessor
-#from .ai_processor import AiRandomwalk
 import config
 
 
 PROCESSOR_GROUP = {
     'player_turn': [
-        # computing FOV should be here
-        RenderPanel(),
-        RenderConsole(),
-        RenderPanel(),
+        Fov(),
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
@@ -38,6 +36,7 @@ PROCESSOR_GROUP = {
         # changing level such as a dungeon level should be here, aka stairs
         # checking "out game" player actions that involve the console should be here, that means going full screen, save and exit, etc
         # rendering the panel should be here, stats, logs, etc
+        RenderPanel(),
         StatePlayerTurn()
     ],
     'enemy_turn': [

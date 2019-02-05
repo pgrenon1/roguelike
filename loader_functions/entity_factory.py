@@ -17,5 +17,5 @@ def instantiate_entity(world, query, x, y):
     world.add_component(new_entity, Position(x, y))
     for i in entityComponents:
         world.add_component(new_entity, entityComponents[i])
-    # print(new_entity)
+
     return new_entity

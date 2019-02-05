@@ -20,16 +20,13 @@ class RenderConsole(esper.Processor):
         self.height = config.MAP_HEIGHT
 
     def get_entities(self):
-        # not optimal, but it works! === not Phil's comment!
         iterable = list(self.world.get_components(c.Renderable, c.Position))
-        # I confess I don't understand row[1][0] yet
-        """J'AI COMMENT OUT CETTE PARTIE TO MAKE IT WORK, SORRY!!!!"""
         iterable.sort(key=lambda row: row[1][0].render_order)
         for _, (rend, pos) in iterable:
             yield (rend, pos)
 
     def process(self):
-        # self.render_map() NO MAP YET.
+        self.render_map()
         self.render_entity()
         # if self.targeting:
         #     self.render_target_cursor()
@@ -37,17 +34,27 @@ class RenderConsole(esper.Processor):
         self.flush_console()
         self.clear_entity()
 
-    # checks enverything that has a rend and pos and renders it
+    def render_map(self):
+        if self.scene.fov_recompute:
+            libtcod.console_clear(self.scene.con)
+            for x in range(0, self.scene.game_map.width):
+                for y in range(0, self.scene.game_map.height):
+                    if libtcod.map_is_in_fov(self.scene.game_map, x, y):
+                        libtcod.console_put_char(
+                            self.scene.con, x, y, chr(250), libtcod.BKGND_NONE)
+
+                    # for x in range(0, self.scene.game_map.width):
+                    #     for y in range(0, self.scene.game_map.height):
+                    #         if libtcod.map_is_in_fov(self.scene.game_map, x, y):
+                    #             libtcod.console_put_char(
+                    #                 self.scene.con, x, y, '.', libtcod.BKGND_NONE)
+                    # get entities, put a char everywhere there arent any entities?
+
     def render_entity(self):
         for (rend, pos) in self.get_entities():
-            # if self.scene.game_map.fov[pos.y, pos.x]:
-            # self.scene.con.default_fg = rend.fg
-            # self.scene.con.default_bg = rend.bg
-            # # JE SAIS PAS NON PLUS POURQUOI IL UTILISE PRINT_ YA VRAIMENT BEAUCOUP DE DIFFERENTES FACON DE PRINT DES CHAR ON DIRAIT
-            # self.scene.con.print_(
-            #     x=pos.x, y=pos.y, string=rend.character, bg_blend=rend.BKGND_NONE)
-            libtcod.console_put_char_ex(
-                self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
+            if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
+                libtcod.console_put_char_ex(
+                    self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
 
     def blit_console(self):
         self.scene.con.blit(
