@@ -50,7 +50,10 @@
       "description": "This is just an enemy"
     },
     "DnaAbsorber": {},
-    "Spawner": {}
+    "Spawner": {},
+    "Light": {
+      "radius": 6
+    }
   },
   "child": {
     "EnemyTurn": {},

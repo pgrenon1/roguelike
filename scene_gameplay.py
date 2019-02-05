@@ -48,6 +48,9 @@ class Gameplay(Scene):
             GameMap(config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
 
         self.reveal_all = False
+        self.fovs = []
+        libtcod.console_set_default_background(
+            self.con, libtcod.Color(15, 15, 15))
 
         self.fov_recompute = True
         self.add_processors()

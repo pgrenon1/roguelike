@@ -121,6 +121,11 @@ class GenerateDna:
     def __init__(self):
         pass
 
+
+class Light:
+    def __init__(self, args):
+        self.radius = args['Light']['radius']
+
 # These are just a set of components that don't do much. Just using them to test Absorb + Generation
 
 

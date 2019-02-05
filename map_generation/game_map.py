@@ -38,7 +38,7 @@ class GameMap:
     def _create_level(self):
         room = Rect(20, 20, 10, 15)
         global noise
-        noise = libtcod.noise_new(2, 5.0, 0.9, random=config.LIBTCOD_RANDOM)
+        noise = libtcod.noise_new(4, 1.0, 0.9, random=config.LIBTCOD_RANDOM)
 
         for x in range(0, self.width):
             for y in range(0, self.height):
@@ -54,9 +54,9 @@ class GameMap:
                             self.world, 'wall', x, y)
                 else:
                     val = libtcod.noise_get_fbm(
-                        noise, [x, y], 32.0, libtcod.NOISE_PERLIN)
+                        noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
 
-                    if val > 0.8 and val < 1:
+                    if val > 0.9 and val < 1:
                         tree = instantiate_entity(
                             self.world, 'tree', x, y)
         self.populate_world()

@@ -44,13 +44,27 @@ class RenderConsole(esper.Processor):
             libtcod.console_clear(self.scene.con)
             for x in range(0, self.scene.game_map.width):
                 for y in range(0, self.scene.game_map.height):
+                    for fov_map in self.scene.fovs:
+                        if libtcod.map_is_in_fov(fov_map, x, y):
+                            libtcod.console_put_char(
+                                self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
                     if libtcod.map_is_in_fov(self.scene.game_map, x, y):
                         libtcod.console_put_char(
-                            self.scene.con, x, y, chr(250), libtcod.BKGND_NONE)
+                            self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
+
+    def render_non_moving(self):
+        pass
+
+    def update_non_moving(self):
+        pass
 
     def render_entity(self):
         for (rend, pos) in self.get_entities():
             if not self.scene.reveal_all:
+                for fov_map in self.scene.fovs:
+                    if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
+                        libtcod.console_put_char_ex(
+                            self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
                     libtcod.console_put_char_ex(
                         self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
