@@ -86,7 +86,7 @@ class InputPlayer(esper.Processor):
             Key(ch='o'): {},
             Key(ch='p'): {},
             Key(ch='q'): {},
-            Key(ch='r'): {},
+            Key(ch='r'): {'switch_reveal_all': True},
             Key(ch='s'): {},
             Key(ch='t'): {},
             Key(ch='u'): {'move': (1, -1)},

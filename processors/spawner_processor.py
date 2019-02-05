@@ -33,7 +33,7 @@ class SpawnerProcessor(esper.Processor):
 
                 childComponent = c.Child()
                 childComponent.parent = spawner
-                print(childComponent.parent)
+
                 self.scene.world.add_component(child, childComponent)
 
             self.scene.messages.append((

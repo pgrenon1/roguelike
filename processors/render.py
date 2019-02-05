@@ -26,6 +26,7 @@ class RenderConsole(esper.Processor):
             yield (rend, pos)
 
     def process(self):
+        self.reveal_all()
         self.render_map()
         self.render_entity()
         # if self.targeting:
@@ -33,6 +34,10 @@ class RenderConsole(esper.Processor):
         self.blit_console()
         self.flush_console()
         self.clear_entity()
+
+    def reveal_all(self):
+        if self.scene.action.get('switch_reveal_all'):
+            self.scene.reveal_all = not self.scene.reveal_all
 
     def render_map(self):
         if self.scene.fov_recompute:
@@ -43,16 +48,13 @@ class RenderConsole(esper.Processor):
                         libtcod.console_put_char(
                             self.scene.con, x, y, chr(250), libtcod.BKGND_NONE)
 
-                    # for x in range(0, self.scene.game_map.width):
-                    #     for y in range(0, self.scene.game_map.height):
-                    #         if libtcod.map_is_in_fov(self.scene.game_map, x, y):
-                    #             libtcod.console_put_char(
-                    #                 self.scene.con, x, y, '.', libtcod.BKGND_NONE)
-                    # get entities, put a char everywhere there arent any entities?
-
     def render_entity(self):
         for (rend, pos) in self.get_entities():
-            if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
+            if not self.scene.reveal_all:
+                if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
+                    libtcod.console_put_char_ex(
+                        self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
+            else:
                 libtcod.console_put_char_ex(
                     self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
 

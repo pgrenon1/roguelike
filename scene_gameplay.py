@@ -47,6 +47,8 @@ class Gameplay(Scene):
                 config.MAP_WIDTH, config.MAP_HEIGHT)
             GameMap(config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
 
+        self.reveal_all = False
+
         self.fov_recompute = True
         self.add_processors()
         self.change_processors('player_turn')

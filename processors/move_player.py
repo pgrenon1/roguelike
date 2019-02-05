@@ -43,10 +43,9 @@ class MovePlayer(esper.Processor):
                 # self.scene.fov_compute = True
                 player_pos.x = new_x
                 player_pos.y = new_y
-        
 
-                self.scene.messages.append(
-                    ("We moved to ({},{})".format(new_x, new_y), libtcod.light_cyan))
+                # self.scene.messages.append(
+                #     ("We moved to ({},{})".format(new_x, new_y), libtcod.light_cyan))
 
     def collide_on_entity(self, entity, new_x, new_y, player_stats, player_metadata):
         collidable_c = self.world.get_components(
@@ -65,24 +64,24 @@ class MovePlayer(esper.Processor):
 
                 if damage > 0:
                     other_stats.health -= damage
-                #     self.scene.message.append(
-                #         (
-                #             '{0} attacks {1} for {2} hit points.'.format(
-                #                 desc.name.capitalize(),
-                #                 other_desc.name,
-                #                 str(damage),
-                #             ),
-                #             tcod.white
-                #         )
-                #     )
-                # else:
-                #     self.scene.message.append(
-                #         (
-                #             '{0} attacks {1} but does no damage.'.format(
-                #                 desc.name.capitalize(),
-                #                 other_desc.name
-                #             ),
-                #             tcod.white
-                #         )
-                #     )
+                    self.scene.messages.append(
+                        (
+                            '{0} attacks {1} for {2} hit points.'.format(
+                                player_metadata.name.capitalize(),
+                                other_metadata.name,
+                                str(damage),
+                            ),
+                            libtcod.light_cyan
+                        )
+                    )
+                else:
+                    self.scene.messages.append(
+                        (
+                            '{0} attacks {1} but does no damage.'.format(
+                                player_metadata.name.capitalize(),
+                                other_metadata.name
+                            ),
+                            libtcod.light_cyan
+                        )
+                    )
         return is_collided

@@ -27,7 +27,6 @@
   },
   "npc": {
     "EnemyTurn": {},
-    "DnaAbsorber": {},
     "Stats": {
       "max_health": 1,
       "health": 1,
@@ -76,7 +75,7 @@
     },
     "Collidable": {},
     "Metadata": {
-      "name": "some fucker",
+      "name": "Moth",
       "description": "This is just an enemy"
     },
     "AiRandomWalk": {},

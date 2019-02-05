@@ -13,11 +13,12 @@ class DnaAbsorberProcessor(esper.Processor):
     def get_absorbers(self):
         iterable = self.scene.world.get_components(
             c.Position,
-            c.DnaAbsorber
+            c.DnaAbsorber,
+            c.Metadata
         )
 
-        for ent, (pos, dna_abs) in iterable:
-            yield (ent, pos, dna_abs)
+        for ent, (pos, dna_abs, meta) in iterable:
+            yield (ent, pos, dna_abs, meta)
 
     def get_dna(self):
         iterable = self.scene.world.get_components(
@@ -32,22 +33,23 @@ class DnaAbsorberProcessor(esper.Processor):
         if self.world.has_component(entity, component):
             self.world.remove_component(entity, component)
 
-    def absorb_other(self, entity, x, y):
-        for other_ent, otherpos, dna, meta in self.get_dna():
-            if((x, y) == (otherpos.x, otherpos.y)) and other_ent != entity:
+    def absorb_other(self, absorber_entity, absorber_x, absorber_y, absorber_meta):
+        for absorbed_entity, absorbed_pos, absorbed_dna, absorbed_meta in self.get_dna():
+            if((absorber_x, absorber_y) == (absorbed_pos.x, absorbed_pos.y)) and absorbed_entity != absorber_entity:
                 # We add the component contained in the enemy's dna here
                 # The reality is that we should NOT add the component directly
                 # But pass it into a dictionary with some value, and eventually add it to the player if a certain value is reached
                 # For now, however, this is a nice proof of concept
-                self.scene.world.add_component(entity, dna.component)
+                self.scene.world.add_component(
+                    absorber_entity, absorbed_dna.component)
                 # And we remove it
-                self.try_removing(other_ent, c.Dna)
-                self.try_removing(other_ent, c.GenerateDna)
+                self.try_removing(absorbed_entity, c.Dna)
+                self.try_removing(absorbed_entity, c.GenerateDna)
                 # print(len(self.scene.world.components_for_entity(entity)))
 
                 self.scene.messages.append(
-                    ("Absorbed " + meta.name.lower() + "'s DNA", libtcod.lightest_chartreuse))
+                    (absorber_meta.name.capitalize() + " absorbed " + absorbed_meta.name.capitalize() + "'s DNA", libtcod.lightest_chartreuse))
 
     def process(self):
-        for ent, pos, dna in self.get_absorbers():
-            self.absorb_other(ent, pos.x, pos.y)
+        for ent, pos, dna, meta in self.get_absorbers():
+            self.absorb_other(ent, pos.x, pos.y, meta)
