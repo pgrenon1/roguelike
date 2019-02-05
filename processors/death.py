@@ -40,7 +40,7 @@ class Death(esper.Processor):
             for component in current_components:
                 if not isinstance(component, (c.Renderable, c.Position, c.Metadata, c.Stats, c.AiRandomWalk, c.Damage, c.Speed, c.GenerateDna, c.Decay, c.Dna)):
                     clean_components.append(component)
-                    print(clean_components)
+                    # print(clean_components)
                     # print(clean_components)
 
             if(len(clean_components) > 0):
