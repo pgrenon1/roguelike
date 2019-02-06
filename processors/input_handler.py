@@ -43,7 +43,7 @@ class InputPlayer(esper.Processor):
     def __init__(self):
         super().__init__()
         self.key = tcod.Key()
-        # self.mouse = tcod.Mouse()
+        self.mouse = tcod.Mouse()
         self.key_code = {
             Key(vk=tcod.KEY_ENTER, ch='\r'): {'take_stairs': True},
             Key(vk=tcod.KEY_ENTER, ch='\r', alt=True): {'fullscreen': True},
@@ -100,14 +100,14 @@ class InputPlayer(esper.Processor):
 
     def process(self):
         # check for an event of type EVENT_ANY, parce que eventuellement on va faire qqch avec la souris
-        self.key = tcod.console_wait_for_keypress(flush=False)
-        # tcod.sys_wait_for_event(
-        #     mask=tcod.EVENT_ANY,
-        #     k=self.key,
-        #     m=self.mouse,
-        #     # je sais pas c'est quoi, mais la Doc de libtcod dit "flush: This should always be false." ...
-        #     flush=False
-        # )
+        # self.key = tcod.console_wait_for_keypress(flush=False)
+        tcod.sys_wait_for_event(
+            mask=tcod.EVENT_ANY,
+            k=self.key,
+            m=self.mouse,
+            # je sais pas c'est quoi, mais la Doc de libtcod dit "flush: This should always be false." ...
+            flush=False
+        )
 
         # populate an in intance of key with the result of the event
         user_input = Key(
@@ -126,4 +126,4 @@ class InputPlayer(esper.Processor):
         else:
             self.scene.action = {}  # if the event is null, empty the action variable
         # this assigns the current mouse data in the mouse variable in the scene, for use in other processors
-        # self.scene.mouse = self.mouse
+        self.scene.mouse = self.mouse

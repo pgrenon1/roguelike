@@ -65,7 +65,7 @@ class GameMap:
         for entity in config.ENTITY_DATA:
             if(entity != 'player'):
                 instantiate_entity(self.world, entity, random.randint(
-                    0, config.MAP_WIDTH), random.randint(0, config.MAP_HEIGHT))
+                    10, config.MAP_WIDTH - 10), random.randint(10, config.MAP_HEIGHT - 10))
 
     def libtcod_map_from_world():
         pass

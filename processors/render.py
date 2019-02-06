@@ -59,7 +59,9 @@ class RenderConsole(esper.Processor):
         pass
 
     def render_entity(self):
+        entity_number = 0
         for (rend, pos) in self.get_entities():
+            entity_number += 1
             if not self.scene.reveal_all:
                 for fov_map in self.scene.fovs:
                     if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
@@ -71,6 +73,7 @@ class RenderConsole(esper.Processor):
             else:
                 libtcod.console_put_char_ex(
                     self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
+        self.scene.number_of_entities = entity_number
 
     def blit_console(self):
         self.scene.con.blit(
@@ -141,7 +144,33 @@ class RenderPanel(esper.Processor):
         self.scene.panel.default_bg = libtcod.darkest_blue
         self.scene.panel.clear()
 
+    # @staticmethod
+    def _render_fps_counter(self, console):
+        console.default_fg = libtcod.grey
+        console.print_(
+            x=config.MAP_WIDTH - 20, y=3,
+            string='fps: %3d fps' % (libtcod.sys_get_fps()),
+            bg_blend=libtcod.BKGND_NONE,
+        )
+        console.print_(
+            x=config.MAP_WIDTH - 20, y=4,
+            string='last frame: %2d ms' % (
+                libtcod.sys_get_last_frame_length() * 1000.0,
+            ),
+            bg_blend=libtcod.BKGND_NONE,
+        )
+        console.print_(
+            x=config.MAP_WIDTH - 20, y=5,
+            string='elapsed: %4.2fs' % (libtcod.sys_elapsed_seconds()),
+            bg_blend=libtcod.BKGND_NONE,
+        )
+        console.print_(
+            x=config.MAP_WIDTH - 20, y=6,
+            string='entities: %d' % (self.scene.number_of_entities),
+            bg_blend=libtcod.BKGND_NONE
+        )
+
     def process(self):
         self.blit_panel()
-
         self.render_message()
+        self._render_fps_counter(self.scene.panel)
