@@ -109,9 +109,9 @@ class AiRandomAgitated:
 
 
 class AiPredator:
-    def __init__(self):
+    def __init__(self, args):
         self.target = None
-        self.attacks = args['AiPredator']['range']
+        self.range = args['AiPredator']['range']
 
 
 class AiChild:

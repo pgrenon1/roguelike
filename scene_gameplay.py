@@ -63,6 +63,7 @@ class Gameplay(Scene):
         self.change_processors('player_turn')
         self.action = {}
         self.mouse = libtcod.Mouse()
+        self.astar = libtcod.path.AStar(self.game_map.walkable)
 
     def change_processors(self, state):
         self.world_processors = self.processor_group[state]
