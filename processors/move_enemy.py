@@ -68,8 +68,8 @@ class MoveEnemy(esper.Processor):
     def move_random_calm(self, entity, entity_pos):
         # Get destination position
         if random.randint(0, 1) == 0:
-            new_x = 0
-            new_y = 0
+            new_x = entity_pos.x
+            new_y = entity_pos.y
         else:
             new_x = entity_pos.x + random.randint(-1, 1)
             new_y = entity_pos.y + random.randint(-1, 1)
