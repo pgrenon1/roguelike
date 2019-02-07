@@ -38,7 +38,7 @@ class Death(esper.Processor):
             # We generate the DNA right before adding it
             current_components = self.world.components_for_entity(ent)
             for component in current_components:
-                if not isinstance(component, (c.Renderable, c.Position, c.Metadata, c.Stats, c.AiRandomWalk, c.Damage, c.Speed, c.GenerateDna, c.Decay, c.Dna)):
+                if not isinstance(component, (c.Renderable, c.Position, c.Metadata, c.Stats, c.AiRandomWalk, c.Damage, c.GenerateDna, c.Decay, c.Dna)):
                     clean_components.append(component)
                     # print(clean_components)
                     # print(clean_components)

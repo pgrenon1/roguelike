@@ -6,9 +6,6 @@
       "defense": 1,
       "damage": 1
     },
-    "Speed": {
-      "speed": 0
-    },
     "Renderable": {
       "character": "@",
       "corpse_character": "%",
@@ -34,9 +31,6 @@
       "damage": 1
     },
     "GenerateDna": {},
-    "Speed": {
-      "speed": 0
-    },
     "Renderable": {
       "character": "O",
       "corpse_character": "%",
@@ -62,9 +56,6 @@
       "health": 1,
       "defense": 0,
       "damage": 0
-    },
-    "Speed": {
-      "speed": 0
     },
     "Renderable": {
       "character": "*",

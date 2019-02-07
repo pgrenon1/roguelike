@@ -64,11 +64,6 @@ class Child:
         self.parent = None
 
 
-class Speed:
-    def __init__(self, args):
-        self.speed = args['Speed']
-
-
 class Renderable:
     def __init__(self, args):
         self.character = args['Renderable']['character']

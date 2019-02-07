@@ -4,9 +4,8 @@ from loader_functions.fetcher import *
 from enum import Enum
 import components
 from components import *
-
-
 import random
+
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 60
@@ -23,7 +22,6 @@ LIBTCOD_RANDOM = None
 FOV_RADIUS = 15
 FOV_ALGORITHM = libtcod.FOV_SHADOW
 FOV_LIGHT_WALLS = True
-
 
 COLORS = {
     'none': libtcod.Color(0, 0, 0),
