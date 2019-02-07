@@ -17,7 +17,7 @@ class Processor:
     appropriate world methods there, such as
     `for ent, (rend, vel) in self.world.get_components(Renderable, Velocity):`
     """
-    world = None # type: World
+    world = None  # type: World
 
     def process(self, *args, **kwargs):
         raise NotImplementedError
@@ -30,10 +30,10 @@ class World:
         A World contains a database of all Entity/Component assignments. It also
         handles calling the process method on any Processors assigned to it.
         """
-        self._processors = [] # type: List[Processor]
+        self._processors = []  # type: List[Processor]
         self._next_entity_id = 0
         self._components = {}
-        self._entities = {} # type: Dict[int, Any]
+        self._entities = {}  # type: Dict[int, Any]
         self._dead_entities = set()
         if timed:
             self.process_times = {}
@@ -146,7 +146,10 @@ class World:
         :param component_type: The Component instance you wish to retrieve.
         :return: The Component instance requested for the given Entity ID.
         """
-        return self._entities[entity][component_type]
+        if self.has_component(entity, component_type):
+            return self._entities[entity][component_type]
+        else:
+            return None
 
     def components_for_entity(self, entity: int) -> Tuple[C, ...]:
         """Retrieve all Components for a specific Entity, as a Tuple.
@@ -257,25 +260,25 @@ class World:
         return [query for query in self._get_components(*component_types)]
 
     def try_component(self, entity: int, component_type: Type):
-            """Try to get a single component type for an Entity.
-            
-            This method will return the requested Component if it exists, but
-            will pass silently if it does not. This allows a way to access optional
-            Components that may or may not exist.
+        """Try to get a single component type for an Entity.
 
-            :param entity: The Entity ID to retrieve the Component for.
-            :param component_type: The Component instance you wish to retrieve.
-            :return: A iterator containg the single Component instance requested,
-                     which is empty if the component doesn't exist.
-            """
-            if component_type in self._entities[entity]:
-                yield self._entities[entity][component_type]
-            else:
-                return None
+        This method will return the requested Component if it exists, but
+        will pass silently if it does not. This allows a way to access optional
+        Components that may or may not exist.
+
+        :param entity: The Entity ID to retrieve the Component for.
+        :param component_type: The Component instance you wish to retrieve.
+        :return: A iterator containg the single Component instance requested,
+                 which is empty if the component doesn't exist.
+        """
+        if component_type in self._entities[entity]:
+            yield self._entities[entity][component_type]
+        else:
+            return None
 
     def _clear_dead_entities(self):
         """Finalize deletion of any Entities that are marked dead.
-        
+
         In the interest of performance, this method duplicates code from the
         `delete_entity` method. If that method is changed, those changes should
         be duplicated here as well.
@@ -302,7 +305,8 @@ class World:
         for processor in self._processors:
             start_time = _time.process_time()
             processor.process(*args, **kwargs)
-            process_time = int(round((_time.process_time() - start_time) * 1000, 2))
+            process_time = int(
+                round((_time.process_time() - start_time) * 1000, 2))
             self.process_times[processor.__class__.__name__] = process_time
 
     def process(self, *args, **kwargs):

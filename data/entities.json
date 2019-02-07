@@ -10,7 +10,7 @@
       "speed": 0
     },
     "Renderable": {
-      "character": "@",
+      "character": "64",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "player",
@@ -25,7 +25,7 @@
     "PlayerTurn": {},
     "Movable": {}
   },
-  "npc": {
+  "light": {
     "EnemyTurn": {},
     "Stats": {
       "max_health": 1,
@@ -38,7 +38,7 @@
       "speed": 0
     },
     "Renderable": {
-      "character": "O",
+      "character": "15",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
@@ -49,6 +49,7 @@
       "name": "The Light",
       "description": "This is just an enemy"
     },
+    "Movable": {},
     "DnaAbsorber": {},
     "Spawner": {},
     "Light": {
@@ -67,34 +68,33 @@
       "speed": 0
     },
     "Renderable": {
-      "character": "*",
+      "character": "42",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
       "background_color": "none"
-    },
-    "Damage": {
-      "damage": 1
     },
     "Collidable": {},
     "Metadata": {
       "name": "Moth",
       "description": "This is just an enemy"
     },
-    "AiRandomWalk": {},
+    "Movable": {},
+    "AiRandomCalm": {},
     "DnaAbsorber": {}
   },
   "npcdrop": {
     "EnemyTurn": {},
-    "AiRandomWalk": {},
+    "Movable": {},
+    "AiRandomCalm": {},
     "Stats": {
       "max_health": 1,
       "health": 1,
       "defense": 0,
-      "damage": 0
+      "damage": 1
     },
     "Renderable": {
-      "character": ">",
+      "character": "62",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "npc",
@@ -116,7 +116,7 @@
       "damage": 0
     },
     "Renderable": {
-      "character": "#",
+      "character": "176",
       "corpse_character": "%",
       "render_order": "ACTOR",
       "color": "wall",

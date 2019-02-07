@@ -52,11 +52,12 @@ class Gameplay(Scene):
         libtcod.console_set_default_background(
             self.con, libtcod.Color(15, 15, 15))
 
-        self.number_of_entities = 0 # this is updated in render.py, check render_entity()
+        self.number_of_entities = 0  # this is updated in render.py, check render_entity()
         self.fov_recompute = True
         self.add_processors()
         self.change_processors('player_turn')
         self.action = {}
+        self.mouse = libtcod.Mouse()
 
         # mon seul ajout so far, c'est necessaire pour que tout les processors
 

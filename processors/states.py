@@ -17,7 +17,7 @@ class StatePlayerTurn(esper.Processor):
         if self.scene.action != {}:
             # all() True - If all elements in an iterable are true. False - If any element in an iterable is false
             # si la key est move ou pickup, reliquish the turn!
-            if all(key in ['move', 'pickup'] for key in self.scene.action.keys()):
+            if all(key in ['move'] for key in self.scene.action.keys()):
                 self.scene.change_processors('enemy_turn')
 
         config.TICK += 1

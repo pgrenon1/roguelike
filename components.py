@@ -71,7 +71,10 @@ class Speed:
 
 class Renderable:
     def __init__(self, args):
-        self.character = args['Renderable']['character']
+        if RepresentsInt(args['Renderable']['character']):
+            self.character = chr(int(args['Renderable']['character']))
+        else:
+            self.character = args['Renderable']['character']
         self.color = config.COLORS[args['Renderable']['color']]
         self.background_color = config.COLORS[args['Renderable']
                                               ['background_color']]
@@ -97,19 +100,28 @@ class EnemyTurn:
         pass
 
 
-class AiRandomWalk:
+"""It might be possible and preferable to use inheritance to make the move_enemy simpler!"""
+
+
+class AiRandomCalm:
     def __init__(self):
         pass
+
+
+class AiRandomAgitated:
+    def __init__(self, args):
+        self.attacks = args['AiRandomAgitated']['attacks']
+
+
+class AiPredator:
+    def __init__(self):
+        self.target = None
+        self.attacks = args['AiPredator']['range']
 
 
 class AiChild:
     def __init__(self):
         pass
-
-
-class Damage:
-    def __init__(self, damage):
-        self.damage = damage
 
 
 class Death:
@@ -137,3 +149,11 @@ class Hard:
 class Wood:
     def __init__(self):
         pass
+
+
+def RepresentsInt(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False

@@ -56,7 +56,7 @@ class GameMap:
                     val = libtcod.noise_get_fbm(
                         noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
 
-                    if val > 0.9 and val < 1:
+                    if val > 0.95:
                         tree = instantiate_entity(
                             self.world, 'tree', x, y)
         self.populate_world()
