@@ -48,11 +48,6 @@ class Remains:
         pass
 
 
-class Decay:
-    def __init__(self):
-        pass
-
-
 class Spawner:
     def __init__(self):
         self.children = []
@@ -62,11 +57,6 @@ class Spawner:
 class Child:
     def __init__(self):
         self.parent = None
-
-
-class Speed:
-    def __init__(self, args):
-        self.speed = args['Speed']
 
 
 class Renderable:

@@ -17,19 +17,23 @@ import collections
 
 
 class Gameplay(Scene):
+    """This is the gameplay scene. It's managed by the scene_manager.py
+    """
+
     def __init__(self, world=None, game_map=None):
-        print("Gameplay scene initialized")
+        #helpers.debug("Gameplay scene initialized")
         self.processor_group = processors.PROCESSOR_GROUP
 
         self.game_map = game_map
+
+        self.con = libtcod.console.Console(
+            width=config.SCREEN_WIDTH,
+            height=config.SCREEN_HEIGHT
+        )
+
         self.panel = libtcod.console.Console(
             config.SCREEN_WIDTH,
             config.PANEL_HEIGHT
-        )
-
-        self.con = libtcod.console.Console(
-            width=config.MAP_WIDTH,
-            height=config.MAP_HEIGHT
         )
 
         # This is just a simple data type with a pop func
@@ -40,7 +44,7 @@ class Gameplay(Scene):
             """We can use esper.CachedWorld to get the last world that was assigned to esper (not 100% sure)"""
             """We should set self.world = esper.World() to whatefver is the first scene we start with I think"""
             # esper.CachedWorld()
-            self.world = esper.World()
+            self.world = esper.CachedWorld()
 
         if self.game_map is None:
             self.game_map = libtcod.map_new(
@@ -48,6 +52,7 @@ class Gameplay(Scene):
             GameMap(config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
 
         self.reveal_all = False
+        self.show_debug = False
         self.fovs = []
         libtcod.console_set_default_background(
             self.con, libtcod.Color(15, 15, 15))

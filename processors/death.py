@@ -80,8 +80,6 @@ class Death(esper.Processor):
 
             # We check if this entity is someone's children, if so, we remove it
 
-            self.world.add_component(ent, c.Decay())
-
     def get_spawners(self):
         iterable = []
         iterable = self.scene.world.get_components(
