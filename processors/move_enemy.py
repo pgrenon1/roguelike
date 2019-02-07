@@ -87,7 +87,6 @@ class MoveEnemy(esper.Processor):
                 entity_pos.x = new_x
                 entity_pos.y = new_y
         if not has_target:
-            print(libtcod.sys_elapsed_seconds())
             self.move_random_calm(entity, entity_pos)
 
     def do_damage(self, entity_meta, entity_stats, other_meta, other_stats):
@@ -134,14 +133,14 @@ class MoveEnemy(esper.Processor):
                 entity, c.AiPredator)
 
             # If multiple, takes first
-            if ai_random_agitated:
+            if ai_predator:
+                self.move_predator(
+                    entity, entity_pos, entity_meta, entity_stats, ai_predator.range)
+            elif ai_random_agitated:
                 self.move_random_agitated(
                     entity, entity_pos, entity_meta, entity_stats, ai_random_agitated.attacks)
             elif ai_random_calm:
                 self.move_random_calm(entity, entity_pos)
-            elif ai_predator:
-                self.move_predator(
-                    entity, entity_pos, entity_meta, entity_stats, ai_predator.range)
 
     def collide_on_other(self, entity, new_x, new_y):
         other_components = self.world.get_components(
@@ -160,5 +159,5 @@ class MoveEnemy(esper.Processor):
     def move_toward(self, pos, other_pos):
         path = self.scene.astar.get_path(
             pos.y, pos.x, other_pos.y, other_pos.x)
-        new_y, new_x = path[1]
+        new_y, new_x = path[0]
         return new_y, new_x

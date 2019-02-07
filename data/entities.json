@@ -71,7 +71,9 @@
       "description": "This is just an enemy"
     },
     "Movable": {},
-    "AiRandomCalm": {},
+    "AiRandomAgitated": {
+      "attacks": true
+    },
     "DnaAbsorber": {}
   },
   "npcdrop": {
