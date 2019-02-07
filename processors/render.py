@@ -16,6 +16,8 @@ class RenderConsole(esper.Processor):
     def __init__(self):
         super().__init__()
         # self.targeting = targeting
+        self.mouse_x = 0
+        self.mouse_y = 0
         self.width = config.MAP_WIDTH
         self.height = config.MAP_HEIGHT
 
@@ -29,15 +31,31 @@ class RenderConsole(esper.Processor):
         self.reveal_all()
         self.render_map()
         self.render_entity()
+
         # if self.targeting:
         #     self.render_target_cursor()
+        self.render_tooltip()
         self.blit_console()
+
         self.flush_console()
         self.clear_entity()
 
     def reveal_all(self):
         if self.scene.action.get('switch_reveal_all'):
             self.scene.reveal_all = not self.scene.reveal_all
+
+    def render_tooltip(self):
+        self.mouse_x = libtcod.mouse_get_status().x
+        self.mouse_y = libtcod.mouse_get_status().y - 30
+
+   #     libtcod.console_clear(self.scene.con)
+        # libtcod.console_put_char_ex(
+        #     self.scene.con, self.mouse_x, self.mouse_y, "X", libtcod.yellow, libtcod.black)
+
+        # libtcod.console_rect(self.scene.con,
+        #                      self.mouse_x, self.mouse_y,
+        #                      10, 10, True
+        #                      )
 
     def render_map(self):
         if self.scene.fov_recompute:
@@ -138,42 +156,53 @@ class RenderPanel(esper.Processor):
             src_y=0,
             width=self.msg_width,
             height=config.PANEL_HEIGHT,
-            fg_alpha=1.0,
-            bg_alpha=1.0,
+            fg_alpha=1,
+            bg_alpha=1,
             key_color=None)
         self.scene.panel.default_bg = libtcod.darkest_blue
         self.scene.panel.clear()
 
-    # @staticmethod
+    def show_debug(self):
+        if self.scene.action.get('switch_show_debug'):
+            self.scene.show_debug = not self.scene.show_debug
+
+            # @staticmethod
     def _render_fps_counter(self, console):
-        console.default_fg = libtcod.white
-        console.print_(
-            x=config.MAP_WIDTH - 20, y=2,
-            string="tick: {}".format(config.TICK), bg_blend=libtcod.BKGND_NONE)
-        console.print_(
-            x=config.MAP_WIDTH - 20, y=3,
-            string='fps: %3d fps' % (libtcod.sys_get_fps()),
-            bg_blend=libtcod.BKGND_NONE,
-        )
-        console.print_(
-            x=config.MAP_WIDTH - 20, y=4,
-            string='last frame: %2d ms' % (
-                libtcod.sys_get_last_frame_length() * 1000.0,
-            ),
-            bg_blend=libtcod.BKGND_NONE,
-        )
-        console.print_(
-            x=config.MAP_WIDTH - 20, y=5,
-            string='elapsed: %4.2fs' % (libtcod.sys_elapsed_seconds()),
-            bg_blend=libtcod.BKGND_NONE,
-        )
-        console.print_(
-            x=config.MAP_WIDTH - 20, y=6,
-            string='entities: %d' % (self.scene.number_of_entities),
-            bg_blend=libtcod.BKGND_NONE
-        )
+        if(self.scene.show_debug):
+            console.default_fg = libtcod.white
+            console.print_(
+                x=config.MAP_WIDTH - 20, y=2,
+                string="tick: {}".format(config.TICK), bg_blend=libtcod.BKGND_NONE)
+            console.print_(
+                x=config.MAP_WIDTH - 20, y=3,
+                string='fps: %3d fps' % (libtcod.sys_get_fps()),
+                bg_blend=libtcod.BKGND_NONE,
+            )
+            console.print_(
+                x=config.MAP_WIDTH - 20, y=4,
+                string='last frame: %2d ms' % (
+                    libtcod.sys_get_last_frame_length() * 1000.0,
+                ),
+                bg_blend=libtcod.BKGND_NONE,
+            )
+            console.print_(
+                x=config.MAP_WIDTH - 20, y=5,
+                string='elapsed: %4.2fs' % (libtcod.sys_elapsed_seconds()),
+                bg_blend=libtcod.BKGND_NONE,
+            )
+            console.print_(
+                x=config.MAP_WIDTH - 20, y=6,
+                string='entities: %d' % (self.scene.number_of_entities),
+                bg_blend=libtcod.BKGND_NONE
+            )
+            console.print_(
+                x=config.MAP_WIDTH - 20, y=7,
+                string="seed: {}".format(config.MASTER_SEED),
+                bg_blend=libtcod.BKGND_NONE
+            )
 
     def process(self):
         self.blit_panel()
         self.render_message()
         self._render_fps_counter(self.scene.panel)
+        self.show_debug()

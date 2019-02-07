@@ -23,6 +23,7 @@ import config
 
 PROCESSOR_GROUP = {
     'player_turn': [
+
         Fov(),
         RenderConsole(),
         InputPlayer(),
@@ -36,7 +37,9 @@ PROCESSOR_GROUP = {
         # changing level such as a dungeon level should be here, aka stairs
         # checking "out game" player actions that involve the console should be here, that means going full screen, save and exit, etc
         # rendering the panel should be here, stats, logs, etc
+
         RenderPanel(),
+
         StatePlayerTurn()
     ],
     'enemy_turn': [

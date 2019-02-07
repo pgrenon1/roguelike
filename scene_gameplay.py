@@ -25,14 +25,15 @@ class Gameplay(Scene):
         self.processor_group = processors.PROCESSOR_GROUP
 
         self.game_map = game_map
+
+        self.con = libtcod.console.Console(
+            width=config.SCREEN_WIDTH,
+            height=config.SCREEN_HEIGHT
+        )
+
         self.panel = libtcod.console.Console(
             config.SCREEN_WIDTH,
             config.PANEL_HEIGHT
-        )
-
-        self.con = libtcod.console.Console(
-            width=config.MAP_WIDTH,
-            height=config.MAP_HEIGHT
         )
 
         # This is just a simple data type with a pop func
@@ -51,6 +52,7 @@ class Gameplay(Scene):
             GameMap(config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
 
         self.reveal_all = False
+        self.show_debug = False
         self.fovs = []
         libtcod.console_set_default_background(
             self.con, libtcod.Color(15, 15, 15))
