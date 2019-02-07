@@ -59,6 +59,11 @@ class Child:
         self.parent = None
 
 
+class Decay:
+    def __init__(self):
+        pass
+
+
 class Renderable:
     def __init__(self, args):
         if RepresentsInt(args['Renderable']['character']):

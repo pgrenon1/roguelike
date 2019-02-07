@@ -64,10 +64,6 @@ class Gameplay(Scene):
         self.action = {}
         self.mouse = libtcod.Mouse()
 
-        # mon seul ajout so far, c'est necessaire pour que tout les processors
-
-        # aillent accès à quelle key vient d'être pressed et qu'est-ce que cette clef veut dire. i.e. une action typique ressemble à { 'move' : (0,1)}
-
     def change_processors(self, state):
         self.world_processors = self.processor_group[state]
         for processor_instance in self.processor_group[state]:
@@ -82,6 +78,5 @@ class Gameplay(Scene):
                 proc.scene = self
 
     def update(self):
-
         # print("Processing world")
         self.world.process()
