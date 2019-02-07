@@ -37,7 +37,7 @@ def main(argv):
         debug("This game will have a random seed")
         #config.LIBTCOD_RANDOM = libtcod.random_new()
 
-    app = SceneManager(state='gameplay')
+    app = SceneManager(state='menu')
     app.run()
 
 

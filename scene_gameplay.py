@@ -17,8 +17,11 @@ import collections
 
 
 class Gameplay(Scene):
+    """This is the gameplay scene. It's managed by the scene_manager.py
+    """
+
     def __init__(self, world=None, game_map=None):
-        print("Gameplay scene initialized")
+        #helpers.debug("Gameplay scene initialized")
         self.processor_group = processors.PROCESSOR_GROUP
 
         self.game_map = game_map
@@ -40,7 +43,7 @@ class Gameplay(Scene):
             """We can use esper.CachedWorld to get the last world that was assigned to esper (not 100% sure)"""
             """We should set self.world = esper.World() to whatefver is the first scene we start with I think"""
             # esper.CachedWorld()
-            self.world = esper.World()
+            self.world = esper.CachedWorld()
 
         if self.game_map is None:
             self.game_map = libtcod.map_new(
@@ -52,7 +55,7 @@ class Gameplay(Scene):
         libtcod.console_set_default_background(
             self.con, libtcod.Color(15, 15, 15))
 
-        self.number_of_entities = 0 # this is updated in render.py, check render_entity()
+        self.number_of_entities = 0  # this is updated in render.py, check render_entity()
         self.fov_recompute = True
         self.add_processors()
         self.change_processors('player_turn')

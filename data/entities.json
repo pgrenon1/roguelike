@@ -118,8 +118,7 @@
       "name": "Wall",
       "description": "This is a wall"
     },
-    "GenerateDna": {},
-    "Hard": {}
+    "GenerateDna": {}
   },
   "tree": {
     "EnemyTurn": {},
@@ -141,8 +140,6 @@
       "name": "Tree",
       "description": "This is a tree"
     },
-    "GenerateDna": {},
-    "Hard": {},
-    "Wood": {}
+    "GenerateDna": {}
   }
 }

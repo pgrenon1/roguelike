@@ -146,7 +146,10 @@ class RenderPanel(esper.Processor):
 
     # @staticmethod
     def _render_fps_counter(self, console):
-        console.default_fg = libtcod.grey
+        console.default_fg = libtcod.white
+        console.print_(
+            x=config.MAP_WIDTH - 20, y=2,
+            string="tick: {}".format(config.TICK), bg_blend=libtcod.BKGND_NONE)
         console.print_(
             x=config.MAP_WIDTH - 20, y=3,
             string='fps: %3d fps' % (libtcod.sys_get_fps()),
