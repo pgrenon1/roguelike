@@ -3,20 +3,20 @@
  par souci de clarté, et peut-être plus tard par souci d'optimisation, on devrait juste se limiter aux classes qu'on
  a besoin d'importer
 """
-from .states import (
+from .states_processor import (
     StatePlayerTurn,
     StateEnemyTurn
 )
-from .death import Death
-from .input_handler import InputPlayer
-from .render import (
+from .death_processor import Death
+from .input_handler_processor import InputPlayer
+from .render_processor import (
     RenderConsole,
     RenderPanel
 )
-from .fov import Fov
-from .move_player import MovePlayer
+from .fov_processor import Fov
+from .move_player_processor import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
-from .move_enemy import MoveEnemy
+from .move_enemy_processor import MoveEnemy
 from .spawner_processor import SpawnerProcessor
 import config
 

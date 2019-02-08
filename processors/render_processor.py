@@ -34,7 +34,7 @@ class RenderConsole(esper.Processor):
 
         # if self.targeting:
         #     self.render_target_cursor()
-        self.render_tooltip()
+#        self.render_tooltip()
         self.blit_console()
 
         self.flush_console()
@@ -43,19 +43,6 @@ class RenderConsole(esper.Processor):
     def reveal_all(self):
         if self.scene.action.get('switch_reveal_all'):
             self.scene.reveal_all = not self.scene.reveal_all
-
-    def render_tooltip(self):
-        self.mouse_x = libtcod.mouse_get_status().x
-        self.mouse_y = libtcod.mouse_get_status().y - 30
-
-   #     libtcod.console_clear(self.scene.con)
-        # libtcod.console_put_char_ex(
-        #     self.scene.con, self.mouse_x, self.mouse_y, "X", libtcod.yellow, libtcod.black)
-
-        # libtcod.console_rect(self.scene.con,
-        #                      self.mouse_x, self.mouse_y,
-        #                      10, 10, True
-        #                      )
 
     def render_map(self):
         if self.scene.fov_recompute:
