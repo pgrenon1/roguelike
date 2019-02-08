@@ -28,12 +28,17 @@ class Gameplay(Scene):
 
         self.con = libtcod.console.Console(
             width=config.SCREEN_WIDTH,
-            height=config.SCREEN_HEIGHT
+            height=config.SCREEN_HEIGHT - config.PANEL_HEIGHT
         )
 
         self.panel = libtcod.console.Console(
             config.SCREEN_WIDTH,
             config.PANEL_HEIGHT
+        )
+
+        self.tooltip = libtcod.console.Console(
+            config.SCREEN_WIDTH,
+            config.SCREEN_HEIGHT
         )
 
         # This is just a simple data type with a pop func
@@ -81,3 +86,5 @@ class Gameplay(Scene):
     def update(self):
         # print("Processing world")
         self.world.process()
+        # Once we process the world, we render it
+        libtcod.console_flush()
