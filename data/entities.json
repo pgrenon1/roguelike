@@ -16,7 +16,7 @@
     "Collidable": {},
     "Metadata": {
       "name": "Player",
-      "description": "The player description"
+      "description": "Yourself"
     },
     "DnaAbsorber": {},
     "PlayerTurn": {},
@@ -41,7 +41,7 @@
     "Collidable": {},
     "Metadata": {
       "name": "The Light",
-      "description": "This is just an enemy"
+      "description": "A living beacon from which emanates light"
     },
     "Movable": {},
     "DnaAbsorber": {},
@@ -68,7 +68,7 @@
     "Collidable": {},
     "Metadata": {
       "name": "Moth",
-      "description": "This is just an enemy"
+      "description": "A giant insect"
     },
     "Movable": {},
     "AiRandomAgitated": {
@@ -98,7 +98,7 @@
     "Collidable": {},
     "Metadata": {
       "name": "Dropper",
-      "description": "This is just an enemy"
+      "description": "An undecided foe"
     },
     "GenerateDna": {}
   },
@@ -120,7 +120,7 @@
     "Collidable": {},
     "Metadata": {
       "name": "Wall",
-      "description": "This is a wall"
+      "description": "A solid brick wall"
     },
     "GenerateDna": {}
   },
@@ -142,7 +142,7 @@
     "Collidable": {},
     "Metadata": {
       "name": "Tree",
-      "description": "This is a tree"
+      "description": "A perennial plant"
     },
     "GenerateDna": {}
   }

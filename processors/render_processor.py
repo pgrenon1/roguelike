@@ -3,6 +3,8 @@ import config
 import esper
 import tcod as libtcod
 import textwrap
+import config
+
 
 """Le processeur pour render. more details below"""
 
@@ -31,13 +33,9 @@ class RenderConsole(esper.Processor):
         self.reveal_all()
         self.render_map()
         self.render_entity()
-
-        # if self.targeting:
-        #     self.render_target_cursor()
-#        self.render_tooltip()
         self.blit_console()
 
-        self.flush_console()
+        # self.flush_console()
         self.clear_entity()
 
     def reveal_all(self):
@@ -97,6 +95,104 @@ class RenderConsole(esper.Processor):
             # ca change rien si personne bouge, mais si qqun bouge, on doit l'effacer de là ou il était
             self.scene.con.print_(
                 x=pos.x, y=pos.y, string=' ', bg_blend=libtcod.BKGND_NONE)
+
+
+class RenderTooltip(esper.Processor):
+
+    def __init__(self):
+        super().__init__()
+        self.mouse_x = 0
+        self.offset_x = 2
+        self.offset_y = 2
+        self.mouse_y = 0
+        self.mouse_px = 0
+        self.mouse_py = 0
+        self.width = 1
+        self.height = 1
+        self.show_tooltip = config.SHOW_TOOLTIP
+        self.current_message = []
+
+    def get_entities(self):
+        entities = self.world.get_components(
+            c.Position,
+            c.Metadata,
+            c.Renderable
+        )
+
+        for entity, (pos, meta_data, _) in entities:
+            yield (entity, pos, meta_data)
+
+    def get_entity_information(self):
+        for ent, pos, meta_data in self.get_entities():
+            if(pos.x, pos.y) == (self.mouse_x, self.mouse_y):
+                self.current_message.append(meta_data.name + "\n")
+                self.current_message.append(meta_data.description)
+                self.width = len(meta_data.description)
+                self.height = len(self.current_message)
+            else:
+                pass
+
+    def render_tooltip(self):
+        self.get_entity_information()
+        self.mouse_x = int((libtcod.mouse_get_status().x //
+                            config.CHARACTER_RESOLUTION_WIDTH/2))
+
+        self.mouse_y = int((libtcod.mouse_get_status().y //
+                            config.CHARACTER_RESOLUTION_HEIGHT/2))
+
+        self.mouse_px = int((libtcod.mouse_get_status().dx //
+                             config.CHARACTER_RESOLUTION_WIDTH/2))
+        self.mouse_py = int((libtcod.mouse_get_status().dy //
+                             config.CHARACTER_RESOLUTION_HEIGHT/2))
+
+        if(self.mouse_x > config.SCREEN_WIDTH):
+            self.mouse_x = config.SCREEN_WIDTH
+        elif(self.mouse_x < 0):
+            self_mouse_x = 0
+        elif(self.mouse_y > config.SCREEN_HEIGHT):
+            self.mouse_y = config.SCREEN_HEIGHT
+        elif(self.mouse_y < 0):
+            self.mouse_y = 0
+
+       # print(self.current_message)
+
+        y = 0
+
+        for message in self.current_message:
+            libtcod.console_print_ex(
+                self.scene.tooltip, 0, y, libtcod.BKGND_NONE, libtcod.LEFT, message)
+            y += 1
+
+        if self.mouse_x != self.mouse_px or self.mouse_y != self.mouse_py:
+            self.current_message = []
+
+    def reveal_tooltip(self):
+        if self.scene.mouse.rbutton_pressed:
+            self.show_tooltip = not self.show_tooltip
+
+    def blit_tooltip(self):
+        self.scene.tooltip.blit(
+            dest=self.scene.manager.root_console,
+            dest_x=self.mouse_x + self.offset_x,
+            dest_y=self.mouse_y + self.offset_y,
+            src_x=0,
+            src_y=0,
+            width=self.width,
+            height=self.height,
+            fg_alpha=0.9,
+            bg_alpha=0.8,
+            key_color=None)
+        self.scene.tooltip.default_bg = libtcod.pink
+        self.scene.tooltip.clear()
+
+    def process(self):
+        # self.get_entities()
+        # self.get_entity_information()
+
+        self.reveal_tooltip()
+        if(self.show_tooltip):
+            self.render_tooltip()
+            self.blit_tooltip()
 
 
 class RenderPanel(esper.Processor):
@@ -189,7 +285,8 @@ class RenderPanel(esper.Processor):
             )
 
     def process(self):
-        self.blit_panel()
+
         self.render_message()
         self._render_fps_counter(self.scene.panel)
         self.show_debug()
+        self.blit_panel()

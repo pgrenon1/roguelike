@@ -11,7 +11,8 @@ from .death_processor import Death
 from .input_handler_processor import InputPlayer
 from .render_processor import (
     RenderConsole,
-    RenderPanel
+    RenderPanel,
+    RenderTooltip
 )
 from .fov_processor import Fov
 from .move_player_processor import MovePlayer
@@ -25,6 +26,7 @@ PROCESSOR_GROUP = {
     'player_turn': [
 
         Fov(),
+
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
@@ -39,7 +41,7 @@ PROCESSOR_GROUP = {
         # rendering the panel should be here, stats, logs, etc
 
         RenderPanel(),
-
+        RenderTooltip(),
         StatePlayerTurn()
     ],
     'enemy_turn': [
