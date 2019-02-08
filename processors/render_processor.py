@@ -102,11 +102,13 @@ class RenderTooltip(esper.Processor):
     def __init__(self):
         super().__init__()
         self.mouse_x = 0
-        self.offset_x = 2
-        self.offset_y = 2
+        self.offset_x = 1
+        self.offset_y = 1
         self.mouse_y = 0
         self.mouse_px = 0
         self.mouse_py = 0
+        self.draw_x = 0
+        self.draw_y = 0
         self.width = 1
         self.height = 1
         self.show_tooltip = config.SHOW_TOOLTIP
@@ -123,17 +125,35 @@ class RenderTooltip(esper.Processor):
             yield (entity, pos, meta_data)
 
     def get_entity_information(self):
+        # ents = []
         for ent, pos, meta_data in self.get_entities():
             if(pos.x, pos.y) == (self.mouse_x, self.mouse_y):
-                self.current_message.append(meta_data.name + "\n")
+                # ents.append(ent)
+                # # We make sure we're only describing the entity on top.
+                # Not sure how doe
+                # if(ent == ents[0]):
+
+                self.current_message.append(meta_data.name)
                 self.current_message.append(meta_data.description)
                 self.width = len(meta_data.description)
                 self.height = len(self.current_message)
-            else:
-                pass
 
-    def render_tooltip(self):
-        self.get_entity_information()
+    def handle_tooltip_offset(self, mouse_x, mouse_y):
+        """This changes the orientation of the tooltip depending on which side of the screen we're in.
+           Prevents it from going outside of the screen"""
+        if mouse_x > config.SCREEN_WIDTH//2:
+            mouse_x = mouse_x - self.width
+            mouse_x = mouse_x + self.offset_x
+
+        mouse_y = mouse_y + self.offset_y
+
+        return mouse_x, mouse_y
+
+    def handle_mouse_position(self):
+        """ . We need to transform pixel coordinates into tiles. 
+            . We also need to limit the coordinates to ones in the screen
+            . We also need to know what the last pixel coordinate was before the current update"""
+
         self.mouse_x = int((libtcod.mouse_get_status().x //
                             config.CHARACTER_RESOLUTION_WIDTH/2))
 
@@ -154,17 +174,21 @@ class RenderTooltip(esper.Processor):
         elif(self.mouse_y < 0):
             self.mouse_y = 0
 
-       # print(self.current_message)
+    def render_tooltip(self):
+        self.get_entity_information()
 
-        y = 0
+        self.draw_x, self.draw_y = self.handle_tooltip_offset(
+            self.mouse_x, self.mouse_y)
 
+        line_y = 0
         for message in self.current_message:
             libtcod.console_print_ex(
-                self.scene.tooltip, 0, y, libtcod.BKGND_NONE, libtcod.LEFT, message)
-            y += 1
+                self.scene.tooltip, 0, line_y, libtcod.BKGND_NONE, libtcod.LEFT, message)
+            line_y += 1
 
         if self.mouse_x != self.mouse_px or self.mouse_y != self.mouse_py:
             self.current_message = []
+            y = 0
 
     def reveal_tooltip(self):
         if self.scene.mouse.rbutton_pressed:
@@ -173,8 +197,8 @@ class RenderTooltip(esper.Processor):
     def blit_tooltip(self):
         self.scene.tooltip.blit(
             dest=self.scene.manager.root_console,
-            dest_x=self.mouse_x + self.offset_x,
-            dest_y=self.mouse_y + self.offset_y,
+            dest_x=self.draw_x,
+            dest_y=self.draw_y,
             src_x=0,
             src_y=0,
             width=self.width,
@@ -191,6 +215,7 @@ class RenderTooltip(esper.Processor):
 
         self.reveal_tooltip()
         if(self.show_tooltip):
+            self.handle_mouse_position()
             self.render_tooltip()
             self.blit_tooltip()
 
