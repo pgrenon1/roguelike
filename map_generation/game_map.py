@@ -3,39 +3,14 @@ from loader_functions.entity_factory import *
 from .rect import Rect
 import tcod as libtcod
 import random
+import numpy
 
 
 class GameMap:
-    def __init__(self, width, height, world):
-        self.world = world
-        self.width = width
-        self.height = height
-        self.tiles = self.initialize_tiles()
-        self._create_level()
+    def __init__(self):
+        pass
 
-    def initialize_tiles(self):
-        tiles = [[Tile(False) for y in range(self.height)]
-                 for x in range(self.width)]
-
-        return tiles
-
-    # def is_blocked(self, x, y):
-    #     tile = self.tiles[x][y]
-    #     if tile.meta_blocks:
-    #         return True
-    #     for entity in tile.entities:
-    #         if entity.blocks:
-    #             return True
-    #     return False
-
-    # def check_block_sight(self, x, y):
-    #     tile = self.tiles[x][y]
-    #     for entity in tile.entities:
-    #         if entity.block_sight:
-    #             return True
-    #     return False
-
-    def _create_level(self):
+    def create_level(self):
         room = Rect(20, 20, 10, 15)
         global noise
         noise = libtcod.noise_new(4, 1.0, 0.9, random=config.LIBTCOD_RANDOM)

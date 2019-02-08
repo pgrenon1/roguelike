@@ -3,7 +3,9 @@ import components as c
 import tcod as libtcod
 import config
 import random
+import numpy
 
+numpy.
 
 class Fov(esper.Processor):
     scene = None
