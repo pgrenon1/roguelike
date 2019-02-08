@@ -52,9 +52,8 @@ class Gameplay(Scene):
             self.world = esper.CachedWorld()
 
         if self.game_map is None:
-            self.game_map = libtcod.map_new(
-                config.MAP_WIDTH, config.MAP_HEIGHT)
-            GameMap(config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
+            self.game_map = GameMap(
+                config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
 
         self.reveal_all = False
         self.show_debug = False

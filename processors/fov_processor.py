@@ -3,9 +3,7 @@ import components as c
 import tcod as libtcod
 import config
 import random
-import numpy
 
-numpy.
 
 class Fov(esper.Processor):
     scene = None
@@ -71,5 +69,5 @@ class Fov(esper.Processor):
                     radius=light.radius + random.randint(0, 1),
                     light_walls=self.light_walls,
                     algo=self.algo)
-                # fov_bool_array = self.scene.game_map.fov
-                # self.scene.game_map.explored[fov_bool_array] = True
+                fov_bool_array = self.scene.game_map.fov
+                self.scene.game_map.explored[fov_bool_array] = True

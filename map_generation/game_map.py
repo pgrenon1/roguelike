@@ -6,9 +6,14 @@ import random
 import numpy
 
 
-class GameMap:
-    def __init__(self):
-        pass
+class GameMap(libtcod.map.Map):
+    def __init__(self, width, height, world):
+        self.width = width
+        self.height = height
+        self.world = world
+        self.explored = numpy.zeros((height, width), dtype=bool, order='C')
+        self.create_level()
+        super().__init__(width, height)
 
     def create_level(self):
         room = Rect(20, 20, 10, 15)

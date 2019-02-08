@@ -4,7 +4,7 @@ import processors
 import config
 from scene import Scene
 from helpers import *
-from processors.console_procesor import ConsoleProcessor
+from processors.console_processor import ConsoleProcessor
 from processors.main_title_processor import *
 
 

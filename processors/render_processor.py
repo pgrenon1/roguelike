@@ -17,19 +17,18 @@ class RenderConsole(esper.Processor):
 
     def __init__(self):
         super().__init__()
-        # self.targeting = targeting
-        self.mouse_x = 0
-        self.mouse_y = 0
         self.width = config.MAP_WIDTH
         self.height = config.MAP_HEIGHT
+        self.entities = []
 
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
         iterable.sort(key=lambda row: row[1][0].render_order)
-        for _, (rend, pos) in iterable:
-            yield (rend, pos)
+        for entity, (rend, pos) in iterable:
+            yield entity, (rend, pos)
 
     def process(self):
+        self.entities = self.get_entities()
         self.reveal_all()
         self.render_map()
         self.render_entity()
@@ -54,25 +53,32 @@ class RenderConsole(esper.Processor):
                     if libtcod.map_is_in_fov(self.scene.game_map, x, y):
                         libtcod.console_put_char(
                             self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
-
-    def render_non_moving(self):
-        pass
-
-    def update_non_moving(self):
-        pass
+                    elif self.scene.game_map.explored.item((y, x)):
+                        libtcod.console_put_char(
+                            self.scene.con, x, y, ' ', libtcod.BKGND_ADDALPHA(0.5))
 
     def render_entity(self):
         entity_number = 0
-        for (rend, pos) in self.get_entities():
+        for entity, (rend, pos) in self.entities:
             entity_number += 1
             if not self.scene.reveal_all:
                 for fov_map in self.scene.fovs:
                     if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
+                        bg = rend.background_color + libtcod.darkest_grey
+                        fg = rend.color + libtcod.darkest_grey
                         libtcod.console_put_char_ex(
-                            self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
+                            self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
+                    bg = rend.background_color + libtcod.darkest_grey
+                    fg = rend.color + libtcod.darkest_grey
                     libtcod.console_put_char_ex(
-                        self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
+                        self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+                elif self.scene.game_map.explored.item((pos.y, pos.x)):
+                    if not self.world.has_component(entity, c.Movable):
+                        libtcod.console_put_char_ex(
+                            self.scene.con, pos.x, pos.y, rend.character, rend.color,  rend.background_color)
+
             else:
                 libtcod.console_put_char_ex(
                     self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
@@ -89,7 +95,7 @@ class RenderConsole(esper.Processor):
         libtcod.console_flush()
 
     def clear_entity(self):
-        for (rend, pos) in self.get_entities():
+        for (rend, pos) in self.entities:
             # if self.scene.game_map.fov[pos.y, pos.x]: NO FOV YET
             # write an empty char, ca c'est pour pas avoir une genre de trainée.
             # ca change rien si personne bouge, mais si qqun bouge, on doit l'effacer de là ou il était
@@ -150,7 +156,7 @@ class RenderTooltip(esper.Processor):
         return mouse_x, mouse_y
 
     def handle_mouse_position(self):
-        """ . We need to transform pixel coordinates into tiles. 
+        """ . We need to transform pixel coordinates into tiles.
             . We also need to limit the coordinates to ones in the screen
             . We also need to know what the last pixel coordinate was before the current update"""
 
