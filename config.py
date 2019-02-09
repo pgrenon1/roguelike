@@ -61,6 +61,7 @@ DEFAULT_FONT = 'data/fonts/terminal16x16_gs_ro.png'
 # console_map_ascii_code_to_font("∞", fontCharX, fontCharY)
 
 TICK = 0
+VISIBLES = []
 
 KEY = libtcod.Key()
 # MOUSE = libtcod.Mouse()

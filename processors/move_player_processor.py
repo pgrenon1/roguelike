@@ -1,6 +1,7 @@
 import components as c
 import esper
 import tcod as libtcod
+import config
 
 """Checks for an action in the scene, if that action is a "move", use it to move. see input handler
  for mor info on how the scene's action variable is populated """
@@ -63,24 +64,26 @@ class MovePlayer(esper.Processor):
 
                 if damage > 0:
                     other_stats.health -= damage
-                    self.scene.messages.append(
-                        (
-                            '{0} attacks {1} for {2} hit points.'.format(
-                                player_metadata.name.capitalize(),
-                                other_metadata.name,
-                                str(damage),
-                            ),
-                            libtcod.light_cyan
+                    if entity in config.VISIBLES:
+                        self.scene.messages.append(
+                            (
+                                '{0} attacks {1} for {2} hit points.'.format(
+                                    player_metadata.name.capitalize(),
+                                    other_metadata.name,
+                                    str(damage),
+                                ),
+                                libtcod.light_cyan
+                            )
                         )
-                    )
                 else:
-                    self.scene.messages.append(
-                        (
-                            '{0} attacks {1} but does no damage.'.format(
-                                player_metadata.name.capitalize(),
-                                other_metadata.name
-                            ),
-                            libtcod.light_cyan
+                    if entity in config.VISIBLES:
+                        self.scene.messages.append(
+                            (
+                                '{0} attacks {1} but does no damage.'.format(
+                                    player_metadata.name.capitalize(),
+                                    other_metadata.name
+                                ),
+                                libtcod.light_cyan
+                            )
                         )
-                    )
         return is_collided

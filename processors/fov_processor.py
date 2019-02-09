@@ -58,6 +58,7 @@ class Fov(esper.Processor):
                     light_walls=self.light_walls,
                     algo=self.algo,
                 )
+
         self.update_lights()
         for fov_map in self.scene.fovs:
             self.update_map(fov_map)

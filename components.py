@@ -77,6 +77,7 @@ class Renderable:
         self.corpse_color = config.COLORS['dead']
         self.render_order = config.RenderOrder[args['Renderable']
                                                ['render_order']].value
+        self.is_visible = True
 #        self.foreground_color = args['render']['foreground_color']
 
 

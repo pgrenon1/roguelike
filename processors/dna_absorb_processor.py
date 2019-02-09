@@ -2,6 +2,7 @@ import esper
 
 import components as c
 import tcod as libtcod
+import config
 
 
 class DnaAbsorberProcessor(esper.Processor):
@@ -46,9 +47,10 @@ class DnaAbsorberProcessor(esper.Processor):
                 self.try_removing(absorbed_entity, c.Dna)
                 self.try_removing(absorbed_entity, c.GenerateDna)
                 # print(len(self.scene.world.components_for_entity(entity)))
+                if absorber_entity in config.VISIBLES:
 
-                self.scene.messages.append(
-                    (absorber_meta.name.capitalize() + " absorbed " + absorbed_meta.name.capitalize() + "'s DNA", libtcod.lightest_chartreuse))
+                    self.scene.messages.append(
+                        (absorber_meta.name.capitalize() + " absorbed " + absorbed_meta.name.capitalize() + "'s DNA", libtcod.lightest_chartreuse))
 
     def process(self):
         for ent, pos, dna, meta in self.get_absorbers():

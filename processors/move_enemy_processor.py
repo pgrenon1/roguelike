@@ -3,6 +3,7 @@ import random
 import esper
 import math
 import tcod as libtcod
+import config
 
 
 class MoveEnemy(esper.Processor):
@@ -31,14 +32,15 @@ class MoveEnemy(esper.Processor):
                 return None
             # Bump
             else:
-                self.scene.messages.append(
-                    (
-                        '{0} bumped into {1}.'.format(
-                            entity_meta.name.capitalize(),
-                            other_meta.name),
-                        libtcod.white
+                if entity in config.VISIBLES:
+                    self.scene.messages.append(
+                        (
+                            '{0} bumped into {1}.'.format(
+                                entity_meta.name.capitalize(),
+                                other_meta.name),
+                            libtcod.white
+                        )
                     )
-                )
                 return None
         # set enemy new x,y position
         entity_pos.x = new_x
