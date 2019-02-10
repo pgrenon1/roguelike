@@ -29,6 +29,7 @@ class RenderConsole(esper.Processor):
 
     def process(self):
         self.entities = self.get_entities()
+        self.populate_visibles()
         self.reveal_all()
         self.render_map()
         self.render_entity()
@@ -57,6 +58,18 @@ class RenderConsole(esper.Processor):
                         libtcod.console_put_char(
                             self.scene.con, x, y, ' ', libtcod.BKGND_ADDALPHA(0.5))
 
+    # Simple function used
+    def populate_visibles(self):
+
+        iterable = self.world.get_component(c.Renderable)
+
+        for ent, ren in iterable:
+            if ren.is_visible:
+                self.scene.visible_entities.append(ent)
+            else:
+                if ent in self.scene.visible_entities:
+                    self.scene.visible_entities.remove(ent)
+
     def render_entity(self):
         entity_number = 0
         for entity, (rend, pos) in self.entities:
@@ -69,6 +82,8 @@ class RenderConsole(esper.Processor):
                         libtcod.console_put_char_ex(
                             self.scene.con, pos.x, pos.y, rend.character, fg, bg)
                         rend.is_visible = True
+                    else:
+                        rend.is_visible = False
 
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
                     bg = rend.background_color + libtcod.darkest_grey
@@ -83,6 +98,8 @@ class RenderConsole(esper.Processor):
                         rend.is_visible = True
                     else:
                         rend.is_visible = False
+                else:
+                    rend.is_visible = False
 
             else:
                 libtcod.console_put_char_ex(
@@ -133,8 +150,9 @@ class RenderTooltip(esper.Processor):
             c.Renderable
         )
 
-        for entity, (pos, meta_data, _) in entities:
-            yield (entity, pos, meta_data)
+        for entity, (pos, meta_data, rend) in entities:
+            if rend.is_visible:
+                yield (entity, pos, meta_data)
 
     def get_entity_information(self):
         # ents = []

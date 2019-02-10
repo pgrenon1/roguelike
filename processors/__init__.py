@@ -19,7 +19,7 @@ from .move_player_processor import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
 from .move_enemy_processor import MoveEnemy
 from .spawner_processor import SpawnerProcessor
-from .message_processor import Message
+
 import config
 
 
@@ -40,7 +40,7 @@ PROCESSOR_GROUP = {
         # changing level such as a dungeon level should be here, aka stairs
         # checking "out game" player actions that involve the console should be here, that means going full screen, save and exit, etc
         # rendering the panel should be here, stats, logs, etc
-        Message(),
+  
         RenderPanel(),
         RenderTooltip(),
         StatePlayerTurn()

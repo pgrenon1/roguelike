@@ -27,12 +27,12 @@ class MoveEnemy(esper.Processor):
         for other, (other_meta, other_stats) in collided_with:
             # Attack
             if attacks:
-                self.do_damage(entity_meta, entity_stats,
+                self.do_damage(entity, entity_meta, entity_stats,
                                other_meta, other_stats)
                 return None
             # Bump
             else:
-                if entity in config.VISIBLES:
+                if entity in self.scene.visible_entities:
                     self.scene.messages.append(
                         (
                             '{0} bumped into {1}.'.format(
@@ -82,7 +82,7 @@ class MoveEnemy(esper.Processor):
                 collided_with = self.collide_on_other(
                     entity, new_x, new_y)
                 for collided, (collided_meta, collided_stats) in collided_with:
-                    self.do_damage(entity_meta, entity_stats,
+                    self.do_damage(entity, entity_meta, entity_stats,
                                    collided_meta, collided_stats)
                     return None
 
@@ -91,30 +91,32 @@ class MoveEnemy(esper.Processor):
         if not has_target:
             self.move_random_calm(entity, entity_pos)
 
-    def do_damage(self, entity_meta, entity_stats, other_meta, other_stats):
+    def do_damage(self, entity, entity_meta, entity_stats, other_meta, other_stats):
         damage = entity_stats.damage - other_stats.defense
         if damage > 0:
             other_stats.health -= damage
-            self.scene.messages.append(
-                (
-                    '{0} attacks {1} for {2} hit points.'.format(
-                        entity_meta.name.capitalize(),
-                        other_meta.name,
-                        str(damage)
-                    ),
-                    libtcod.white
+            if entity in self.scene.visible_entities:
+                self.scene.messages.append(
+                    (
+                        '{0} attacks {1} for {2} hit points.'.format(
+                            entity_meta.name.capitalize(),
+                            other_meta.name,
+                            str(damage)
+                        ),
+                        libtcod.white
+                    )
                 )
-            )
         else:
-            self.scene.messages.append(
-                (
-                    '{0} attacks {1} but does no damage.'.format(
-                        entity_meta.name.capitalize(),
-                        other_meta.name
-                    ),
-                    libtcod.white
+            if entity in self.scene.visible_entities:
+                self.scene.messages.append(
+                    (
+                        '{0} attacks {1} but does no damage.'.format(
+                            entity_meta.name.capitalize(),
+                            other_meta.name
+                        ),
+                        libtcod.white
+                    )
                 )
-            )
 
     def move_enemies(self):
         entities = self.world.get_components(

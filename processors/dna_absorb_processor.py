@@ -47,7 +47,7 @@ class DnaAbsorberProcessor(esper.Processor):
                 self.try_removing(absorbed_entity, c.Dna)
                 self.try_removing(absorbed_entity, c.GenerateDna)
                 # print(len(self.scene.world.components_for_entity(entity)))
-                if absorber_entity in config.VISIBLES:
+                if absorber_entity in self.scene.visible_entities:
 
                     self.scene.messages.append(
                         (absorber_meta.name.capitalize() + " absorbed " + absorbed_meta.name.capitalize() + "'s DNA", libtcod.lightest_chartreuse))

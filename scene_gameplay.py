@@ -41,6 +41,8 @@ class Gameplay(Scene):
             config.SCREEN_HEIGHT
         )
 
+        self.visible_entities = []
+
         # This is just a simple data type with a pop func
         self.messages = collections.deque()
 

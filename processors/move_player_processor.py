@@ -64,7 +64,7 @@ class MovePlayer(esper.Processor):
 
                 if damage > 0:
                     other_stats.health -= damage
-                    if entity in config.VISIBLES:
+                    if entity in self.scene.visible_entities:
                         self.scene.messages.append(
                             (
                                 '{0} attacks {1} for {2} hit points.'.format(
@@ -76,7 +76,7 @@ class MovePlayer(esper.Processor):
                             )
                         )
                 else:
-                    if entity in config.VISIBLES:
+                    if entity in self.scene.visible_entities:
                         self.scene.messages.append(
                             (
                                 '{0} attacks {1} but does no damage.'.format(
