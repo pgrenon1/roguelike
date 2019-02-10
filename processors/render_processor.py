@@ -34,7 +34,6 @@ class RenderConsole(esper.Processor):
         self.render_map()
         self.render_entity()
         self.blit_console()
-
         # self.flush_console()
         self.clear_entity()
 

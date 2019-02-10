@@ -7,9 +7,13 @@ from scene_manager import SceneManager
 import getopt
 import argparse
 from helpers import *
+import cProfile
 
 
 def main(argv):
+
+    pr = cProfile.Profile()
+    pr.enable()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-v', dest='verbose', action='store_true')
@@ -28,7 +32,7 @@ def main(argv):
         debug("This game will have a deterministic seed")
         debug(seed)
         config.LIBTCOD_RANDOM = libtcod.random_new_from_seed(seed)
-        debug(config.LIBTCOD_RANDOM)
+
         random.seed(config.MASTER_SEED)
 
     else:

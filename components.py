@@ -134,18 +134,6 @@ class Light:
     def __init__(self, args):
         self.radius = args['Light']['radius']
 
-# These are just a set of components that don't do much. Just using them to test Absorb + Generation
-
-
-class Hard:
-    def __init__(self):
-        pass
-
-
-class Wood:
-    def __init__(self):
-        pass
-
 
 def RepresentsInt(s):
     try:

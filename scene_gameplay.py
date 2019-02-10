@@ -21,7 +21,7 @@ class Gameplay(Scene):
     """
 
     def __init__(self, world=None, game_map=None):
-        #helpers.debug("Gameplay scene initialized")
+        # helpers.debug("Gameplay scene initialized")
         self.processor_group = processors.PROCESSOR_GROUP
 
         self.game_map = game_map
@@ -58,7 +58,7 @@ class Gameplay(Scene):
                 config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
 
         self.reveal_all = False
-        self.show_debug = False
+        self.show_debug = True
         self.fovs = []
         libtcod.console_set_default_background(
             self.con, libtcod.Color(15, 15, 15))

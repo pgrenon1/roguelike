@@ -25,21 +25,22 @@ class GameMap(libtcod.map.Map):
                 if x == self.width//2 and y == self.height//2:
                     player = instantiate_entity(
                         self.world, 'player', x, y)
-                elif x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
-                    if x not in range(room.x1+1, room.x2-1):
-                        wall = instantiate_entity(
-                            self.world, 'wall', x, y)
-                    if y not in range(room.y1+1, room.y2-1):
-                        wall = instantiate_entity(
-                            self.world, 'wall', x, y)
-                else:
-                    val = libtcod.noise_get_fbm(
-                        noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
+                # elif x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
+                #     if x not in range(room.x1+1, room.x2-1):
+                #         wall = instantiate_entity(
+                #             self.world, 'wall', x, y)
+                #     if y not in range(room.y1+1, room.y2-1):
+                #         wall = instantiate_entity(
+                #             self.world, 'wall', x, y)
+                # else:
+                #     val = libtcod.noise_get_fbm(
+                #         noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
 
-                    if val > 0.95:
-                        tree = instantiate_entity(
-                            self.world, 'tree', x, y)
-        self.populate_world()
+                #     if val > 0.95:
+                #         tree = instantiate_entity(
+                #             self.world, 'tree', x, y)
+
+        # self.populate_world()
 
     def populate_world(self):
         for entity in config.ENTITY_DATA:
