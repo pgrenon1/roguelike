@@ -15,11 +15,13 @@ class RenderConsole(esper.Processor):
     # targeting est pour une state spéciale qui n'est pas encore implemented
     # def __init__(self, targeting=False):
 
-    def __init__(self):
+    def __init__(self, examining=False):
+        # Unsure if I need the examining at this moment
         super().__init__()
         self.width = config.MAP_WIDTH
         self.height = config.MAP_HEIGHT
         self.entities = []
+        self.examining = examining
 
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
@@ -139,7 +141,7 @@ class RenderTooltip(esper.Processor):
         self.draw_y = 0
         self.width = 1
         self.height = 1
-        self.show_tooltip = config.SHOW_TOOLTIP
+        # self.show_tooltip = config.SHOW_TOOLTIP
         self.current_message = []
 
     def get_entities(self):
@@ -209,7 +211,7 @@ class RenderTooltip(esper.Processor):
         self.draw_x, self.draw_y = self.handle_tooltip_offset(
             self.mouse_x, self.mouse_y)
 
-        print(len(self.current_message))
+        # print(len(self.current_message))
 
         line_y = 0
         for message in self.current_message:
@@ -235,9 +237,9 @@ class RenderTooltip(esper.Processor):
             self.current_message = []
             y = 0
 
-    def reveal_tooltip(self):
-        if self.scene.mouse.rbutton_pressed:
-            self.show_tooltip = not self.show_tooltip
+    # def reveal_tooltip(self):
+    #     if self.scene.mouse.rbutton_pressed:
+    #         self.show_tooltip = not self.show_tooltip
 
     def blit_tooltip(self):
         self.scene.tooltip.blit(
@@ -258,11 +260,11 @@ class RenderTooltip(esper.Processor):
         # self.get_entities()
         # self.get_entity_information()
 
-        self.reveal_tooltip()
-        if(self.show_tooltip):
-            self.handle_mouse_position()
-            self.render_tooltip()
-            self.blit_tooltip()
+        # self.reveal_tooltip()
+        # if(self.show_tooltip):
+        self.handle_mouse_position()
+        self.render_tooltip()
+        self.blit_tooltip()
 
 
 class RenderPanel(esper.Processor):
@@ -355,7 +357,6 @@ class RenderPanel(esper.Processor):
             )
 
     def process(self):
-
         self.render_message()
         self._render_fps_counter(self.scene.panel)
         self.show_debug()

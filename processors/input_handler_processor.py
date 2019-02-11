@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 import esper
+
+# this should be imported as libtcod, no?
 import tcod
 
 
@@ -109,6 +111,8 @@ class InputPlayer(esper.Processor):
             flush=False
         )
 
+        # We go into examining mode
+
         # populate an in intance of key with the result of the event
         user_input = Key(
             vk=self.key.vk,
@@ -125,5 +129,10 @@ class InputPlayer(esper.Processor):
             self.scene.action = self.key_code[user_input]
         else:
             self.scene.action = {}  # if the event is null, empty the action variable
+
+        if tcod.EVENT_MOUSE_PRESS:
+            if self.mouse.rbutton_pressed:
+                self.scene.change_processors('examining')
+
         # this assigns the current mouse data in the mouse variable in the scene, for use in other processors
         self.scene.mouse = self.mouse

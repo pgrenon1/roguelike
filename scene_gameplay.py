@@ -76,6 +76,7 @@ class Gameplay(Scene):
         for processor_instance in self.processor_group[state]:
             processor_instance.world = self.world
             processor_instance.scene = self
+            print(state)
 
     def add_processors(self):
         for num, state in enumerate(self.processor_group):
@@ -86,6 +87,7 @@ class Gameplay(Scene):
 
     def update(self):
         # print("Processing world")
+        
         self.world.process()
         # Once we process the world, we render it
         libtcod.console_flush()

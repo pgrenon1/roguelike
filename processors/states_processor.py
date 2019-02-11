@@ -31,4 +31,17 @@ class StateEnemyTurn(esper.Processor):
 
     # vu que c'est le dernier process du PROCESSORGROUP du enemyturn, Reliquish the turn!
     def process(self):
-        self.scene.change_processors('player_turn')
+        if(self.scene.action != {}):
+            self.scene.change_processors('player_turn')
+
+
+class StateExamining(esper.Processor):
+
+    scene = None
+
+    def __init__(self):
+        super().__init__()
+
+    def process(self):
+        if self.scene.mouse.rbutton_pressed and self.scene.action != {}:
+            self.scene.change_processors('player_turn')

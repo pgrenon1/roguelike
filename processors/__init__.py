@@ -5,10 +5,14 @@
 """
 from .states_processor import (
     StatePlayerTurn,
-    StateEnemyTurn
+    StateEnemyTurn,
+    StateExamining
 )
 from .death_processor import Death
-from .input_handler_processor import InputPlayer
+from .input_handler_processor import (
+    InputPlayer
+)
+
 from .render_processor import (
     RenderConsole,
     RenderPanel,
@@ -25,9 +29,7 @@ import config
 
 PROCESSOR_GROUP = {
     'player_turn': [
-
         Fov(),
-
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
@@ -42,11 +44,18 @@ PROCESSOR_GROUP = {
         # rendering the panel should be here, stats, logs, etc
 
         RenderPanel(),
-        RenderTooltip(),
         StatePlayerTurn()
     ],
+    'examining':
+    [
+        RenderConsole(),
+        RenderPanel(),
+        RenderTooltip(),
+
+        StateExamining()
+    ],
     'enemy_turn': [
-        # RenderPanel(),
+        RenderPanel(),
         MoveEnemy(),
         Death(),
         SpawnerProcessor(),
