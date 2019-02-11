@@ -43,7 +43,7 @@ class RenderConsole(esper.Processor):
 
     def render_map(self):
         if self.scene.fov_recompute:
-            libtcod.console_clear(self.scene.con)
+            # libtcod.console_clear(self.scene.con)
             for x in range(0, self.scene.game_map.width):
                 for y in range(0, self.scene.game_map.height):
                     for fov_map in self.scene.fovs:

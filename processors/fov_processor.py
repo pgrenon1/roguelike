@@ -48,6 +48,7 @@ class Fov(esper.Processor):
 
     def process(self):
         if self.scene.fov_recompute:
+            # self.scene.game_map.transparent[:] = True
             self.update_map(self.scene.game_map)
             for pos in self.get_player_position():
                 libtcod.map_compute_fov(
@@ -60,7 +61,7 @@ class Fov(esper.Processor):
                 )
         self.update_lights()
         for fov_map in self.scene.fovs:
-            self.update_map(fov_map)
+            # self.update_map(fov_map)
             for light, pos in self.get_lights_positions():
                 libtcod.map_compute_fov(
                     fov_map,

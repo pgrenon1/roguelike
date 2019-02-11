@@ -31,8 +31,9 @@ class MovePlayer(esper.Processor):
 
                 """We might never use this, because All is Entity"""
                 # # check for collision on map
-                # if not self.scene.game_map.walkable[new_y, new_x]:
-                #     break
+                if not self.scene.game_map.walkable[new_y, new_x]:
+                    break
+                    # INSTANTIATE ENTITY THAT WAS COLLIDED WITH?
 
                 # check for collision on other entities,
                 if self.collide_on_entity(player, new_x, new_y, player_stats, player_metadata):

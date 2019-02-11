@@ -45,6 +45,12 @@ COLORS = {
     'dead': libtcod.Color(100, 20, 10)
 }
 
+STATIC = {
+    0: None,
+    1: 'wall',
+    2: 'tree'
+}
+
 
 class RenderOrder(Enum):
     REMAINS = 1
