@@ -61,7 +61,7 @@ class MoveEnemy(esper.Processor):
         entity_pos.x = new_x
         entity_pos.y = new_y
 
-    def move_predator(self,  entity, entity_pos, entity_meta, entity_stats, range):
+    def move_predator(self,  entity, entity_pos, entity_meta, entity_stats, radius):
         others = self.world.get_components(
             c.Movable,
             c.Position,
@@ -71,7 +71,7 @@ class MoveEnemy(esper.Processor):
         # Attack anything that moves
         has_target = False
         for other, (_, other_pos, other_meta, other_stats) in others:
-            if other != entity and self.find_distance(other_pos, entity_pos) <= range:
+            if other != entity and self.find_distance(other_pos, entity_pos) <= radius:
                 has_target = True
                 # Get destination to go toward target
                 new_y, new_x = self.move_toward(entity_pos, other_pos)

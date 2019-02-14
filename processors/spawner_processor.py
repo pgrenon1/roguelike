@@ -2,7 +2,7 @@ import esper
 import components as c
 import random
 import config
-from loader_functions.entity_factory import instantiate_entity
+# from loader_functions.entity_factory import instantiate_entity
 import tcod as libtcod
 
 
@@ -27,8 +27,8 @@ class SpawnerProcessor(esper.Processor):
             # we check if the entity has less than 3 children. This could be an arg, of course.
             if len(spawn.children) < 3:
 
-                child = instantiate_entity(self.scene.world, spawn.child_type, pos.x + random.randint(-2, 2),
-                                           pos.y + random.randint(-2, 2))
+                # child = instantiate_entity(self.scene.world, spawn.child_type, pos.x + random.randint(-2, 2),
+                #                            pos.y + random.randint(-2, 2))
                 spawn.children.append(child)
 
                 childComponent = c.Child()

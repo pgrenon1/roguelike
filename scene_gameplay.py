@@ -7,9 +7,10 @@ import components as c
 from map_generation.tile import Tile
 from map_generation.rect import Rect
 from map_generation.game_map import GameMap
-from loader_functions.entity_factory import *
+# from loader_functions.entity_factory import *
 import random
 import collections
+from loader_functions.factory import Factory
 
 
 # from components.render import Render
@@ -51,9 +52,11 @@ class Gameplay(Scene):
             # esper.CachedWorld()
             self.world = esper.CachedWorld()
 
+        self.factory = Factory(self, "data/entities.json")
+
         if self.game_map is None:
             self.game_map = GameMap(
-                config.MAP_WIDTH, config.MAP_HEIGHT, self.world)
+                config.MAP_WIDTH, config.MAP_HEIGHT, self.world, self.factory)
 
         self.reveal_all = False
         self.show_debug = False

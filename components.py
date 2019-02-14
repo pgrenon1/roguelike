@@ -1,5 +1,6 @@
 # This should possibly be somewhere that isn't config.
-from config import *
+import config
+import enum
 import sys
 import inspect
 import ast
@@ -12,12 +13,18 @@ class Collidable:
         pass
 
 
+class DnaAbsorber:
+    def __init__(self):
+        pass
+
+
 class Stats:
-    def __init__(self, args):
-        self.max_health = args['Stats']['max_health']
-        self.health = args['Stats']['health']
-        self.defense = args['Stats']['defense']
-        self.damage = args['Stats']['damage']
+    def __init__(self, max_health: int, health: int, defense: int, damage: int):
+        self.max_health = max_health
+        self.health = health
+        self.defense = defense
+        self.damage = damage
+        # self.speed = speed
 
 
 class Dna:
@@ -26,19 +33,14 @@ class Dna:
         self.component = component
 
 
-class DnaAbsorber:
-    def __init__(self):
-        pass
-
-
 class Metadata:
-    def __init__(self, args):
-        self.name = args['Metadata']['name']
-        self.description = args['Metadata']['description']
+    def __init__(self, name: str, description: str):
+        self.name: str = name
+        self.description: str = description
 
 
 class Position:
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int):
         self.x = x
         self.y = y
 
@@ -65,18 +67,16 @@ class Decay:
 
 
 class Renderable:
-    def __init__(self, args):
-        if RepresentsInt(args['Renderable']['character']):
-            self.character = chr(int(args['Renderable']['character']))
-        else:
-            self.character = args['Renderable']['character']
-        self.color = config.COLORS[args['Renderable']['color']]
-        self.background_color = config.COLORS[args['Renderable']
-                                              ['background_color']]
-        self.corpse_character = args['Renderable']['corpse_character']
-        self.corpse_color = config.COLORS['dead']
-        self.render_order = config.RenderOrder[args['Renderable']
-                                               ['render_order']].value
+    def __init__(self, character: str, corpse_character: str, foreground_color: str, background_color: str, render_order: int):
+        self.character = character
+        # config.COLORS[args['Renderable']['color']]
+        self.foreground_color = config.COLORS[foreground_color]
+        self.background_color = config.COLORS[background_color]
+        # self.background_color: libtcod.color = config.COLORS[args['Renderable']
+        #                                                      ['background_color']]
+        self.corpse_character = corpse_character
+        self.render_order = config.RenderOrder[render_order].value
+        # config.RenderOrder[args['Renderable']['render_order']].value
 #        self.foreground_color = args['render']['foreground_color']
 
 
@@ -95,31 +95,23 @@ class EnemyTurn:
         pass
 
 
-"""It might be possible and preferable to use inheritance to make the move_enemy simpler!"""
-
-
 class AiRandomCalm:
     def __init__(self):
         pass
 
 
 class AiRandomAgitated:
-    def __init__(self, args):
-        self.attacks = args['AiRandomAgitated']['attacks']
+    def __init__(self, attacks: bool):
+        self.attacks = attacks
 
 
 class AiPredator:
-    def __init__(self, args):
+    def __init__(self, radius: int):
         self.target = None
-        self.range = args['AiPredator']['range']
+        self.radius = radius
 
 
 class AiChild:
-    def __init__(self):
-        pass
-
-
-class Death:
     def __init__(self):
         pass
 
@@ -130,10 +122,8 @@ class GenerateDna:
 
 
 class Light:
-    def __init__(self, args):
-        self.radius = args['Light']['radius']
-
-# These are just a set of components that don't do much. Just using them to test Absorb + Generation
+    def __init__(self, radius: int):
+        self.radius = radius
 
 
 class Hard:
@@ -144,11 +134,3 @@ class Hard:
 class Wood:
     def __init__(self):
         pass
-
-
-def RepresentsInt(s):
-    try:
-        int(s)
-        return True
-    except ValueError:
-        return False

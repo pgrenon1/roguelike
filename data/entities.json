@@ -7,10 +7,10 @@
       "damage": 1
     },
     "Renderable": {
-      "character": "64",
+      "character": "@",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "player",
+      "foreground_color": "player",
       "background_color": "none"
     },
     "Collidable": {},
@@ -32,10 +32,10 @@
     },
     "GenerateDna": {},
     "Renderable": {
-      "character": "15",
+      "character": "☼",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "npc",
+      "foreground_color": "npc",
       "background_color": "none"
     },
     "Collidable": {},
@@ -59,10 +59,10 @@
       "damage": 0
     },
     "Renderable": {
-      "character": "42",
+      "character": "*",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "npc",
+      "foreground_color": "npc",
       "background_color": "none"
     },
     "Collidable": {},
@@ -80,7 +80,7 @@
     "EnemyTurn": {},
     "Movable": {},
     "AiPredator": {
-      "range": 7
+      "radius": 7
     },
     "Stats": {
       "max_health": 1,
@@ -89,10 +89,10 @@
       "damage": 1
     },
     "Renderable": {
-      "character": "62",
+      "character": ">",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "npc",
+      "foreground_color": "npc",
       "background_color": "none"
     },
     "Collidable": {},
@@ -111,10 +111,10 @@
       "damage": 0
     },
     "Renderable": {
-      "character": "176",
+      "character": "░",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "wall",
+      "foreground_color": "wall",
       "background_color": "wallbg"
     },
     "Collidable": {},
@@ -136,7 +136,7 @@
       "character": "t",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "color": "tree",
+      "foreground_color": "tree",
       "background_color": "treebg"
     },
     "Collidable": {},

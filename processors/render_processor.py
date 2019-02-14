@@ -65,23 +65,23 @@ class RenderConsole(esper.Processor):
                 for fov_map in self.scene.fovs:
                     if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
                         bg = rend.background_color + libtcod.darkest_grey
-                        fg = rend.color + libtcod.darkest_grey
+                        fg = rend.foreground_color + libtcod.darkest_grey
                         libtcod.console_put_char_ex(
                             self.scene.con, pos.x, pos.y, rend.character, fg, bg)
 
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
                     bg = rend.background_color + libtcod.darkest_grey
-                    fg = rend.color + libtcod.darkest_grey
+                    fg = rend.foreground_color + libtcod.darkest_grey
                     libtcod.console_put_char_ex(
                         self.scene.con, pos.x, pos.y, rend.character, fg, bg)
                 elif self.scene.game_map.explored.item((pos.y, pos.x)):
                     if not self.world.has_component(entity, c.Movable):
                         libtcod.console_put_char_ex(
-                            self.scene.con, pos.x, pos.y, rend.character, rend.color,  rend.background_color)
+                            self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color,  rend.background_color)
 
             else:
                 libtcod.console_put_char_ex(
-                    self.scene.con, pos.x, pos.y, rend.character, rend.color, rend.background_color)
+                    self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color, rend.background_color)
         self.scene.number_of_entities = entity_number
 
     def blit_console(self):
