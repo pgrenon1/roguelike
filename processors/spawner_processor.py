@@ -35,9 +35,9 @@ class SpawnerProcessor(esper.Processor):
                 childComponent.parent = spawner
 
                 self.scene.world.add_component(child, childComponent)
-
-            self.scene.messages.append((
-                "A moth (*) came out of {}".format(metadata.name), libtcod.yellow))
+                if child in self.scene.visible_entities:
+                    self.scene.messages.append((
+                        "A moth (*) came out of {}".format(metadata.name), libtcod.yellow))
 
     def process(self):
         if(config.TICK % 10 == 0):

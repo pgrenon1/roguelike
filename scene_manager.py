@@ -21,6 +21,7 @@ class SceneManager:
         self.root_console = libtcod.console_init_root(
             SCREEN_WIDTH, SCREEN_HEIGHT, 'ROGUELIKE', FULLSCREEN, renderer=libtcod.RENDERER_GLSL)
 
+        libtcod.sys_set_fps(60)
         self.scenes = {
             # We currently only have gameplay, no menues or anything like that, but we would add them here.
             'menu': MainMenu(),
@@ -35,4 +36,5 @@ class SceneManager:
 
     def run(self):
         while not libtcod.console_is_window_closed():
+
             self.current_scene.update()

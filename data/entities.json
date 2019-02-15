@@ -57,14 +57,11 @@
     "Collidable": {},
     "Metadata": {
       "name": "The Light",
-      "description": "A living beacon from which emanates light"
+      "description": "A living beacon from which small creatures emanate"
     },
     "Movable": {},
     "DnaAbsorber": {},
-    "Spawner": {},
-    "Light": {
-      "radius": 6
-    }
+    "Spawner": {}
   },
   "child": {
     "EnemyTurn": {},

@@ -22,7 +22,7 @@ class Gameplay(Scene):
     """
 
     def __init__(self, world=None, game_map=None):
-        #helpers.debug("Gameplay scene initialized")
+        # helpers.debug("Gameplay scene initialized")
         self.processor_group = processors.PROCESSOR_GROUP
 
         self.game_map = game_map
@@ -42,6 +42,8 @@ class Gameplay(Scene):
             config.SCREEN_HEIGHT
         )
 
+        self.visible_entities = []
+
         # This is just a simple data type with a pop func
         self.messages = collections.deque()
 
@@ -59,7 +61,7 @@ class Gameplay(Scene):
                 config.MAP_WIDTH, config.MAP_HEIGHT, self.world, self.factory)
 
         self.reveal_all = False
-        self.show_debug = False
+        self.show_debug = True
         self.fovs = []
         libtcod.console_set_default_background(
             self.con, libtcod.Color(15, 15, 15))
@@ -77,6 +79,7 @@ class Gameplay(Scene):
         for processor_instance in self.processor_group[state]:
             processor_instance.world = self.world
             processor_instance.scene = self
+            print(state)
 
     def add_processors(self):
         for num, state in enumerate(self.processor_group):
@@ -87,6 +90,7 @@ class Gameplay(Scene):
 
     def update(self):
         # print("Processing world")
+        
         self.world.process()
         # Once we process the world, we render it
         libtcod.console_flush()

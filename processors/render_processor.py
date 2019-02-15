@@ -14,11 +14,13 @@ class RenderConsole(esper.Processor):
     # targeting est pour une state spéciale qui n'est pas encore implemented
     # def __init__(self, targeting=False):
 
-    def __init__(self):
+    def __init__(self, examining=False):
+        # Unsure if I need the examining at this moment
         super().__init__()
         self.width = config.MAP_WIDTH
         self.height = config.MAP_HEIGHT
         self.entities = []
+        self.examining = examining
 
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
@@ -28,11 +30,11 @@ class RenderConsole(esper.Processor):
 
     def process(self):
         self.entities = self.get_entities()
+        self.populate_visibles()
         self.reveal_all()
         self.render_map()
         self.render_entity()
         self.blit_console()
-
         # self.flush_console()
         self.clear_entity()
 
@@ -56,6 +58,18 @@ class RenderConsole(esper.Processor):
                         libtcod.console_put_char(
                             self.scene.con, x, y, ' ', libtcod.BKGND_ADDALPHA(0.5))
 
+    # Simple function used
+    def populate_visibles(self):
+
+        iterable = self.world.get_component(c.Renderable)
+
+        for ent, ren in iterable:
+            if ren.is_visible:
+                self.scene.visible_entities.append(ent)
+            else:
+                if ent in self.scene.visible_entities:
+                    self.scene.visible_entities.remove(ent)
+
     def render_entity(self):
         entity_number = 0
         for entity, (rend, pos) in self.entities:
@@ -67,12 +81,16 @@ class RenderConsole(esper.Processor):
                         fg = rend.foreground_color + libtcod.darkest_grey
                         libtcod.console_put_char_ex(
                             self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+                        rend.is_visible = True
+                    else:
+                        rend.is_visible = False
 
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
                     bg = rend.background_color + libtcod.darkest_grey
                     fg = rend.foreground_color + libtcod.darkest_grey
                     libtcod.console_put_char_ex(
                         self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+                    rend.is_visible = True
                 elif self.scene.game_map.explored.item((pos.y, pos.x)):
                     if not self.world.has_component(entity, c.Movable):
                         libtcod.console_put_char_ex(
@@ -116,7 +134,7 @@ class RenderTooltip(esper.Processor):
         self.draw_y = 0
         self.width = 1
         self.height = 1
-        self.show_tooltip = config.SHOW_TOOLTIP
+        # self.show_tooltip = config.SHOW_TOOLTIP
         self.current_message = []
 
     def get_entities(self):
@@ -126,22 +144,21 @@ class RenderTooltip(esper.Processor):
             c.Renderable
         )
 
-        for entity, (pos, meta_data, _) in entities:
-            yield (entity, pos, meta_data)
+        for entity, (pos, meta_data, rend) in entities:
+            if rend.is_visible:
+                yield (entity, pos, meta_data)
 
     def get_entity_information(self):
         # ents = []
+        current_message = []
+
         for ent, pos, meta_data in self.get_entities():
             if(pos.x, pos.y) == (self.mouse_x, self.mouse_y):
-                # ents.append(ent)
-                # # We make sure we're only describing the entity on top.
-                # Not sure how doe
-                # if(ent == ents[0]):
+                # if ent in config.VISIBLES:
+                current_message.append(meta_data.name)
+                current_message.append(meta_data.description)
 
-                self.current_message.append(meta_data.name)
-                self.current_message.append(meta_data.description)
-                self.width = len(meta_data.description)
-                self.height = len(self.current_message)
+        return current_message
 
     def handle_tooltip_offset(self, mouse_x, mouse_y):
         """This changes the orientation of the tooltip depending on which side of the screen we're in.
@@ -159,15 +176,15 @@ class RenderTooltip(esper.Processor):
             . We also need to limit the coordinates to ones in the screen
             . We also need to know what the last pixel coordinate was before the current update"""
 
-        self.mouse_x = int((libtcod.mouse_get_status().x //
+        self.mouse_x = int((self.scene.mouse.x //
                             config.CHARACTER_RESOLUTION_WIDTH/2))
 
-        self.mouse_y = int((libtcod.mouse_get_status().y //
+        self.mouse_y = int((self.scene.mouse.y //
                             config.CHARACTER_RESOLUTION_HEIGHT/2))
 
-        self.mouse_px = int((libtcod.mouse_get_status().dx //
+        self.mouse_px = int((self.scene.mouse.dx //
                              config.CHARACTER_RESOLUTION_WIDTH/2))
-        self.mouse_py = int((libtcod.mouse_get_status().dy //
+        self.mouse_py = int((self.scene.mouse.dy //
                              config.CHARACTER_RESOLUTION_HEIGHT/2))
 
         if(self.mouse_x > config.SCREEN_WIDTH):
@@ -180,24 +197,42 @@ class RenderTooltip(esper.Processor):
             self.mouse_y = 0
 
     def render_tooltip(self):
-        self.get_entity_information()
+        # We get the messages we will draw
+        self.current_message = self.get_entity_information()
 
+        # We get the coordinates on which to draw the tooltip, based on the mouse position
         self.draw_x, self.draw_y = self.handle_tooltip_offset(
             self.mouse_x, self.mouse_y)
 
+        # print(len(self.current_message))
+
         line_y = 0
         for message in self.current_message:
-            libtcod.console_print_ex(
-                self.scene.tooltip, 0, line_y, libtcod.BKGND_NONE, libtcod.LEFT, message)
-            line_y += 1
+            # Tooltip size
+            if(len(self.current_message) > 0):
+                longest_message = message
+                if len(message) > len(longest_message):
+                    longest_message = message
+                self.width = len(longest_message)
+                self.height = len(self.current_message)
+
+                libtcod.console_print_ex(
+                    self.scene.tooltip, 0, line_y, libtcod.BKGND_NONE, libtcod.LEFT, message)
+                line_y += 1
+
+       # Make tooltip small if there is nothing to show
+
+        if len(self.current_message) == 0:
+            self.width = 1
+            self.height = 1
 
         if self.mouse_x != self.mouse_px or self.mouse_y != self.mouse_py:
             self.current_message = []
             y = 0
 
-    def reveal_tooltip(self):
-        if self.scene.mouse.rbutton_pressed:
-            self.show_tooltip = not self.show_tooltip
+    # def reveal_tooltip(self):
+    #     if self.scene.mouse.rbutton_pressed:
+    #         self.show_tooltip = not self.show_tooltip
 
     def blit_tooltip(self):
         self.scene.tooltip.blit(
@@ -218,11 +253,11 @@ class RenderTooltip(esper.Processor):
         # self.get_entities()
         # self.get_entity_information()
 
-        self.reveal_tooltip()
-        if(self.show_tooltip):
-            self.handle_mouse_position()
-            self.render_tooltip()
-            self.blit_tooltip()
+        # self.reveal_tooltip()
+        # if(self.show_tooltip):
+        self.handle_mouse_position()
+        self.render_tooltip()
+        self.blit_tooltip()
 
 
 class RenderPanel(esper.Processor):
@@ -315,7 +350,6 @@ class RenderPanel(esper.Processor):
             )
 
     def process(self):
-
         self.render_message()
         self._render_fps_counter(self.scene.panel)
         self.show_debug()

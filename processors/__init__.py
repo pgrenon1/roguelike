@@ -5,10 +5,14 @@
 """
 from .states_processor import (
     StatePlayerTurn,
-    StateEnemyTurn
+    StateEnemyTurn,
+    StateExamining
 )
 from .death_processor import Death
-from .input_handler_processor import InputPlayer
+from .input_handler_processor import (
+    InputPlayer
+)
+
 from .render_processor import (
     RenderConsole,
     RenderPanel,
@@ -19,14 +23,13 @@ from .move_player_processor import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
 from .move_enemy_processor import MoveEnemy
 from .spawner_processor import SpawnerProcessor
+
 import config
 
 
 PROCESSOR_GROUP = {
     'player_turn': [
-
         Fov(),
-
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
@@ -41,11 +44,18 @@ PROCESSOR_GROUP = {
         # rendering the panel should be here, stats, logs, etc
 
         RenderPanel(),
-        RenderTooltip(),
         StatePlayerTurn()
     ],
+    'examining':
+    [
+        RenderConsole(),
+        RenderPanel(),
+        RenderTooltip(),
+
+        StateExamining()
+    ],
     'enemy_turn': [
-        # RenderPanel(),
+        RenderPanel(),
         MoveEnemy(),
         Death(),
         SpawnerProcessor(),
