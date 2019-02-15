@@ -71,6 +71,7 @@ class Renderable:
         self.foreground_color = libtcod.Color(*foreground_color)
         self.background_color = libtcod.Color(*background_color)
         self.render_order = RenderOrder[render_order].value
+        self.is_visible = False
 
 
 class Movable:
