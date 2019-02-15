@@ -3,7 +3,6 @@ import config
 import esper
 import tcod as libtcod
 import textwrap
-import config
 
 
 """Le processeur pour render. more details below"""

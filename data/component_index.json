@@ -1,0 +1,51 @@
+{
+    "Collidable": {},
+    "DnaAbsorber": {},
+    "Stats": {
+        "max_health": "int",
+        "health": "int",
+        "defense": "int",
+        "damage": "int"
+    },
+    "Dna": {},
+    "Metadata": {
+        "name": "str",
+        "description": "str"
+    },
+    "Position": {
+        "x": "int",
+        "y": "int"
+    },
+    "Remains": {},
+    "Spawner": {},
+    "Child": {},
+    "Decay": {},
+    "Renderable": {
+        "character": "str",
+        "corpse_character": "str",
+        "foreground_color": "col",
+        "background_color": "col",
+        "render_order": [
+            "REMAINS",
+            "ITEM",
+            "ACTOR"
+        ]
+    },
+    "Movable": {},
+    "PlayerTurn": {},
+    "EnemyTurn": {},
+    "AiRandomCalm": {},
+    "AiRandomAgitated": {
+        "attacks": "bool"
+    },
+    "AiPredator": {
+        "radius": "int"
+    },
+    "AiChild": {},
+    "GenerateDna": {},
+    "Light": {
+        "radius": "int"
+    },
+    "Hard": {},
+    "Wood": {}
+}

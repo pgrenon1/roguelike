@@ -1,11 +1,9 @@
 # This should possibly be somewhere that isn't config.
-import config
-import enum
 import sys
 import inspect
 import ast
-
-# GETTING ALL THE COMPONENTS
+import tcod as libtcod
+from config import RenderOrder
 
 
 class Collidable:
@@ -67,17 +65,12 @@ class Decay:
 
 
 class Renderable:
-    def __init__(self, character: str, corpse_character: str, foreground_color: str, background_color: str, render_order: int):
+    def __init__(self, character: str, corpse_character: str, foreground_color: list, background_color: list, render_order: RenderOrder):
         self.character = character
-        # config.COLORS[args['Renderable']['color']]
-        self.foreground_color = config.COLORS[foreground_color]
-        self.background_color = config.COLORS[background_color]
-        # self.background_color: libtcod.color = config.COLORS[args['Renderable']
-        #                                                      ['background_color']]
         self.corpse_character = corpse_character
-        self.render_order = config.RenderOrder[render_order].value
-        # config.RenderOrder[args['Renderable']['render_order']].value
-#        self.foreground_color = args['render']['foreground_color']
+        self.foreground_color = libtcod.Color(*foreground_color)
+        self.background_color = libtcod.Color(*background_color)
+        self.render_order = RenderOrder[render_order].value
 
 
 class Movable:

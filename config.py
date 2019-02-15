@@ -2,8 +2,6 @@ import tcod as libtcod
 # from loader_functions.instantiator import *
 # from loader_functions.fetcher import *
 from enum import Enum
-import components
-from components import *
 import random
 
 

@@ -10,8 +10,16 @@
       "character": "@",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "foreground_color": "player",
-      "background_color": "none"
+      "foreground_color": [
+        0,
+        255,
+        255
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
     },
     "Collidable": {},
     "Metadata": {
@@ -35,8 +43,16 @@
       "character": "☼",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "foreground_color": "npc",
-      "background_color": "none"
+      "foreground_color": [
+        100,
+        25,
+        80
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
     },
     "Collidable": {},
     "Metadata": {
@@ -62,8 +78,16 @@
       "character": "*",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "foreground_color": "npc",
-      "background_color": "none"
+      "foreground_color": [
+        100,
+        25,
+        80
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
     },
     "Collidable": {},
     "Metadata": {
@@ -92,8 +116,16 @@
       "character": ">",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "foreground_color": "npc",
-      "background_color": "none"
+      "foreground_color": [
+        100,
+        25,
+        80
+      ],
+      "background_color": [
+        0,
+        0,
+        0
+      ]
     },
     "Collidable": {},
     "Metadata": {
@@ -114,8 +146,16 @@
       "character": "░",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "foreground_color": "wall",
-      "background_color": "wallbg"
+      "foreground_color": [
+        192,
+        192,
+        192
+      ],
+      "background_color": [
+        10,
+        10,
+        10
+      ]
     },
     "Collidable": {},
     "Metadata": {
@@ -136,8 +176,16 @@
       "character": "t",
       "corpse_character": "%",
       "render_order": "ACTOR",
-      "foreground_color": "tree",
-      "background_color": "treebg"
+      "foreground_color": [
+        34,
+        139,
+        34
+      ],
+      "background_color": [
+        0,
+        30,
+        0
+      ]
     },
     "Collidable": {},
     "Metadata": {
