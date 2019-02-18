@@ -29,7 +29,6 @@ import config
 
 PROCESSOR_GROUP = {
     'player_turn': [
-        Fov(),
         RenderConsole(),
         InputPlayer(),
         MovePlayer(),
@@ -44,6 +43,7 @@ PROCESSOR_GROUP = {
         # rendering the panel should be here, stats, logs, etc
 
         RenderPanel(),
+        Fov(),
         StatePlayerTurn()
     ],
     'examining':

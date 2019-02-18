@@ -50,13 +50,13 @@ class RenderConsole(esper.Processor):
                     for fov_map in self.scene.fovs:
                         if libtcod.map_is_in_fov(fov_map, x, y):
                             libtcod.console_put_char(
-                                self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
+                                self.scene.con, x, y, chr(250), libtcod)
                     if libtcod.map_is_in_fov(self.scene.game_map, x, y):
                         libtcod.console_put_char(
                             self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
                     elif self.scene.game_map.explored.item((y, x)):
                         libtcod.console_put_char(
-                            self.scene.con, x, y, ' ', libtcod.BKGND_ADDALPHA(0.5))
+                            self.scene.con, x, y, ' ', libtcod.BKGND_ADDALPHA(0.25))
 
     # Simple function used
     def populate_visibles(self):
@@ -81,6 +81,7 @@ class RenderConsole(esper.Processor):
                         fg = rend.foreground_color + libtcod.darkest_grey
                         libtcod.console_put_char_ex(
                             self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+
                         rend.is_visible = True
                     else:
                         rend.is_visible = False
@@ -91,6 +92,7 @@ class RenderConsole(esper.Processor):
                     libtcod.console_put_char_ex(
                         self.scene.con, pos.x, pos.y, rend.character, fg, bg)
                     rend.is_visible = True
+
                 elif self.scene.game_map.explored.item((pos.y, pos.x)):
                     if not self.world.has_component(entity, c.Movable):
                         libtcod.console_put_char_ex(
@@ -100,6 +102,7 @@ class RenderConsole(esper.Processor):
                 libtcod.console_put_char_ex(
                     self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color, rend.background_color)
         self.scene.number_of_entities = entity_number
+        self.scene.manager.root_console.clear()
 
     def blit_console(self):
         self.scene.con.blit(
