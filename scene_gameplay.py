@@ -24,6 +24,7 @@ class Gameplay(Scene):
     def __init__(self, world=None, game_map=None):
         # helpers.debug("Gameplay scene initialized")
         self.processor_group = processors.PROCESSOR_GROUP
+        self.current_processor_group = None
 
         self.game_map = game_map
 
@@ -74,12 +75,15 @@ class Gameplay(Scene):
         self.mouse = libtcod.Mouse()
         self.astar = libtcod.path.AStar(self.game_map.walkable)
 
+    def check_world_processor(self, state):
+        return state == self.current_processor_group
+
     def change_processors(self, state):
         self.world_processors = self.processor_group[state]
+        self.current_processor_group = state
         for processor_instance in self.processor_group[state]:
             processor_instance.world = self.world
             processor_instance.scene = self
-            print(state)
 
     def add_processors(self):
         for num, state in enumerate(self.processor_group):
@@ -90,7 +94,7 @@ class Gameplay(Scene):
 
     def update(self):
         # print("Processing world")
-        
+
         self.world.process()
         # Once we process the world, we render it
         libtcod.console_flush()

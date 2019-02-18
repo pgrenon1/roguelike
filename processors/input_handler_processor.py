@@ -131,7 +131,9 @@ class InputPlayer(esper.Processor):
             self.scene.action = {}  # if the event is null, empty the action variable
 
         if tcod.EVENT_MOUSE_PRESS:
-            if self.mouse.rbutton_pressed:
+           # print(self.scene.processor_group)
+            if self.mouse.rbutton_pressed and self.scene.check_world_processor('examining') == False:
+               # print("OK")
                 self.scene.change_processors('examining')
 
         # this assigns the current mouse data in the mouse variable in the scene, for use in other processors
