@@ -8,8 +8,24 @@ $.getJSON("../data/component_index.json", function (json) {
 
 function addComponentField() {
     $("body").append
-    var newField = $('<div class="component"><label for="type">Type: </label ><select onchange="updateField(this)" name="component-type"></select><div class="subfields"></div></div>').appendTo("#content")
+    var newField = $('<div class="component"><label for="type">Type: </label ><select class="componentSelect" onclick="updateOptions(this)" onchange="updateField(this)" name="component-type"></select><button onclick="deleteField(this)">Delete</button><div class="subfields"></div></div>').appendTo("#content")
     fillSelect(newField)
+}
+
+function updateOptions(select) {
+    otherSelects = $('.componentSelect')
+    opt = select.options
+    for (let i = 0; i < otherSelects.length; i++) {
+        for (let j = 0; j < opt.length; j++) {
+            if (j == otherSelects[i].selectedIndex) {
+                opt[j].disabled = true
+            }
+        }
+    }
+}
+
+function deleteField(button) {
+    button.parentElement.remove();
 }
 
 function fillSelect(field) {
