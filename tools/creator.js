@@ -1,15 +1,47 @@
-var index, components
+var index, components, entities, entitiesID
 // var json = require('../data/component_index.json')
 $.getJSON("../data/component_index.json", function (json) {
     index = json
     components = Object.keys(index)
-    $("#add-component").click(addComponentField)
+    $("#add-component").click(function () {
+        addComponentField(null)
+    })
+    $("#save-entity").click(saveEntity)
 });
 
-function addComponentField() {
-    $("body").append
+$.getJSON("../data/entities.json", function (json) {
+    entities = json
+    entitiesID = Object.keys(entities)
+    fillEntitiesSelect($('#entities'))
+});
+
+
+function selectEntity(select) {
+    comps = entities[select.options[select.selectedIndex].value]
+    $("#id").val(select.options[select.selectedIndex].value)
+    for (var key in comps) {
+        addComponentField(key)
+    }
+}
+
+
+function fillEntitiesSelect(select) {
+    for (let i = 0; i < entitiesID.length; i++) {
+        select.append($("<option />").val(entitiesID[i]).text(entitiesID[i]));
+    }
+}
+
+function addComponentField(preselected) {
     var newField = $('<div class="component"><label for="type">Type: </label ><select class="componentSelect" onclick="updateOptions(this)" onchange="updateField(this)" name="component-type"></select><button onclick="deleteField(this)">Delete</button><div class="subfields"></div></div>').appendTo("#content")
     fillSelect(newField)
+    if (preselected) {
+        preSelect(newField, preselected)
+    }
+}
+
+function preSelect(field, preselected) {
+    select = field.find("select")
+    select.val(preselected).change()
 }
 
 function updateOptions(select) {
@@ -73,4 +105,18 @@ function updateField(select) {
         newSubfields.append(label);
     }
     $(select).parent().find(".subfields").replaceWith(newSubfields);
+}
+
+function saveEntity() {
+    entity = {}
+    comps = $('.component').find("select")
+    for (let i = 0; i < comps.length; i++) {
+        console.log(comps[i].options[comps.selectedIndex])
+
+        // entity[comps[i].val()]
+    }
+}
+
+function deleteEntity() {
+
 }

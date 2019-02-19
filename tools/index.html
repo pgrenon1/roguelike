@@ -8,14 +8,23 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
     <script src="creator.js"></script>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
     <!-- <link rel="stylesheet" href=""> -->
 </head>
 
 <body>
-    <button id="add-component">Add Component</button>
-    <div id="content"></div>
+    <select name="entities" id="entities" onchange="selectEntity(this)"></select>
+
+    <div>
+        <label for="id">Entity ID: </label>
+        <input type="text" name="id" id="id"></input>
+        <button id="save-entity">Save Entity</button>
+    </div>
+
+    <div>
+        <button id="add-component">Add Component</button>
+        <div id="content"></div>
+    </div>
 </body>
 
 </html>
