@@ -69,7 +69,7 @@ class Factory:
         # skipping import statements
         del components_annotations["RenderOrder"]
         for component in components_annotations:
-            print(component)
+            # print(component)
             if components_annotations[component] != {}:
                 for arg in components_annotations[component]:
 

@@ -43,5 +43,6 @@ class StateExamining(esper.Processor):
         super().__init__()
 
     def process(self):
-        if self.scene.mouse.rbutton_pressed and self.scene.action != {}:
+        if self.scene.mouse.rbutton_pressed and self.scene.check_world_processor('examining'):
+           # print(self.scene.current_processor_group)
             self.scene.change_processors('player_turn')
