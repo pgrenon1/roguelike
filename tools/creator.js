@@ -1,15 +1,47 @@
-var index, components
+var index, components, entities, entitiesID
 // var json = require('../data/component_index.json')
 $.getJSON("../data/component_index.json", function (json) {
     index = json
     components = Object.keys(index)
-    $("#add-component").click(addComponentField)
+    $("#add-component").click(function () {
+        addComponentField(null)
+    })
+    $("#save-entity").click(saveEntity)
 });
 
-function addComponentField() {
-    $("body").append
+$.getJSON("../data/entities.json", function (json) {
+    entities = json
+    entitiesID = Object.keys(entities)
+    fillEntitiesSelect($('#entities'))
+});
+
+
+function selectEntity(select) {
+    comps = entities[select.options[select.selectedIndex].value]
+    $("#id").val(select.options[select.selectedIndex].value)
+    for (var key in comps) {
+        addComponentField(key)
+    }
+}
+
+
+function fillEntitiesSelect(select) {
+    for (let i = 0; i < entitiesID.length; i++) {
+        select.append($("<option />").val(entitiesID[i]).text(entitiesID[i]));
+    }
+}
+
+function addComponentField(preselected) {
     var newField = $('<div class="component"><label for="type">Type: </label ><select class="componentSelect" onclick="updateOptions(this)" onchange="updateField(this)" name="component-type"></select><button onclick="deleteField(this)">Delete</button><div class="subfields"></div></div>').appendTo("#content")
     fillSelect(newField)
+    if (preselected) {
+        preSelect(newField, preselected)
+    }
+}
+
+function preSelect(field, preselected) {
+    select = field.find("select")
+    select.val(preselected).change()
 }
 
 function updateOptions(select) {
@@ -73,4 +105,64 @@ function updateField(select) {
         newSubfields.append(label);
     }
     $(select).parent().find(".subfields").replaceWith(newSubfields);
+}
+
+function saveEntity() {
+    entity = {}
+    console.log(entities)
+    comps = $('.component')
+    id = $('#id').val()
+    for (let i = 0; i < comps.length; i++) {
+        sel = comps.find('select')
+
+        component = sel[0].options[sel[0].selectedIndex].value
+
+        content = {}
+        subfields = comps.find('.subfields')
+        inputs = subfields.find('input')
+
+        // if (inputs.length > 0) {
+        for (let j = 0; j < inputs.length; j++) {
+            inputLabel = inputs[j].id
+            type = index[component][inputLabel]
+            switch (type) {
+                case "int":
+                    // number
+                    inputValue = parseInt(inputs[j].value, 10)
+                    break
+                case "str":
+                    // text
+                    inputValue = inputs[j].value
+                    break
+                case "bool":
+                    // checkbox
+                    inputValue = inputs[j].checked
+                    break
+                case "col":
+                    // color
+                    var value = inputs[j].value.match(/[A-Za-z0-9]{2}/g);
+                    value = value.map(function (v) { return parseInt(v, 16) });
+
+                    inputValue = inputs[j].value
+                    break
+                default:
+                    // select
+                    input = $('<select>').attr({ id: labelText, name: labelText })
+                    for (let j = 0; j < type.length; j++) {
+                        input.append($("<option />").val(type[j]).text(type[j]));
+                    }
+            }
+            content[inputLabel] = inputValue
+        }
+        // }
+
+
+        entity[component] = content
+    }
+    entities[id] = entity
+    console.log(entities)
+}
+
+function deleteEntity() {
+
 }
