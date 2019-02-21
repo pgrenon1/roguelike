@@ -49,7 +49,9 @@ PROCESSOR_GROUP = {
     [
         RenderConsole(),
         RenderPanel(),
+        # StatePlayerTurn()
         RenderTooltip(),
+        InputPlayer(),
         StateExamining()
     ],
     'enemy_turn': [

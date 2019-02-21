@@ -19,8 +19,7 @@ class StatePlayerTurn(esper.Processor):
             # si la key est move ou pickup, reliquish the turn!
             if all(key in ['move'] for key in self.scene.action.keys()):
                 self.scene.change_processors('enemy_turn')
-
-        config.TICK += 1
+                config.TICK += 1
 
 
 class StateEnemyTurn(esper.Processor):
@@ -32,7 +31,9 @@ class StateEnemyTurn(esper.Processor):
     # vu que c'est le dernier process du PROCESSORGROUP du enemyturn, Reliquish the turn!
     def process(self):
         if(self.scene.action != {}):
+            # print(self.scene.action)
             self.scene.change_processors('player_turn')
+            config.TICK += 1
 
 
 class StateExamining(esper.Processor):
@@ -43,6 +44,8 @@ class StateExamining(esper.Processor):
         super().__init__()
 
     def process(self):
-        if self.scene.mouse.rbutton_pressed and self.scene.check_world_processor('examining'):
-           # print(self.scene.current_processor_group)
-            self.scene.change_processors('player_turn')
+        # changed this to left button, debug for now just because i'm trying to
+        # figure out why things process even when not in the right processor group
+        if(self.scene.action != {}):
+            if all(key in ['move'] for key in self.scene.action.keys()):
+                self.scene.change_processors('player_turn')

@@ -27,8 +27,8 @@ class MainMenu(Scene):
             ConsoleProcessor(),
             MainTitleProcessor(),
 
-
         }
+
         for num, proc in enumerate(processors):
             self.world.add_processor(proc, priority=num)
             proc.scene = self

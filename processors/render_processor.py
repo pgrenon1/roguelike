@@ -14,13 +14,12 @@ class RenderConsole(esper.Processor):
     # targeting est pour une state spéciale qui n'est pas encore implemented
     # def __init__(self, targeting=False):
 
-    def __init__(self, examining=False):
+    def __init__(self):
         # Unsure if I need the examining at this moment
         super().__init__()
         self.width = config.MAP_WIDTH
         self.height = config.MAP_HEIGHT
         self.entities = []
-        self.examining = examining
 
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
@@ -257,7 +256,7 @@ class RenderTooltip(esper.Processor):
         # self.get_entity_information()
 
         # self.reveal_tooltip()
-        # if(self.show_tooltip):
+        # if(self.show_tooltip)
         self.handle_mouse_position()
         self.render_tooltip()
         self.blit_tooltip()

@@ -22,11 +22,11 @@ class Gameplay(Scene):
     """
 
     def __init__(self, world=None, game_map=None):
-        # helpers.debug("Gameplay scene initialized")
-        self.processor_group = processors.PROCESSOR_GROUP
-        self.current_processor_group = None
+        print("Gameplay scene initialized")
 
         self.game_map = game_map
+
+        self.world = world
 
         self.con = libtcod.console.Console(
             width=config.SCREEN_WIDTH,
@@ -48,12 +48,15 @@ class Gameplay(Scene):
         # This is just a simple data type with a pop func
         self.messages = collections.deque()
 
-        self.world = world
         if world is None:
             """We can use esper.CachedWorld to get the last world that was assigned to esper (not 100% sure)"""
             """We should set self.world = esper.World() to whatefver is the first scene we start with I think"""
             # esper.CachedWorld()
             self.world = esper.CachedWorld()
+
+        self.processor_group = processors.PROCESSOR_GROUP
+        self.current_processor_group = None
+        self.change_processors('player_turn')
 
         self.factory = Factory(self, "data/entities.json")
 
@@ -69,8 +72,6 @@ class Gameplay(Scene):
 
         self.number_of_entities = 0  # this is updated in render.py, check render_entity()
         self.fov_recompute = True
-        self.add_processors()
-        self.change_processors('player_turn')
         self.action = {}
         self.mouse = libtcod.Mouse()
         self.astar = libtcod.path.AStar(self.game_map.walkable)
@@ -79,22 +80,22 @@ class Gameplay(Scene):
         return state == self.current_processor_group
 
     def change_processors(self, state):
-        self.world_processors = self.processor_group[state]
+        print("Changing to {} processor group".format(state))
         self.current_processor_group = state
+
+        self.world._processors = self.processor_group[state]
         for processor_instance in self.processor_group[state]:
             processor_instance.world = self.world
             processor_instance.scene = self
 
-    def add_processors(self):
-        for num, state in enumerate(self.processor_group):
-            for proc in self.processor_group[state]:
-                # missing priority argument here, not sure how to get it to work
-                self.world.add_processor(proc)
-                proc.scene = self
+    # def add_processors(self):
+    #     for num, state in enumerate(self.processor_group):
+    #         for proc in self.processor_group[state]:
+    #             # missing priority argument here, not sure how to get it to work
+    #             self.world.add_processor(proc, priority=num)
+    #             proc.scene = self
 
     def update(self):
-        # print("Processing world")
-
         self.world.process()
         # Once we process the world, we render it
         libtcod.console_flush()
