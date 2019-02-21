@@ -46,6 +46,5 @@ class StateExamining(esper.Processor):
     def process(self):
         # changed this to left button, debug for now just because i'm trying to
         # figure out why things process even when not in the right processor group
-        if(self.scene.action != {}):
-            if all(key in ['move'] for key in self.scene.action.keys()):
-                self.scene.change_processors('player_turn')
+        if(self.scene.action != {} or self.scene.mouse.rbutton_pressed or self.scene.mouse.lbutton_pressed):
+            self.scene.change_processors('player_turn')

@@ -49,7 +49,6 @@ PROCESSOR_GROUP = {
     [
         RenderConsole(),
         RenderPanel(),
-        # StatePlayerTurn()
         RenderTooltip(),
         InputPlayer(),
         StateExamining()
