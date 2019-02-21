@@ -109,12 +109,58 @@ function updateField(select) {
 
 function saveEntity() {
     entity = {}
-    comps = $('.component').find("select")
+    console.log(entities)
+    comps = $('.component')
+    id = $('#id').val()
     for (let i = 0; i < comps.length; i++) {
-        console.log(comps[i].options[comps.selectedIndex])
+        sel = comps.find('select')
 
-        // entity[comps[i].val()]
+        component = sel[0].options[sel[0].selectedIndex].value
+
+        content = {}
+        subfields = comps.find('.subfields')
+        inputs = subfields.find('input')
+
+        // if (inputs.length > 0) {
+        for (let j = 0; j < inputs.length; j++) {
+            inputLabel = inputs[j].id
+            type = index[component][inputLabel]
+            switch (type) {
+                case "int":
+                    // number
+                    inputValue = parseInt(inputs[j].value, 10)
+                    break
+                case "str":
+                    // text
+                    inputValue = inputs[j].value
+                    break
+                case "bool":
+                    // checkbox
+                    inputValue = inputs[j].checked
+                    break
+                case "col":
+                    // color
+                    var value = inputs[j].value.match(/[A-Za-z0-9]{2}/g);
+                    value = value.map(function (v) { return parseInt(v, 16) });
+
+                    inputValue = inputs[j].value
+                    break
+                default:
+                    // select
+                    input = $('<select>').attr({ id: labelText, name: labelText })
+                    for (let j = 0; j < type.length; j++) {
+                        input.append($("<option />").val(type[j]).text(type[j]));
+                    }
+            }
+            content[inputLabel] = inputValue
+        }
+        // }
+
+
+        entity[component] = content
     }
+    entities[id] = entity
+    console.log(entities)
 }
 
 function deleteEntity() {
