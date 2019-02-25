@@ -6,17 +6,20 @@
 from .states_processor import (
     StatePlayerTurn,
     StateEnemyTurn,
-    StateExamining
+    StateExamining,
+    StateEditor
 )
 from .death_processor import Death
 from .input_handler_processor import (
-    InputPlayer
+    InputPlayer,
+    InputEditor
 )
 
 from .render_processor import (
     RenderConsole,
     RenderPanel,
-    RenderTooltip
+    RenderTooltip,
+    RenderEditor
 )
 from .fov_processor import Fov
 from .move_player_processor import MovePlayer
