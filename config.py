@@ -8,6 +8,8 @@ import random
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
 PANEL_HEIGHT = 10
+EDITOR_WIDTH = 50
+EDITOR_HEIGHT = 30
 # Gives us the width of the characters we're using. Since they're square, we just need one of the two (width,height)
 # If needed, just comment out and add WIDTH to the first one.
 CHARACTER_RESOLUTION_WIDTH = libtcod.sys_get_char_size()[0]

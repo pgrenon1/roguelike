@@ -11,6 +11,7 @@ from map_generation.game_map import GameMap
 import random
 import collections
 from loader_functions.factory import Factory
+import numpy
 
 
 # from components.render import Render
@@ -42,6 +43,21 @@ class Gameplay(Scene):
             config.SCREEN_WIDTH,
             config.SCREEN_HEIGHT
         )
+
+        self.editor = libtcod.console.Console(
+            config.SCREEN_WIDTH,
+            config.SCREEN_HEIGHT
+        )
+
+        self.ed_matrix = numpy.chararray(
+            (config.EDITOR_WIDTH, config.EDITOR_HEIGHT), itemsize=1, unicode=True)
+        self.ed_matrix[:] = '.'
+
+        # self.ed_matrix[]
+        # self.ed_matrix[0, 0] = 'a'
+        # self.ed_matrix[1, 1] = 'b'
+        # self.ed_matrix[2, 2] = 'c'
+        print(self.ed_matrix)
 
         self.visible_entities = []
 

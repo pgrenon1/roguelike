@@ -21,6 +21,7 @@ from .render_processor import (
     RenderTooltip,
     RenderEditor
 )
+from .editor_processor import Editor
 from .fov_processor import Fov
 from .move_player_processor import MovePlayer
 from .dna_absorb_processor import DnaAbsorberProcessor
@@ -47,6 +48,15 @@ PROCESSOR_GROUP = {
         RenderPanel(),
         Fov(),
         StatePlayerTurn()
+    ],
+    'editor':
+    [
+        Editor(),
+        RenderConsole(),
+        RenderPanel(),
+        RenderEditor(),
+        InputEditor(),
+        StateEditor()
     ],
     'examining':
     [

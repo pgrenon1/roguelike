@@ -15,6 +15,9 @@ class StatePlayerTurn(esper.Processor):
     def process(self):
         # Process this only if the action is not empty
         if self.scene.action != {}:
+            if self.scene.action.get('show_editor'):
+                self.scene.change_processors('editor')
+
             # all() True - If all elements in an iterable are true. False - If any element in an iterable is false
             # si la key est move ou pickup, reliquish the turn!
             if all(key in ['move'] for key in self.scene.action.keys()):
@@ -56,7 +59,6 @@ class StateEditor(esper.Processor):
         super().__init__()
 
     def process(self):
-        print("Process: StateEditor")
         if self.scene.action != {}:
-            if self.scene.action.get('exit'):
-                self.scene.change_processors('player_turn')
+            # if self.scene.action.get('exit'):
+            self.scene.change_processors('player_turn')

@@ -353,3 +353,27 @@ class RenderPanel(esper.Processor):
         self._render_fps_counter(self.scene.panel)
         self.show_debug()
         self.blit_panel()
+
+
+class RenderEditor(esper.Processor):
+    scene = None
+
+    def __init__(self):
+        super().__init__()
+
+    def process(self):
+        self.blit_editor()
+
+    def blit_editor(self):
+        self.scene.editor.blit(
+            dest=self.scene.manager.root_console,
+            dest_x=(config.SCREEN_WIDTH // 2) - (config.EDITOR_WIDTH // 2),
+            dest_y=(config.SCREEN_HEIGHT // 2) - ((config.EDITOR_HEIGHT + (config.PANEL_HEIGHT // 2)) // 2),
+            src_x=0,
+            src_y=0,
+            width=config.EDITOR_WIDTH,
+            height=config.EDITOR_HEIGHT,
+            fg_alpha=1,
+            bg_alpha=1,
+            key_color=None)
+        self.scene.editor.clear()

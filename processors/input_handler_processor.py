@@ -75,7 +75,7 @@ class InputPlayer(esper.Processor):
             Key(ch='b'): {'move': (-1, 1)},
             Key(ch='c'): {'show_character_screen': True},
             Key(ch='d'): {'drop_inventory': True},
-            Key(ch='e'): {},
+            Key(ch='e'): {'show_editor': True},
             Key(ch='f'): {},
             Key(ch='g'): {'pickup': True},
             Key(ch='h'): {'move': (-1, 0)},
