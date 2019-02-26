@@ -19,8 +19,47 @@ $.getJSON("../data/entities.json", function (json) {
 function selectEntity(select) {
     comps = entities[select.options[select.selectedIndex].value]
     $("#id").val(select.options[select.selectedIndex].value)
+    $("#content").empty()
     for (var key in comps) {
         addComponentField(key)
+        fillSubfieldsValue(comps[key])
+    }
+}
+
+function fillSubfieldsValue(subs) {
+    // console.log(subs)
+    for (var sub in subs) {
+        value = subs[sub]
+        type = index[component][sub]
+        // console.log(sub)
+        input = $("#" + sub)
+        switch (type) {
+            case "int":
+                // number
+                input[0].value = value
+                break
+            case "str":
+                // text
+                input[0].value = value
+                break
+            case "bool":
+                // checkbox
+                input[0].checked = value
+                break
+            case "col":
+                // color
+                r = value[0]
+                g = value[1]
+                b = value[2]
+                value = rgbToHex(r, g, b)
+
+                input[0].value = value
+                break
+            default:
+                // select
+                selectedIndex = type.indexOf(value)
+                input[0].selectedIndex = selectedIndex
+        }
     }
 }
 
@@ -109,7 +148,7 @@ function updateField(select) {
 
 function saveEntity() {
     entity = {}
-    console.log(entities)
+    // console.log(entities)
     comps = $('.component')
     id = $('#id').val()
     for (let i = 0; i < comps.length; i++) {
@@ -165,4 +204,13 @@ function saveEntity() {
 
 function deleteEntity() {
 
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
