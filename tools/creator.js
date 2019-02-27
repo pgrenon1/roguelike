@@ -158,38 +158,37 @@ function saveEntity() {
 
         content = {}
         subfields = comps.find('.subfields')
-        inputs = subfields.find('input')
-
+        inputs = subfields.children()
+        // console.log(inputs)
         // if (inputs.length > 0) {
         for (let j = 0; j < inputs.length; j++) {
-            inputLabel = inputs[j].id
+            input = inputs[j].lastChild
+            inputLabel = inputs[j].lastChild.id
             type = index[component][inputLabel]
             switch (type) {
                 case "int":
                     // number
-                    inputValue = parseInt(inputs[j].value, 10)
+                    inputValue = parseInt(input.value, 10)
                     break
                 case "str":
                     // text
-                    inputValue = inputs[j].value
+                    inputValue = input.value
                     break
                 case "bool":
                     // checkbox
-                    inputValue = inputs[j].checked
+                    inputValue = input.checked
                     break
                 case "col":
                     // color
-                    var value = inputs[j].value.match(/[A-Za-z0-9]{2}/g);
-                    value = value.map(function (v) { return parseInt(v, 16) });
+                    var hexValue = input.value.match(/[A-Za-z0-9]{2}/g);
+                    var rgbValue = hexValue.map(function (v) { return parseInt(v, 16) });
 
-                    inputValue = inputs[j].value
+                    inputValue = rgbValue
                     break
                 default:
                     // select
-                    input = $('<select>').attr({ id: labelText, name: labelText })
-                    for (let j = 0; j < type.length; j++) {
-                        input.append($("<option />").val(type[j]).text(type[j]));
-                    }
+                    // console.log(input.options)
+                    inputValue = input.options[input.selectedIndex].value
             }
             content[inputLabel] = inputValue
         }
