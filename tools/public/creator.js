@@ -1,6 +1,6 @@
 var index, components, entities, entitiesID
 // var json = require('../data/component_index.json')
-$.getJSON("../data/component_index.json", function (json) {
+$.getJSON("./../data/component_index.json", function (json) {
     index = json
     components = Object.keys(index)
     $("#add-component").click(function () {
@@ -9,7 +9,7 @@ $.getJSON("../data/component_index.json", function (json) {
     $("#save-entity").click(saveEntity)
 });
 
-$.getJSON("../data/entities.json", function (json) {
+$.getJSON("data/entities.json", function (json) {
     entities = json
     entitiesID = Object.keys(entities)
     fillEntitiesSelect($('#entities'))
@@ -148,19 +148,16 @@ function updateField(select) {
 
 function saveEntity() {
     entity = {}
-    // console.log(entities)
     comps = $('.component')
     id = $('#id').val()
     for (let i = 0; i < comps.length; i++) {
-        sel = comps.find('select')
-
+        componentContent = {}
+        // convert comps[i] to jquery object just to use find()
+        sel = $(comps[i]).find('select')
+        subfields = $(comps[i]).find('.subfields')
         component = sel[0].options[sel[0].selectedIndex].value
 
-        content = {}
-        subfields = comps.find('.subfields')
         inputs = subfields.children()
-        // console.log(inputs)
-        // if (inputs.length > 0) {
         for (let j = 0; j < inputs.length; j++) {
             input = inputs[j].lastChild
             inputLabel = inputs[j].lastChild.id
@@ -187,18 +184,22 @@ function saveEntity() {
                     break
                 default:
                     // select
-                    // console.log(input.options)
                     inputValue = input.options[input.selectedIndex].value
             }
-            content[inputLabel] = inputValue
+            componentContent[inputLabel] = inputValue
         }
-        // }
-
-
-        entity[component] = content
+        entity[component] = componentContent
     }
     entities[id] = entity
-    console.log(entities)
+
+    writeToJSON()
+}
+
+function writeToJSON() {
+    json = JSON.stringify(entities)
+    $.post("../server.js", function (data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+    });
 }
 
 function deleteEntity() {
