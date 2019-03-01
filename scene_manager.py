@@ -14,8 +14,9 @@ class SceneManager:
 
     def __init__(self, state='menu'):
         print("Scene manager initialized")
-
-        libtcod.console_set_custom_font(DEFAULT_FONT, 2)
+        print(libtcod.__version__)
+        libtcod.console_set_custom_font(
+            DEFAULT_FONT, libtcod.FONT_LAYOUT_CP437)
         self.state = state
 
         self.root_console = libtcod.console_init_root(

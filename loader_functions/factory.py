@@ -33,7 +33,7 @@ class Factory:
         return class_to_annotations
 
     def load_json(self, path):
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             data = json.load(f)
             return data
 

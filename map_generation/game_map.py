@@ -27,6 +27,9 @@ class GameMap(libtcod.map.Map):
         player = self.factory.instantiate_entity(
             'player', self.width//2, self.height//2)
 
+        wall = self.factory.instantiate_entity(
+            'wall', self.width//2 - 3, self.height//2)
+
         # for x in range(0, self.width):
         #     for y in range(0, self.height):
         #         if x == self.width//2 and y == self.height//2:

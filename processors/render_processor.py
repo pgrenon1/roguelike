@@ -49,10 +49,10 @@ class RenderConsole(esper.Processor):
                     for fov_map in self.scene.fovs:
                         if libtcod.map_is_in_fov(fov_map, x, y):
                             libtcod.console_put_char(
-                                self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
+                                self.scene.con, x, y, "·", libtcod.BKGND_ADD)
                     if libtcod.map_is_in_fov(self.scene.game_map, x, y):
                         libtcod.console_put_char(
-                            self.scene.con, x, y, chr(250), libtcod.BKGND_ADD)
+                            self.scene.con, x, y, "·", libtcod.BKGND_ADD)
                     elif self.scene.game_map.explored.item((y, x)):
                         libtcod.console_put_char(
                             self.scene.con, x, y, ' ', libtcod.BKGND_ADDALPHA(0.5))
@@ -79,7 +79,7 @@ class RenderConsole(esper.Processor):
                         bg = rend.background_color + libtcod.darkest_grey
                         fg = rend.foreground_color + libtcod.darkest_grey
                         libtcod.console_put_char_ex(
-                            self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+                            self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
                         rend.is_visible = True
                     else:
                         rend.is_visible = False
@@ -87,13 +87,14 @@ class RenderConsole(esper.Processor):
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
                     bg = rend.background_color + libtcod.darkest_grey
                     fg = rend.foreground_color + libtcod.darkest_grey
+                    print(entity)
                     libtcod.console_put_char_ex(
-                        self.scene.con, pos.x, pos.y, rend.character, fg, bg)
+                        self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
                     rend.is_visible = True
                 elif self.scene.game_map.explored.item((pos.y, pos.x)):
                     if not self.world.has_component(entity, c.Movable):
                         libtcod.console_put_char_ex(
-                            self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color,  rend.background_color)
+                            self.scene.con, pos.x, pos.y, ord(rend.character), rend.foreground_color,  rend.background_color)
 
             else:
                 libtcod.console_put_char_ex(
@@ -368,7 +369,8 @@ class RenderEditor(esper.Processor):
         self.scene.editor.blit(
             dest=self.scene.manager.root_console,
             dest_x=(config.SCREEN_WIDTH // 2) - (config.EDITOR_WIDTH // 2),
-            dest_y=(config.SCREEN_HEIGHT // 2) - ((config.EDITOR_HEIGHT + (config.PANEL_HEIGHT // 2)) // 2),
+            dest_y=(config.SCREEN_HEIGHT // 2) -
+            ((config.EDITOR_HEIGHT + (config.PANEL_HEIGHT // 2)) // 2),
             src_x=0,
             src_y=0,
             width=config.EDITOR_WIDTH,
