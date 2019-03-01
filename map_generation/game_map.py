@@ -23,18 +23,26 @@ class GameMap(libtcod.map.Map):
 
         global noise
         noise = libtcod.noise_new(4, 1.0, 0.9, random=config.LIBTCOD_RANDOM)
-
+        player_pos = (self.width//2, self.height//2)
         player = self.factory.instantiate_entity(
-            'player', self.width//2, self.height//2)
+            'player', *player_pos)
 
-        wall = self.factory.instantiate_entity(
-            'wall', self.width//2 - 3, self.height//2)
+        rooms = self.create_rooms(5)
+        # wall = self.factory.instantiate_entity(
+        #     'wall', self.width//2 - 3, self.height//2)
 
-        # for x in range(0, self.width):
-        #     for y in range(0, self.height):
-        #         if x == self.width//2 and y == self.height//2:
-        #             player = instantiate_entity(
-        #                 self.world, 'player', x, y)
+        # print(rooms)
+        for x in range(0, self.width):
+            for y in range(0, self.height):
+                if (x, y) != player_pos:
+                    for room in rooms:
+                        if x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
+                            if x not in range(room.x1+1, room.x2-1):
+                                wall = self.factory.instantiate_entity(
+                                    'wall', x, y)
+                            if y not in range(room.y1+1, room.y2-1):
+                                wall = self.factory.instantiate_entity(
+                                    'wall', x, y)
         #         elif x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
         #             if x not in range(room.x1+1, room.x2-1):
         #                 wall = instantiate_entity(
@@ -51,8 +59,18 @@ class GameMap(libtcod.map.Map):
         #                     self.world, 'tree', x, y)
         # self.populate_world()
 
-    def populate_world(self):
-        for entity in config.ENTITY_DATA:
-            if(entity != 'player'):
-                instantiate_entity(self.world, entity, random.randint(
-                    10, config.MAP_WIDTH - 10), random.randint(10, config.MAP_HEIGHT - 10))
+    # def populate_world(self):
+    #     for entity in config.ENTITY_DATA:
+    #         if(entity != 'player'):
+    #             instantiate_entity(self.world, entity, random.randint(
+    #                 10, config.MAP_WIDTH - 10), random.randint(10, config.MAP_HEIGHT - 10))
+
+    def create_rooms(self, number):
+        rooms = []
+        for n in range(number):
+            w = random.randint(6, 20)
+            h = random.randint(6, 20)
+            x = random.randint(0, config.MAP_WIDTH - w)
+            y = random.randint(0, config.MAP_HEIGHT - h)
+            rooms.append(Rect(x, y, w, h))
+        return rooms

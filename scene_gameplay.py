@@ -53,12 +53,11 @@ class Gameplay(Scene):
             (config.EDITOR_WIDTH, config.EDITOR_HEIGHT), itemsize=1, unicode=True)
         self.ed_matrix[:] = '.'
 
-        libtcod.mouse_show_cursor(False)
+        libtcod.mouse_show_cursor(True)
         # self.ed_matrix[]
         # self.ed_matrix[0, 0] = 'a'
         # self.ed_matrix[1, 1] = 'b'
         # self.ed_matrix[2, 2] = 'c'
-        print(self.ed_matrix)
 
         self.visible_entities = []
 

@@ -87,7 +87,6 @@ class RenderConsole(esper.Processor):
                 if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
                     bg = rend.background_color + libtcod.darkest_grey
                     fg = rend.foreground_color + libtcod.darkest_grey
-                    print(entity)
                     libtcod.console_put_char_ex(
                         self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
                     rend.is_visible = True
