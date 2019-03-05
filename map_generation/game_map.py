@@ -28,49 +28,37 @@ class GameMap(libtcod.map.Map):
             'player', *player_pos)
 
         rooms = self.create_rooms(5)
-        # wall = self.factory.instantiate_entity(
-        #     'wall', self.width//2 - 3, self.height//2)
 
         # print(rooms)
         for x in range(0, self.width):
             for y in range(0, self.height):
+                in_room = False
                 if (x, y) != player_pos:
                     for room in rooms:
-                        if x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
-                            if x not in range(room.x1+1, room.x2-1):
-                                wall = self.factory.instantiate_entity(
-                                    'wall', x, y)
-                            if y not in range(room.y1+1, room.y2-1):
-                                wall = self.factory.instantiate_entity(
-                                    'wall', x, y)
-        #         elif x in range(room.x1, room.x2) and y in range(room.y1, room.y2):
-        #             if x not in range(room.x1+1, room.x2-1):
-        #                 wall = instantiate_entity(
-        #                     self.world, 'wall', x, y)
-        #             if y not in range(room.y1+1, room.y2-1):
-        #                 wall = instantiate_entity(
-        #                     self.world, 'wall', x, y)
-        #         else:
-        #             val = libtcod.noise_get_fbm(
-        #                 noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
+                        if x == room.x1 and y in range(room.y1, room.y2+1) \
+                                or x == room.x2 and y in range(room.y1, room.y2+1) \
+                                or y == room.y1 and x in range(room.x1+1, room.x2) \
+                                or y == room.y2 and x in range(room.x1+1, room.x2):
+                            wall = self.factory.instantiate_entity(
+                                'wall', x, y)
+                            in_room = True
+                    if not in_room:
+                        val = libtcod.noise_get_fbm(
+                            noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
 
-        #             if val > 0.95:
-        #                 tree = instantiate_entity(
-        #                     self.world, 'tree', x, y)
-        # self.populate_world()
-
-    # def populate_world(self):
-    #     for entity in config.ENTITY_DATA:
-    #         if(entity != 'player'):
-    #             instantiate_entity(self.world, entity, random.randint(
-    #                 10, config.MAP_WIDTH - 10), random.randint(10, config.MAP_HEIGHT - 10))
+                        if val > 0.95:
+                            tree = self.factory.instantiate_entity(
+                                'tree', x, y)
 
     def create_rooms(self, number):
         rooms = []
-        for n in range(number):
-            w = random.randint(6, 20)
-            h = random.randint(6, 20)
+        while len(rooms) < number:
+            w = random.randint(6, 15)
+            h = random.randint(6, 15)
             x = random.randint(0, config.MAP_WIDTH - w)
             y = random.randint(0, config.MAP_HEIGHT - h)
-            rooms.append(Rect(x, y, w, h))
+            new_room = Rect(x, y, w, h)
+            if any(room.intersect(new_room) for room in rooms):
+                continue
+            rooms.append(new_room)
         return rooms
