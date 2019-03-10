@@ -20,6 +20,10 @@ class MainMenu(Scene):
         #     config.PANEL_HEIGHT
         # )
 
+        # We add
+        config.CHARACTER_RESOLUTION_WIDTH = libtcod.sys_get_char_size()[0]
+        config.CHARACTER_RESOLUTION_HEIGHT = libtcod.sys_get_char_size()[1]
+
     def _add_processors(self):
         processors = {
             RenderTitleProcessor(),
