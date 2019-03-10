@@ -111,6 +111,7 @@ class InputPlayer(esper.Processor):
             flush=False
         )
 
+        print("provessinbg")
         # We go into examining mode
 
         # populate an in intance of key with the result of the event

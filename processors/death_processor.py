@@ -60,7 +60,7 @@ class Death(esper.Processor):
                 # print(rend.character)
             rend.character = '%'
             # rend.foreground_color = libtcod.dark_red
-            rend.color = rend.corpse_color
+            # rend.color = rend.corpse_color
 
             rend.render_order = config.RenderOrder.REMAINS.value
 

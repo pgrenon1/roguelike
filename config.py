@@ -12,8 +12,8 @@ EDITOR_WIDTH = 50
 EDITOR_HEIGHT = 30
 # Gives us the width of the characters we're using. Since they're square, we just need one of the two (width,height)
 # If needed, just comment out and add WIDTH to the first one.
-CHARACTER_RESOLUTION_WIDTH = libtcod.sys_get_char_size()[0]
-CHARACTER_RESOLUTION_HEIGHT = libtcod.sys_get_char_size()[1]
+CHARACTER_RESOLUTION_WIDTH = 16
+CHARACTER_RESOLUTION_HEIGHT = 16
 
 PIXEL_SCREEN_WIDTH = SCREEN_WIDTH * CHARACTER_RESOLUTION_WIDTH
 PIXEL_SCREEN_HEIGHT = SCREEN_HEIGHT * CHARACTER_RESOLUTION_HEIGHT
