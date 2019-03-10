@@ -32,7 +32,7 @@ class RenderTitleProcessor(esper.Processor):
         self.scene.manager.root_console.print_(
             x=(config.SCREEN_WIDTH - len(self.title)) // 2 - len(self.title)//2,
             y=config.SCREEN_HEIGHT // 2, string=self.subtitle)
-        libtcod.console_flush()
+  #      libtcod.console_flush()
 
 
 class InputTitleProcessor(esper.Processor):

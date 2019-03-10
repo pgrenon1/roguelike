@@ -176,15 +176,15 @@ class RenderTooltip(esper.Processor):
             . We also need to know what the last pixel coordinate was before the current update"""
 
         self.mouse_x = int((self.scene.mouse.x //
-                            config.CHARACTER_RESOLUTION_WIDTH/2))
+                            config.CHARACTER_RESOLUTION_WIDTH))
 
         self.mouse_y = int((self.scene.mouse.y //
-                            config.CHARACTER_RESOLUTION_HEIGHT/2))
+                            config.CHARACTER_RESOLUTION_HEIGHT))
 
         self.mouse_px = int((self.scene.mouse.dx //
-                             config.CHARACTER_RESOLUTION_WIDTH/2))
+                             config.CHARACTER_RESOLUTION_WIDTH))
         self.mouse_py = int((self.scene.mouse.dy //
-                             config.CHARACTER_RESOLUTION_HEIGHT/2))
+                             config.CHARACTER_RESOLUTION_HEIGHT))
 
         if(self.mouse_x > config.SCREEN_WIDTH):
             self.mouse_x = config.SCREEN_WIDTH
@@ -377,4 +377,4 @@ class RenderEditor(esper.Processor):
             fg_alpha=1,
             bg_alpha=1,
             key_color=None)
-        self.scene.editor.clear()
+        # self.scene.editor.clear()

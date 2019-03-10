@@ -110,8 +110,6 @@ class InputPlayer(esper.Processor):
             # je sais pas c'est quoi, mais la Doc de libtcod dit "flush: This should always be false." ...
             flush=False
         )
-
-        print("provessinbg")
         # We go into examining mode
 
         # populate an in intance of key with the result of the event
