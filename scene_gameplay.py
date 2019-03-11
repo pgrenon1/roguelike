@@ -96,7 +96,7 @@ class Gameplay(Scene):
         return state == self.current_processor_group
 
     def change_processors(self, state):
-        print("Changing to {} processor group".format(state))
+        # print("Changing to {} processor group".format(state))
         self.current_processor_group = state
 
         self.world._processors = self.processor_group[state]
@@ -114,4 +114,4 @@ class Gameplay(Scene):
     def update(self):
         self.world.process()
         # Once we process the world, we render it
-        libtcod.console_flush()
+        # libtcod.console_flush()

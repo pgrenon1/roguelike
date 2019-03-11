@@ -24,8 +24,8 @@ class RenderConsole(esper.Processor):
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
         iterable.sort(key=lambda row: row[1][0].render_order)
-        for entity, (rend, pos) in iterable:
-            yield entity, (rend, pos)
+        for _, (rend, pos) in iterable:
+            yield (rend, pos)
 
     def process(self):
         self.entities = self.get_entities()
@@ -34,7 +34,7 @@ class RenderConsole(esper.Processor):
         self.render_map()
         self.render_entity()
         self.blit_console()
-        # self.flush_console()
+        self.flush_console()
         self.clear_entity()
 
     def reveal_all(self):
@@ -70,35 +70,41 @@ class RenderConsole(esper.Processor):
                     self.scene.visible_entities.remove(ent)
 
     def render_entity(self):
-        entity_number = 0
-        for entity, (rend, pos) in self.entities:
-            entity_number += 1
+        # entity_number = 0
+        for (rend, pos) in self.get_entities():
+            # entity_number += 1
             if not self.scene.reveal_all:
-                for fov_map in self.scene.fovs:
-                    if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
-                        bg = rend.background_color + libtcod.darkest_grey
-                        fg = rend.foreground_color + libtcod.darkest_grey
-                        libtcod.console_put_char_ex(
-                            self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
-                        rend.is_visible = True
-                    else:
-                        rend.is_visible = False
+                # for fov_map in self.scene.fovs:
+                #     if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
+                #         bg = rend.background_color + libtcod.darkest_grey
+                #         fg = rend.foreground_color + libtcod.darkest_grey
+                #         libtcod.console_put_char_ex(
+                #             self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
+                #         rend.is_visible = True
+                #     else:
+                #         rend.is_visible = False
+                if self.scene.game_map.fov[pos.y, pos.x]:
+                    # bg = rend.background_color + libtcod.darkest_grey
+                    # fg = rend.foreground_color + libtcod.darkest_grey
 
-                if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
-                    bg = rend.background_color + libtcod.darkest_grey
-                    fg = rend.foreground_color + libtcod.darkest_grey
                     libtcod.console_put_char_ex(
-                        self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
-                    rend.is_visible = True
-                elif self.scene.game_map.explored.item((pos.y, pos.x)):
-                    if not self.world.has_component(entity, c.Movable):
-                        libtcod.console_put_char_ex(
-                            self.scene.con, pos.x, pos.y, ord(rend.character), rend.foreground_color,  rend.background_color)
+                        self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color, rend.background_color)
+
+                # if libtcod.map_is_in_fov(self.scene.game_map, pos.x, pos.y):
+                #     bg = rend.background_color + libtcod.darkest_grey
+                #     fg = rend.foreground_color + libtcod.darkest_grey
+                #     libtcod.console_put_char_ex(
+                #         self.scene.con, pos.x, pos.y, ord(rend.character), fg, bg)
+                #     rend.is_visible = True
+                # elif self.scene.game_map.explored.item((pos.y, pos.x)):
+                #     if not self.world.has_component(entity, c.Movable):
+                #         libtcod.console_put_char_ex(
+                #             self.scene.con, pos.x, pos.y, ord(rend.character), rend.foreground_color,  rend.background_color)
 
             else:
                 libtcod.console_put_char_ex(
                     self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color, rend.background_color)
-        self.scene.number_of_entities = entity_number
+        # self.scene.number_of_entities = entity_number
 
     def blit_console(self):
         self.scene.con.blit(
@@ -111,12 +117,13 @@ class RenderConsole(esper.Processor):
         libtcod.console_flush()
 
     def clear_entity(self):
-        for (rend, pos) in self.entities:
-            # if self.scene.game_map.fov[pos.y, pos.x]: NO FOV YET
-            # write an empty char, ca c'est pour pas avoir une genre de trainée.
-            # ca change rien si personne bouge, mais si qqun bouge, on doit l'effacer de là ou il était
-            self.scene.con.print_(
-                x=pos.x, y=pos.y, string=' ', bg_blend=libtcod.BKGND_NONE)
+        for (rend, pos) in self.get_entities():
+            # print("clearing:", rend.character, pos.x,pos.y)
+            if self.scene.game_map.fov[pos.y, pos.x]:
+                # write an empty char, ca c'est pour pas avoir une genre de trainée.
+                # ca change rien si personne bouge, mais si qqun bouge, on doit l'effacer de là ou il était
+                self.scene.con.print_(
+                    x=pos.x, y=pos.y, string=' ', bg_blend=libtcod.BKGND_NONE)
 
 
 class RenderTooltip(esper.Processor):
@@ -257,6 +264,10 @@ class RenderTooltip(esper.Processor):
         self.handle_mouse_position()
         self.render_tooltip()
         self.blit_tooltip()
+        self.flush_console()
+
+    def flush_console(self):
+        libtcod.console_flush()
 
 
 class RenderPanel(esper.Processor):
@@ -353,6 +364,10 @@ class RenderPanel(esper.Processor):
         self._render_fps_counter(self.scene.panel)
         self.show_debug()
         self.blit_panel()
+        self.flush_console()
+
+    def flush_console(self):
+        libtcod.console_flush()
 
 
 class RenderEditor(esper.Processor):
