@@ -70,9 +70,9 @@ class RenderConsole(esper.Processor):
                     self.scene.visible_entities.remove(ent)
 
     def render_entity(self):
-        # entity_number = 0
+        entity_number = 0
         for (rend, pos) in self.get_entities():
-            # entity_number += 1
+            entity_number += 1
             if not self.scene.reveal_all:
                 # for fov_map in self.scene.fovs:
                 #     if libtcod.map_is_in_fov(fov_map, pos.x, pos.y):
@@ -104,7 +104,7 @@ class RenderConsole(esper.Processor):
             else:
                 libtcod.console_put_char_ex(
                     self.scene.con, pos.x, pos.y, rend.character, rend.foreground_color, rend.background_color)
-        # self.scene.number_of_entities = entity_number
+        self.scene.number_of_entities = entity_number
 
     def blit_console(self):
         self.scene.con.blit(
