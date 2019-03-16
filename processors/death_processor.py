@@ -17,6 +17,7 @@ class Death(esper.Processor):
             c.Metadata,
             c.Stats
         )
+
         for ent, (rend, meta, stats) in iterable:
             if stats.health <= 0:
                 yield (ent, rend, meta, stats)
@@ -72,6 +73,8 @@ class Death(esper.Processor):
             self.process_dnageneration(ent)
 
             self.try_removing(ent, c.Collidable)
+            self.try_removing(ent, c.Stats)
+            #self.try_removing(ent, c.Metadata)
             self.try_removing(ent, c.Movable)
             self.try_removing(ent, c.PlayerTurn)
             self.try_removing(ent, c.EnemyTurn)

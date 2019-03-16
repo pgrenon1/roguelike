@@ -31,53 +31,53 @@ class GameMap(libtcod.map.Map):
         tree = self.factory.instantiate_entity(
             'tree', 20, 20)
 
-        # rooms = self.create_rooms(5)
+        rooms = self.create_rooms(5)
 
-        # mystery = Mystery(self)
+        mystery = Mystery(self)
 
-        # circle1 = sympy.geometry.Circle(
-        #     sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 9.7)
-        # circle2 = sympy.geometry.Circle(
-        #     sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 8.7)
-        # circle3 = sympy.geometry.Circle(
-        #     sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 7.7)
-        # circle4 = sympy.geometry.Circle(
-        #     sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 6.7)
+        circle1 = sympy.geometry.Circle(
+            sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 9.7)
+        circle2 = sympy.geometry.Circle(
+            sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 8.7)
+        circle3 = sympy.geometry.Circle(
+            sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 7.7)
+        circle4 = sympy.geometry.Circle(
+            sympy.geometry.Point(mystery.w // 2, mystery.w // 2), 6.7)
 
-        # for x, y in numpy.ndindex(mystery.array.shape):
-        #     p = sympy.geometry.Point2D(x, y)
-        #     if circle1.encloses(p):
-        #         mystery.array[x, y] = True
-        #     if circle2.encloses(p):
-        #         mystery.array[x, y] = False
-        #     if circle3.encloses(p):
-        #         mystery.array[x, y] = True
-        #     if circle4.encloses(p):
-        #         mystery.array[x, y] = False
+        for x, y in numpy.ndindex(mystery.array.shape):
+            p = sympy.geometry.Point2D(x, y)
+            if circle1.encloses(p):
+                mystery.array[x, y] = True
+            if circle2.encloses(p):
+                mystery.array[x, y] = False
+            if circle3.encloses(p):
+                mystery.array[x, y] = True
+            if circle4.encloses(p):
+                mystery.array[x, y] = False
 
-        # mystery.create()
+        mystery.create()
 
-        # for x in range(0, self.width):
-        #     for y in range(0, self.height):
-        #         in_room = False
-        #         in_mystery = False
-        #         if (x, y) != player_pos:
-        #             if not mystery.rect.contains(x, y):
-        #                 for room in rooms:
-        #                     if x == room.x1 and y in range(room.y1, room.y2+1) \
-        #                             or x == room.x2 and y in range(room.y1, room.y2+1) \
-        #                             or y == room.y1 and x in range(room.x1+1, room.x2) \
-        #                             or y == room.y2 and x in range(room.x1+1, room.x2):
-        #                         wall = self.factory.instantiate_entity(
-        #                             'wall', x, y)
-        #                         in_room = True
-        #                 if not in_room:
-        #                     val = libtcod.noise_get_fbm(
-        #                         noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
+        for x in range(0, self.width):
+            for y in range(0, self.height):
+                in_room = False
+                in_mystery = False
+                if (x, y) != player_pos:
+                    if not mystery.rect.contains(x, y):
+                        for room in rooms:
+                            if x == room.x1 and y in range(room.y1, room.y2+1) \
+                                    or x == room.x2 and y in range(room.y1, room.y2+1) \
+                                    or y == room.y1 and x in range(room.x1+1, room.x2) \
+                                    or y == room.y2 and x in range(room.x1+1, room.x2):
+                                wall = self.factory.instantiate_entity(
+                                    'wall', x, y)
+                                in_room = True
+                        if not in_room:
+                            val = libtcod.noise_get_fbm(
+                                noise, [x+50, y+50], 15, libtcod.NOISE_PERLIN)
 
-        #                     if val > 0.95:
-        #                         tree = self.factory.instantiate_entity(
-        #                             'tree', x, y)
+                            if val > 0.95:
+                                tree = self.factory.instantiate_entity(
+                                    'tree', x, y)
 
     def create_rooms(self, number):
         rooms = []

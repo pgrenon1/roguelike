@@ -89,7 +89,7 @@ class Gameplay(Scene):
         self.number_of_entities = 0  # this is updated in render.py, check render_entity()
         self.fov_recompute = True
         self.action = {}
-        self.mouse = libtcod.Mouse()
+        #self.mouse = libtcod.Mouse()
         self.astar = libtcod.path.AStar(self.game_map.walkable)
 
     def check_world_processor(self, state):

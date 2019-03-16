@@ -37,5 +37,4 @@ class SceneManager:
 
     def run(self):
         while not libtcod.console_is_window_closed():
-
             self.current_scene.update()

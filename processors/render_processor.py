@@ -264,7 +264,7 @@ class RenderTooltip(esper.Processor):
         self.handle_mouse_position()
         self.render_tooltip()
         self.blit_tooltip()
-        self.flush_console()
+        # self.flush_console()
 
     def flush_console(self):
         libtcod.console_flush()
@@ -364,7 +364,7 @@ class RenderPanel(esper.Processor):
         self._render_fps_counter(self.scene.panel)
         self.show_debug()
         self.blit_panel()
-        self.flush_console()
+        # self.flush_console()
 
     def flush_console(self):
         libtcod.console_flush()
