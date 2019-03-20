@@ -40,7 +40,7 @@ PROCESSOR_GROUP = {
         DnaAbsorberProcessor(),
         # DnaGeneratorProcessor(),
         # giving the player experience should be here if we ever do that
-         Death(),
+        Death(),
         # picking up stuff should be here
         # changing level such as a dungeon level should be here, aka stairs
         # checking "out game" player actions that involve the console should be here, that means going full screen, save and exit, etc

@@ -70,6 +70,8 @@ class MoveEnemy(esper.Processor):
             c.Metadata,
             c.Stats,
         )
+
+        print("others count in move_enemy: " + str(len(others)))
         # Attack anything that moves
         has_target = False
         for other, (_, other_pos, other_meta, other_stats) in others:
@@ -126,6 +128,8 @@ class MoveEnemy(esper.Processor):
             c.Metadata,
             c.Stats,
         )
+
+        print("move_enemies func count : " + str(len(entities)))
 
         for entity, (_, _, entity_pos, entity_meta, entity_stats) in entities:
             # Get Ais

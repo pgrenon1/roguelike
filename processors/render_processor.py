@@ -23,6 +23,8 @@ class RenderConsole(esper.Processor):
 
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
+
+        print("get_entities render_processor count : " + str(len(iterable)))
         iterable.sort(key=lambda row: row[1][0].render_order)
         for _, (rend, pos) in iterable:
             yield (rend, pos)
@@ -61,6 +63,8 @@ class RenderConsole(esper.Processor):
     def populate_visibles(self):
 
         iterable = self.world.get_component(c.Renderable)
+
+        print("iterable populate_visibles count : " + str(len(iterable)))
 
         for ent, ren in iterable:
             if ren.is_visible:
@@ -149,6 +153,8 @@ class RenderTooltip(esper.Processor):
             c.Metadata,
             c.Renderable
         )
+
+        print("render_processor get_entities count : " + str(len(entities)))
 
         for entity, (pos, meta_data, rend) in entities:
             if rend.is_visible:
@@ -258,7 +264,6 @@ class RenderTooltip(esper.Processor):
     def process(self):
         # self.get_entities()
         # self.get_entity_information()
-
         # self.reveal_tooltip()
         # if(self.show_tooltip)
         self.handle_mouse_position()

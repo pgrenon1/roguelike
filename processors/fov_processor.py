@@ -30,6 +30,8 @@ class Fov(esper.Processor):
             c.PlayerTurn,
             c.Position
         )
+
+        print("playerpos count : " + str(len(iterable)))
         for _, (_, pos) in iterable:
             yield pos
 
@@ -38,6 +40,8 @@ class Fov(esper.Processor):
             c.Light,
             c.Position
         )
+
+        print("lights count : " + str(len(iterable)))
         for _, (li, pos) in iterable:
             yield (li, pos)
 

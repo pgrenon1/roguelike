@@ -18,6 +18,8 @@ class Death(esper.Processor):
             c.Stats
         )
 
+        print("deathprocessor count : " + str(len(iterable)))
+
         for ent, (rend, meta, stats) in iterable:
             if stats.health <= 0:
                 yield (ent, rend, meta, stats)
@@ -72,6 +74,7 @@ class Death(esper.Processor):
             # we process dna generation at this point, right before we start removing components
             self.process_dnageneration(ent)
 
+            # We should loop and remove all components except one that is exclusive to corpses and that holds things we might need at that point
             self.try_removing(ent, c.Collidable)
             self.try_removing(ent, c.Stats)
             #self.try_removing(ent, c.Metadata)
@@ -89,6 +92,8 @@ class Death(esper.Processor):
             c.Spawner,
             c.Stats
         )
+
+        print("get_spawners count : " + str(len(iterable)))
         for ent, (spawner_component, spawner_stats) in iterable:
             yield ent, (spawner_component, spawner_stats)
 
@@ -98,6 +103,7 @@ class Death(esper.Processor):
             c.Child,
             c.Stats
         )
+        print("get_children count : " + str(len(iterable)))
 
         for ent, (child_component, stats) in iterable:
             yield ent, (child_component, stats)

@@ -18,6 +18,8 @@ class DnaAbsorberProcessor(esper.Processor):
             c.Metadata
         )
 
+        print("absorbers count : " + str(len(iterable)))
+
         for ent, (pos, dna_abs, meta) in iterable:
             yield (ent, pos, dna_abs, meta)
 
@@ -27,6 +29,8 @@ class DnaAbsorberProcessor(esper.Processor):
             c.Dna,
             c.Metadata
         )
+
+        print("dna count : " + str(len(iterable)))
         for other_ent, (pos, dna, meta) in iterable:
             yield (other_ent, pos, dna, meta)
 

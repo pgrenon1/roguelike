@@ -55,6 +55,8 @@ class MovePlayer(esper.Processor):
             c.Stats
         )
 
+        print("Collidable_c count : " + str(len(collidable_c)))
+
         is_collided = False
         for other_entity, (_, other_pos, other_metadata, other_stats) in collidable_c:
             # If it's not the same entity and if the new position would be the position of the other entity
