@@ -5,6 +5,7 @@ import inspect
 import json
 from components import *
 from config import RenderOrder
+import copy
 
 
 class Factory:
@@ -59,7 +60,8 @@ class Factory:
         components = self.blueprints[entity_name]
         self.scene.world.add_component(new_entity, Position(x, y))
         for component in components:
-            self.scene.world.add_component(new_entity, component)
+            self.scene.world.add_component(
+                new_entity, copy.deepcopy(component))
 
         return new_entity
 
