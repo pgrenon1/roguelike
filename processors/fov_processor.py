@@ -15,10 +15,11 @@ class Fov(esper.Processor):
         self.algo = config.FOV_ALGORITHM
         self.lights = []
         self.framerates = []
-        # libtcod.map_new(config.MAP_WIDTH, config.MAP_HEIGHT)
-        # self.update_map()
+        #libtcod.map_new(config.MAP_WIDTH, config.MAP_HEIGHT)
+#        self.update_map()
 
     def update_lights(self):
+        """We append new lights to our light list"""
         for light in self.world.get_component(c.Light):
             if not light in self.lights:
                 self.lights.append(light)
@@ -26,16 +27,17 @@ class Fov(esper.Processor):
                     config.MAP_WIDTH, config.MAP_HEIGHT))
 
     def get_player_position(self):
+        """We get the player's position"""
         iterable = self.world.get_components(
             c.PlayerTurn,
             c.Position
         )
 
-        print("playerpos count : " + str(len(iterable)))
         for _, (_, pos) in iterable:
             yield pos
 
     def get_lights_positions(self):
+        """We get the position of any entity that contain the light and position components"""
         iterable = self.world.get_components(
             c.Light,
             c.Position
@@ -46,6 +48,8 @@ class Fov(esper.Processor):
             yield (li, pos)
 
     def update_map(self, fov_map):
+        """Updates how FOV renders. All entities that have a position and are collidable don't let 'light' go through,
+        which affects how the FOV area renders"""
         self.scene.game_map.transparent[:] = True
         for ent, (pos, col) in list(self.world.get_components(c.Position, c.Collidable)):
             self.scene.game_map.transparent[pos.y, pos.x] = False

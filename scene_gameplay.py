@@ -7,6 +7,7 @@ import components as c
 from map_generation.tile import Tile
 from map_generation.rect import Rect
 from map_generation.game_map import GameMap
+from camera import Camera
 # from loader_functions.entity_factory import *
 import random
 import collections
@@ -28,6 +29,9 @@ class Gameplay(Scene):
         self.game_map = game_map
 
         self.world = world
+
+        # We initialize a camera in which we store all things
+
 
         self.con = libtcod.console.Console(
             width=config.SCREEN_WIDTH,

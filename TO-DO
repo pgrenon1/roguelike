@@ -16,3 +16,23 @@ Components :
    -  Random walker
    -  Player seeker
    -  Player avoider
+
+
+
+
+
+   # Scrolling camera notes : 
+    - We need to pass all currently visible entities into an array
+    - We need to restrain which entities enter this array : camera view
+    - We need to update this camera as the player moves
+
+
+   Needed attributes : 
+   - Entities, position, characters
+   - Should be updated in render processor 
+   - 
+
+
+
+   1. Fetch all entities to be rendered
+   2. Store them all in a list.  

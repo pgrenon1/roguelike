@@ -4,6 +4,7 @@ import esper
 import tcod as libtcod
 import textwrap
 
+from camera import Camera
 
 """Le processeur pour render. more details below"""
 
@@ -21,10 +22,15 @@ class RenderConsole(esper.Processor):
         self.height = config.MAP_HEIGHT
         self.entities = []
 
+        # I think we should initialize a camera here since it's the only place where we'll need it : at a rendering level.
+        # I initially thought of putting it up in the gameplay class, but I'm not sure that makes sense -- Alvaro
+        self.camera = Camera(
+            config.MAP_WIDTH, config.MAP_HEIGHT, self.world, None)
+
     def get_entities(self):
         iterable = list(self.world.get_components(c.Renderable, c.Position))
 
-        print("get_entities render_processor count : " + str(len(iterable)))
+        #print("get_entities render_processor count : " + str(len(iterable)))
         iterable.sort(key=lambda row: row[1][0].render_order)
         for _, (rend, pos) in iterable:
             yield (rend, pos)
@@ -40,10 +46,12 @@ class RenderConsole(esper.Processor):
         self.clear_entity()
 
     def reveal_all(self):
+        """Toggles the switch that makes it so that we can see past FOV"""
         if self.scene.action.get('switch_reveal_all'):
             self.scene.reveal_all = not self.scene.reveal_all
 
     def render_map(self):
+        """Renders the empty map, with either a . or an empty space"""
         if self.scene.fov_recompute:
             libtcod.console_clear(self.scene.con)
             for x in range(0, self.scene.game_map.width):
@@ -61,10 +69,11 @@ class RenderConsole(esper.Processor):
 
     # Simple function used
     def populate_visibles(self):
+        """We populate a list with all entities that have the Renderable component and its attribute "is_visible" to True"""
 
         iterable = self.world.get_component(c.Renderable)
 
-        print("iterable populate_visibles count : " + str(len(iterable)))
+        #print("iterable populate_visibles count : " + str(len(iterable)))
 
         for ent, ren in iterable:
             if ren.is_visible:
@@ -74,6 +83,8 @@ class RenderConsole(esper.Processor):
                     self.scene.visible_entities.remove(ent)
 
     def render_entity(self):
+        """We --
+        We also count the amount of rendered entities"""
         entity_number = 0
         for (rend, pos) in self.get_entities():
             entity_number += 1
@@ -121,6 +132,11 @@ class RenderConsole(esper.Processor):
         libtcod.console_flush()
 
     def clear_entity(self):
+        """We clear an entity so that we can redraw it in the next render again. We avoid trails or issues this way.
+        """
+
+        # Could we do a check here to avoid redrawing things we don't need to be redrawn? - Alvaro
+
         for (rend, pos) in self.get_entities():
             # print("clearing:", rend.character, pos.x,pos.y)
             if self.scene.game_map.fov[pos.y, pos.x]:
@@ -131,7 +147,6 @@ class RenderConsole(esper.Processor):
 
 
 class RenderTooltip(esper.Processor):
-
     def __init__(self):
         super().__init__()
         self.mouse_x = 0
@@ -154,7 +169,7 @@ class RenderTooltip(esper.Processor):
             c.Renderable
         )
 
-        print("render_processor get_entities count : " + str(len(entities)))
+        #print("render_processor get_entities count : " + str(len(entities)))
 
         for entity, (pos, meta_data, rend) in entities:
             if rend.is_visible:

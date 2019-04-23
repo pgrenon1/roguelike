@@ -10,6 +10,7 @@ class Death(esper.Processor):
 
     def __init__(self):
         super().__init__()
+        self.counter = 0
 
     def get_dead_entities(self):
         iterable = self.world.get_components(
@@ -18,13 +19,16 @@ class Death(esper.Processor):
             c.Stats
         )
 
-        print("deathprocessor count : " + str(len(iterable)))
-
         for ent, (rend, meta, stats) in iterable:
+
             if stats.health <= 0:
+                counter += 1
                 yield (ent, rend, meta, stats)
 
+        print(self.counter)
+
     # def get_generators(self):
+
     #     iterable = self.scene.world.get_components(
     #         c.Position,
     #         c.GenerateDna
@@ -77,7 +81,7 @@ class Death(esper.Processor):
             # We should loop and remove all components except one that is exclusive to corpses and that holds things we might need at that point
             self.try_removing(ent, c.Collidable)
             self.try_removing(ent, c.Stats)
-            #self.try_removing(ent, c.Metadata)
+            # self.try_removing(ent, c.Metadata)
             self.try_removing(ent, c.Movable)
             self.try_removing(ent, c.PlayerTurn)
             self.try_removing(ent, c.EnemyTurn)
