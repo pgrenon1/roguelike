@@ -10,7 +10,6 @@ class Death(esper.Processor):
 
     def __init__(self):
         super().__init__()
-        self.counter = 0
 
     def get_dead_entities(self):
         iterable = self.world.get_components(
@@ -22,10 +21,7 @@ class Death(esper.Processor):
         for ent, (rend, meta, stats) in iterable:
 
             if stats.health <= 0:
-                counter += 1
                 yield (ent, rend, meta, stats)
-
-        print(self.counter)
 
     # def get_generators(self):
 

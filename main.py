@@ -8,6 +8,9 @@ import getopt
 import argparse
 from helpers import *
 import cProfile
+import re
+import io
+import pstats
 
 
 def main(argv):
@@ -43,6 +46,15 @@ def main(argv):
 
     app = SceneManager(state='menu')
     app.run()
+
+    pr.disable()
+    s = io.StringIO()
+
+    ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
+    ps.print_stats()
+
+    with open('game_performance_stats.txt', 'w+') as f:
+        f.write(s.getvalue())
 
 
 if __name__ == '__main__':

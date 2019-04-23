@@ -1,0 +1,481 @@
+         1573773 function calls (1572303 primitive calls) in 3.321 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       11    1.519    0.138    1.519    0.138 {built-in method tcod._libtcod.TCOD_sys_wait_for_event}
+        1    0.832    0.832    0.832    0.832 {built-in method tcod._libtcod.TCOD_console_init_root}
+   132693    0.300    0.000    0.764    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py:487(_tokenize)
+   123409    0.149    0.000    0.149    0.000 {method 'match' of 're.Pattern' objects}
+   118180    0.079    0.000    0.155    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/re.py:271(_compile)
+     48/1    0.060    0.001    0.835    0.835 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:179(_create_tree)
+   118171    0.043    0.000    0.226    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py:147(_compile)
+   118180    0.039    0.000    0.056    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/types.py:164(__get__)
+    12927    0.035    0.000    0.035    0.000 {built-in method _warnings.warn}
+   118180    0.028    0.000    0.183    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/re.py:232(compile)
+   132670    0.023    0.000    0.023    0.000 {built-in method __new__ of type object at 0x10eca4040}
+   118180    0.016    0.000    0.016    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:625(value)
+     1359    0.014    0.000    0.014    0.000 {built-in method tcod._libtcod.TCOD_noise_get_fbm_ex}
+        8    0.014    0.002    0.069    0.009 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:53(render_map)
+   117389    0.013    0.000    0.013    0.000 {method 'span' of 're.Match' objects}
+   121806    0.011    0.000    0.011    0.000 {built-in method builtins.isinstance}
+    93637    0.011    0.000    0.011    0.000 {method 'isidentifier' of 'str' objects}
+    15671    0.010    0.000    0.018    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:238(_get_components)
+    15614    0.008    0.000    0.008    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:250(<listcomp>)
+    12695    0.008    0.000    0.052    0.000 /usr/local/lib/python3.7/site-packages/tcod/_internal.py:16(wrapper)
+    26174    0.008    0.000    0.008    0.000 {method 'readline' of '_io.StringIO' objects}
+    12672    0.006    0.000    0.010    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3090(map_is_in_fov)
+        8    0.006    0.001    0.006    0.001 {built-in method tcod._libtcod.TCOD_console_flush}
+     8920    0.005    0.000    0.005    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:94(fov)
+    12672    0.004    0.000    0.004    0.000 {built-in method tcod._libtcod.TCOD_map_is_in_fov}
+        1    0.004    0.004    0.004    0.004 {built-in method tcod._libtcod.TCOD_console_set_custom_font}
+        8    0.004    0.000    0.013    0.002 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:85(render_entity)
+36609/36321    0.004    0.000    0.004    0.000 {built-in method builtins.len}
+        8    0.003    0.000    0.012    0.002 /Users/alvarosalvagno/roguelike/roguelike/processors/fov_processor.py:50(update_map)
+        8    0.003    0.000    0.011    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:134(clear_entity)
+     3900    0.003    0.000    0.006    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:180(add_component)
+        1    0.003    0.003    0.027    0.027 /Users/alvarosalvagno/roguelike/roguelike/map_generation/game_map.py:23(create_level)
+     4464    0.003    0.000    0.003    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:84(transparent)
+    189/7    0.003    0.000    0.007    0.001 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:475(_parse)
+       57    0.002    0.000    0.020    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:260(<listcomp>)
+    12287    0.002    0.000    0.002    0.000 {method 'item' of 'numpy.ndarray' objects}
+      557    0.002    0.000    0.008    0.000 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:57(instantiate_entity)
+       48    0.002    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:914(get_data)
+     3913    0.002    0.000    0.003    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:42(clear_cache)
+     8935    0.002    0.000    0.008    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:30(get_entities)
+    10455    0.002    0.000    0.002    0.000 {method 'append' of 'list' objects}
+     1675    0.001    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:54(__init__)
+       20    0.001    0.000    0.003    0.000 {method 'sort' of 'list' objects}
+      846    0.001    0.000    0.003    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:83(_nest_function)
+     8912    0.001    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:34(<lambda>)
+      230    0.001    0.000    0.002    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:363(__deprecate_defaults)
+    259/6    0.001    0.000    0.003    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:71(_compile)
+     7826    0.001    0.000    0.001    0.000 {method 'cache_clear' of 'functools._lru_cache_wrapper' objects}
+     4464    0.001    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:227(_get_component)
+     1359    0.001    0.000    0.016    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3254(noise_get_fbm)
+   279/28    0.001    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:174(getwidth)
+    265/1    0.001    0.000    0.835    0.835 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:118(_readmodule)
+      230    0.001    0.000    0.003    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:423(print_)
+     2915    0.001    0.000    0.019    0.000 {built-in method builtins.next}
+     1527    0.001    0.000    0.002    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:68(__init__)
+        8    0.001    0.000    0.002    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:71(populate_visibles)
+     1474    0.001    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:164(__getitem__)
+        8    0.001    0.000    0.002    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:256(<listcomp>)
+      932    0.001    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:233(__next)
+       10    0.001    0.000    0.009    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/death_processor.py:14(get_dead_entities)
+       48    0.001    0.000    0.001    0.000 {method 'read' of '_io.FileIO' objects}
+      360    0.001    0.000    0.006    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:344(_getname)
+     1372    0.001    0.000    0.001    0.000 {method 'new' of 'CompiledFFI' objects}
+     57/6    0.001    0.000    0.007    0.001 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:417(_parse_sub)
+       25    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+     3900    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+      437    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1142(console_put_char)
+        8    0.000    0.000    1.099    0.137 /Users/alvarosalvagno/roguelike/roguelike/processors/input_handler_processor.py:103(process)
+      649    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:15(_int)
+     1701    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+       62    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:276(_optimize_charset)
+      673    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:254(get)
+        7    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:292(clear)
+      109    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
+       48    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py:350(detect_encoding)
+      848    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:62(_addchild)
+       48    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:557(decode_source)
+      180    0.000    0.000    0.004    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:322(_getnamelist)
+      557    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:41(__init__)
+        4    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:96(__init__)
+      557    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:91(create_entity)
+      529    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:249(match)
+      678    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+       83    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:406(__getattr__)
+       13    0.000    0.000    1.647    0.127 /Users/alvarosalvagno/roguelike/roguelike/esper.py:299(_process)
+        8    0.000    0.000    0.013    0.002 /Users/alvarosalvagno/roguelike/roguelike/processors/fov_processor.py:57(process)
+      437    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_put_char}
+      286    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:111(__init__)
+       24    0.000    0.000    0.000    0.000 {built-in method posix.stat}
+      212    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1161(console_put_char_ex)
+      400    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:172(append)
+        8    0.000    0.000    0.000    0.000 {built-in method builtins.eval}
+      487    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:160(__len__)
+        2    0.000    0.000    0.002    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/move_player_processor.py:50(collide_on_entity)
+      786    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:79(_addmethod)
+    46/23    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2198(_signature_from_callable)
+      212    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_put_char_ex}
+     1017    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+       48    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap_external>:775(get_source)
+      421    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+      148    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:74(__init__)
+      238    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:286(tell)
+        2    0.000    0.000    0.000    0.000 {built-in method io.open}
+      658    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:139(_console)
+      230    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:39(_fmt)
+      792    0.000    0.000    0.000    0.000 {method 'end' of 're.Match' objects}
+      747    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+      237    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:252(default_fg)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:66(update_index)
+       14    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:272(_get_void_ptr)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2117(_signature_from_function)
+        8    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_map_compute_fov}
+       11    0.000    0.000    1.519    0.138 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3957(sys_wait_for_event)
+       96    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:401(_check_name_wrapper)
+       23    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:1089(getfullargspec)
+       48    0.000    0.000    0.000    0.000 {method 'close' of '_io.StringIO' objects}
+       57    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:408(_uniq)
+       57    0.000    0.000    0.020    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:258(get_components)
+      230    0.000    0.000    0.000    0.000 {method 'replace' of 'bytes' objects}
+        8    0.000    0.000    0.101    0.013 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:38(process)
+       16    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/dna_absorb_processor.py:14(get_absorbers)
+       10    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_blit}
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1356(find_spec)
+       15    0.000    0.000    0.000    0.000 {built-in method numpy.array}
+      460    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:273(default_alignment)
+       62    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:249(_compile_charset)
+  268/157    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py:333(_iterencode_dict)
+      249    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+      230    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+      173    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+       14    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:260(__array_interface__)
+      237    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:241(default_bg)
+       55    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:56(_path_join)
+       61    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/importlib/util.py:42(_find_spec_from_path)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:168(_init_setup_console_data)
+        1    0.000    0.000    0.865    0.865 /Users/alvarosalvagno/roguelike/roguelike/scene_gameplay.py:26(__init__)
+        8    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_clear}
+       73    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:423(_simple)
+      217    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+       57    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:249(<listcomp>)
+      116    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+        6    0.000    0.000    0.010    0.002 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:759(compile)
+       46    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2467(__init__)
+       34    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:343(_escape)
+       11    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:882(_find_spec)
+        8    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:157(_commastring)
+       52    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:73(BKGND_ADDALPHA)
+       58    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py:380(find_cookie)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/gettext.py:474(find)
+        8    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/dna_absorb_processor.py:26(get_dna)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py:343(raw_decode)
+       14    0.000    0.000    0.000    0.000 {built-in method _ctypes.pointer}
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:43(construct_blueprints)
+        8    0.000    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/dna_absorb_processor.py:59(process)
+       76    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+        1    0.000    0.000    1.647    1.647 /Users/alvarosalvagno/roguelike/roguelike/scene_manager.py:38(run)
+       14    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/ctypes/__init__.py:489(cast)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2750(__init__)
+       12    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/posixpath.py:75(join)
+        8    0.000    0.000    0.002    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/move_player_processor.py:16(process)
+        6    0.000    0.000    0.007    0.001 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:919(parse)
+       18    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:127(__getattr__)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:348(_render_fps_counter)
+        3    0.000    0.000    0.421    0.140 /Users/alvarosalvagno/roguelike/roguelike/processors/main_title_processor.py:44(process)
+      159    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1240(_get_spec)
+       10    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:656(blit)
+        9    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:413(<listcomp>)
+       22    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:84(opengroup)
+        1    0.000    0.000    0.836    0.836 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:20(get_annotations)
+        8    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:124(blit_console)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:536(_compile_info)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1322(add_argument)
+        9    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:411(_mk_bitmap)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1241(__init__)
+       58    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:283(__call__)
+       76    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:168(__setitem__)
+       14    0.000    0.000    0.000    0.000 {method 'from_buffer' of '_ctypes.PyCArrayType' objects}
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py:120(dump)
+       45    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+        5    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/scene_gameplay.py:102(change_processors)
+        8    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/states_processor.py:15(process)
+       45    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py:224(_randbelow)
+       48    0.000    0.000    0.000    0.000 {method 'decode' of '_io.IncrementalNewlineDecoder' objects}
+       13    0.000    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:279(_clear_dead_entities)
+        1    0.000    0.000    1.702    1.702 /Users/alvarosalvagno/roguelike/roguelike/scene_manager.py:15(__init__)
+       22    0.000    0.000    0.001    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:96(closegroup)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/gettext.py:211(_expand_lang)
+       14    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1049(console_is_window_closed)
+       48    0.000    0.000    0.000    0.000 {method 'startswith' of 'bytes' objects}
+       14    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:289(__init__)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:180(unpack_color)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:159(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/map_generation/game_map.py:83(create_rooms)
+       70    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/scene_menu.py:27(_add_processors)
+        6    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+       22    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:65(_combine_flags)
+       45    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py:174(randrange)
+        8    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:99(compute_fov)
+        3    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/main_title_processor.py:27(process)
+       55    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:58(<listcomp>)
+       48    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py:672(generate_tokens)
+       16    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/fov_processor.py:29(get_player_position)
+      157    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py:413(_iterencode)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:833(__and__)
+       56    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:81(groups)
+       13    0.000    0.000    1.647    0.127 /Users/alvarosalvagno/roguelike/roguelike/esper.py:312(process)
+        8    0.000    0.000    0.000    0.000 <string>:1(__init__)
+        8    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1125(console_clear)
+       34    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1293(register)
+       10    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/input_handler_processor.py:34(__hash__)
+       15    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/os.py:673(__getitem__)
+       17    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:295(_class_escape)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:308(render_message)
+       58    0.000    0.000    0.000    0.000 {method 'readline' of '_io.BytesIO' objects}
+      156    0.000    0.000    0.000    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+       58    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/tokenize.py:374(read_or_stop)
+        1    0.000    0.000    0.832    0.832 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:855(console_init_root)
+        8    0.000    0.000    0.006    0.001 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1085(console_flush)
+        1    0.000    0.000    0.001    0.001 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1619(__init__)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/locale.py:384(normalize)
+       10    0.000    0.000    0.009    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/death_processor.py:61(process_death)
+       67    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:1707(_signature_get_user_defined_method)
+       58    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:525(__new__)
+        8    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/dna_absorb_processor.py:41(absorb_other)
+       15    0.000    0.000    0.000    0.000 {method 'cast' of 'CompiledFFI' objects}
+        8    0.000    0.000    0.006    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:131(flush_console)
+       55    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:222(_verbose_message)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:582(_format_args)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:27(__init__)
+        6    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:68(__init__)
+       69    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:158(isfunction)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:1825(_signature_is_builtin)
+       10    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/spawner_processor.py:42(process)
+       13    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/genericpath.py:16(exists)
+        6    0.000    0.000    0.003    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:598(_code)
+       13    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/color.py:18(__init__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/locale.py:350(_replace_encoding)
+       19    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:132(__setattr__)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:152(_get_root)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/scene_menu.py:13(__init__)
+       69    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2799(<genexpr>)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:35(load_json)
+       96    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:909(get_filename)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:224(__init__)
+       45    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py:218(randint)
+        4    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:54(add_processor)
+        1    0.000    0.000    0.836    0.836 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:11(__init__)
+       33    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:855(__enter__)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:376(__init__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1459(_get_optional_kwargs)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1790(_parse_known_args)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_noise_new}
+        8    0.000    0.000    0.002    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:254(get_component)
+       10    0.000    0.000    0.009    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/death_processor.py:124(process)
+       18    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/input_handler_processor.py:24(__key)
+       92    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2517(name)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:328(blit_panel)
+        9    0.000    0.000    0.000    0.000 {built-in method builtins.chr}
+        2    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1548(__init__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/gettext.py:514(translation)
+        1    0.000    0.000    0.000    0.000 {method 'read' of '_io.TextIOWrapper' objects}
+       15    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/os.py:751(encode)
+        2    0.000    0.000    0.000    0.000 {built-in method numpy.zeros}
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:802(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:73(__as_cdata)
+       10    0.000    0.000    1.226    0.123 /Users/alvarosalvagno/roguelike/roguelike/scene_gameplay.py:118(update)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/encodings/__init__.py:43(normalize_encoding)
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1272(find_spec)
+       12    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:415(__setattr__)
+        8    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3073(map_compute_fov)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1379(_add_action)
+       13    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/color.py:59(__setitem__)
+       71    0.000    0.000    0.000    0.000 {method 'getrandbits' of '_random.Random' objects}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/noise.py:76(__init__)
+       14    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_is_window_closed}
+       46    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:72(isclass)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/move_enemy_processor.py:123(move_enemies)
+        1    0.000    0.000    0.027    0.027 /Users/alvarosalvagno/roguelike/roguelike/map_generation/game_map.py:14(__init__)
+       76    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:792(find_spec)
+       33    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:859(__exit__)
+        5    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:461(_get_literal_prefix)
+        3    0.000    0.000    0.000    0.000 {built-in method numpy.frombuffer}
+        6    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/_internal.py:26(verify_order)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/path.py:170(get_tcod_path_ffi)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/path.py:192(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py:274(load)
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:369(__init__)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:903(fix_flags)
+        1    0.000    0.000    0.004    0.004 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:903(console_set_custom_font)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1755(parse_known_args)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_path_new_using_function}
+        8    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:48(reveal_all)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:276(isbuiltin)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:1837(_signature_is_functionlike)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/spawner_processor.py:24(spawn_children)
+        9    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+       11    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:74(_path_stat)
+       12    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/_collections_abc.py:657(get)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:76(__init__)
+        3    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/defchararray.py:2007(__getitem__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/gettext.py:585(dgettext)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:65(__init__)
+        3    0.000    0.000    0.422    0.141 /Users/alvarosalvagno/roguelike/roguelike/scene_menu.py:40(update)
+        1    0.000    0.000    0.835    0.835 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:97(readmodule)
+       37    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+       33    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+       11    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:446(key_p)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:473(__init__)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:382(process)
+       32    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/map_generation/game_map.py:91(<genexpr>)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/main_title_processor.py:39(__init__)
+       23    0.000    0.000    0.000    0.000 {method 'values' of 'mappingproxy' objects}
+       16    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+       13    0.000    0.000    0.000    0.000 {method 'clear' of 'set' objects}
+       12    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:595(isstring)
+       23    0.000    0.000    0.000    0.000 <string>:1(__new__)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3875(sys_get_char_size)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/defchararray.py:1967(__new__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1499(_get_handler)
+        2    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_sys_get_fps}
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:90(ismethoddescriptor)
+       62    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2525(annotation)
+       12    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/map_generation/rect.py:3(__init__)
+       21    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/map_generation/rect.py:14(intersect)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py:204(iterencode)
+        3    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/console_processor.py:10(process)
+        9    0.000    0.000    0.000    0.000 {method 'translate' of 'bytearray' objects}
+       18    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+       19    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+       33    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+        8    0.000    0.000    0.000    0.000 {method 'groups' of 're.Match' objects}
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:719(find_spec)
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1203(_path_importer_cache)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/_bootlocale.py:33(getpreferredencoding)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3747(sys_get_fps)
+       14    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:257(__init__)
+       15    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/numeric.py:469(asarray)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:2460(_get_formatter)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_mouse_show_cursor}
+       56    0.000    0.000    0.000    0.000 {built-in method _json.encode_basestring_ascii}
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/spawner_processor.py:13(get_spawners)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/main_title_processor.py:22(__init__)
+       45    0.000    0.000    0.000    0.000 {method 'bit_length' of 'int' objects}
+       40    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+       11    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/posixpath.py:144(basename)
+       13    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/posixpath.py:41(_get_sep)
+        2    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:334(__getattr__)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:350(__getitem__)
+        4    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:492(_get_charset_prefix)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1226(__init__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1570(_add_action)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1728(_add_action)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1935(consume_positionals)
+        6    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:197(width)
+        6    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:202(height)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:258(default_fg)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:283(__clear_warning)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_sys_set_fps}
+        4    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/input_handler_processor.py:31(__eq__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py:332(decode)
+        5    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py:277(_iterencode_list)
+        3    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/main_title_processor.py:12(process)
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:36(_relax_case)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3153(mouse_show_cursor)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3761(sys_get_last_frame_length)
+       14    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:338(data)
+        6    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1297(_registry_get)
+        2    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1369(add_argument_group)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1495(_pop_action_class)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1508(_check_conflict)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:24(_bytes)
+        7    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:219(fg)
+        7    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:230(ch)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/move_enemy_processor.py:15(process)
+        2    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pyclbr.py:91(_nest_class)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py:299(loads)
+        6    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+       18    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+       12    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+       15    0.000    0.000    0.000    0.000 {method 'isalnum' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.all}
+       11    0.000    0.000    0.000    0.000 {built-in method _imp.is_frozen}
+       13    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
+        1    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py:309(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py:319(decode)
+        9    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:453(_get_iscased)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1091(console_set_default_background)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3204(noise_new)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3736(sys_set_fps)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3796(sys_elapsed_seconds)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:204(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:902(__init__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/gettext.py:624(gettext)
+        6    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:263(default_bg_blend)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:89(walkable)
+        6    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_get_width}
+        2    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_sys_elapsed_seconds}
+       51    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2521(default)
+       46    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2529(kind)
+       13    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        7    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale.nl_langinfo}
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py:186(__init__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/os.py:755(decode)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/scene_manager.py:35(change_scene)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_compile.py:432(_generate_overlap_table)
+        1    0.000    0.000    0.000    0.000 {method 'view' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/_internal.py:879(npy_ctypes_check)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/numpy/core/defchararray.py:2002(__array_finalize__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:566(_metavar_formatter)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:844(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:879(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1024(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1748(parse_args)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:2086(_match_arguments_partial)
+        7    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:207(bg)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:247(default_bg)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/path.py:159(__new__)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_set_default_background}
+        2    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_sys_get_char_size}
+        2    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_sys_get_last_frame_length}
+        4    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/states_processor.py:23(<genexpr>)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/states_processor.py:36(process)
+        6    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:20(__init__)
+        6    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:35(__init__)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py:259(_make_iterencode)
+        6    0.000    0.000    0.000    0.000 {method 'reverse' of 'list' objects}
+       44    0.000    0.000    0.000    0.000 {built-in method builtins.globals}
+        4    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1064(get_source)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py:260(__init__)
+        2    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/enum.py:26(_is_dunder)
+       11    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:521(mouse_p)
+        2    0.000    0.000    0.000    0.000 {method 'gc' of 'CompiledFFI' objects}
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1741(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:1740(_get_positional_actions)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/noise.py:127(implementation)
+        6    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_get_height}
+       10    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:65(<lambda>)
+        6    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:10(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:52(__init__)
+        4    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:79(__init__)
+        5    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:89(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:99(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:104(__init__)
+        4    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:115(__init__)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2835(parameters)
+       23    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/inspect.py:2839(return_annotation)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:343(show_debug)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/loader_functions/factory.py:40(validate_data)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/console_processor.py:7(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/main_title_processor.py:9(__init__)
+        3    0.000    0.000    0.000    0.000 {method 'index' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+        9    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        4    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/sre_parse.py:162(__delitem__)
+        3    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:575(format)
+        2    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/argparse.py:599(<listcomp>)
+        3    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:15(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/components.py:84(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/helpers.py:5(debug)
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

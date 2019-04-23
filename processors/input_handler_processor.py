@@ -138,27 +138,27 @@ class InputPlayer(esper.Processor):
         self.scene.mouse = self.mouse
 
 
-class InputEditor(esper.Processor):
-    scene = None
+# class InputEditor(esper.Processor):
+#     scene = None
 
-    def __init__(self):
-        super().__init__()
-        self.key = tcod.Key()
-        self.mouse = tcod.Mouse()
+#     def __init__(self):
+#         super().__init__()
+#         self.key = tcod.Key()
+#         self.mouse = tcod.Mouse()
 
-    def process(self):
-        tcod.sys_wait_for_event(
-            mask=tcod.EVENT_ANY,
-            k=self.key,
-            m=self.mouse,
-            flush=False
-        )
+#     def process(self):
+#         tcod.sys_wait_for_event(
+#             mask=tcod.EVENT_ANY,
+#             k=self.key,
+#             m=self.mouse,
+#             flush=False
+#         )
 
-        if tcod.EVENT_KEY_PRESS and self.key.pressed:
-            index = self.key.c - ord('a')
-            if self.key.vk == tcod.KEY_ENTER and self.key.lalt:
-                self.scene.action = {'fullscreen': True}
-            elif self.key.vk == tcod.KEY_ESCAPE:
-                self.scene.action = {'exit': True}
-            else:
-                self.scene.action = {}
+#         if tcod.EVENT_KEY_PRESS and self.key.pressed:
+#             index = self.key.c - ord('a')
+#             if self.key.vk == tcod.KEY_ENTER and self.key.lalt:
+#                 self.scene.action = {'fullscreen': True}
+#             elif self.key.vk == tcod.KEY_ESCAPE:
+#                 self.scene.action = {'exit': True}
+#             else:
+#                 self.scene.action = {}

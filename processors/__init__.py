@@ -11,8 +11,7 @@ from .states_processor import (
 )
 from .death_processor import Death
 from .input_handler_processor import (
-    InputPlayer,
-    InputEditor
+    InputPlayer
 )
 
 from .render_processor import (
@@ -55,7 +54,7 @@ PROCESSOR_GROUP = {
         RenderConsole(),
         RenderPanel(),
         RenderEditor(),
-        InputEditor(),
+        #        InputEditor(),
         StateEditor()
     ],
     'examining':
