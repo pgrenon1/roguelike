@@ -3,6 +3,10 @@ import config
 import esper
 import tcod as libtcod
 import textwrap
+import cProfile
+import re
+import io
+import pstats
 
 from camera import Camera
 
@@ -36,6 +40,8 @@ class RenderConsole(esper.Processor):
             yield (rend, pos)
 
     def process(self):
+        pr = cProfile.Profile()
+        pr.enable()
         self.entities = self.get_entities()
         self.populate_visibles()
         self.reveal_all()
@@ -44,6 +50,14 @@ class RenderConsole(esper.Processor):
         self.blit_console()
         self.flush_console()
         self.clear_entity()
+        pr.disable()
+        s = io.StringIO()
+
+        ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
+        ps.print_stats()
+
+        with open('render_processor_performance_stats.txt', 'w+') as f:
+            f.write(s.getvalue())
 
     def reveal_all(self):
         """Toggles the switch that makes it so that we can see past FOV"""

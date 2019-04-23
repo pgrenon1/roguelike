@@ -1,0 +1,59 @@
+         18069 function calls in 0.016 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1655    0.004    0.000    0.004    0.000 {built-in method _warnings.warn}
+        1    0.002    0.002    0.011    0.011 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:67(render_map)
+     1585    0.001    0.000    0.007    0.000 /usr/local/lib/python3.7/site-packages/tcod/_internal.py:16(wrapper)
+     1584    0.001    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3090(map_is_in_fov)
+     1100    0.001    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:94(fov)
+      623    0.001    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1142(console_put_char)
+        1    0.001    0.001    0.002    0.002 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:99(render_entity)
+        1    0.001    0.001    0.002    0.002 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:148(clear_entity)
+     1584    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_map_is_in_fov}
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_flush}
+       70    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:363(__deprecate_defaults)
+      693    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:15(_int)
+     1100    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:38(<lambda>)
+      623    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_put_char}
+     1103    0.000    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:34(get_entities)
+      551    0.000    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:238(_get_components)
+     1357    0.000    0.000    0.000    0.000 {method 'item' of 'numpy.ndarray' objects}
+      550    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:250(<listcomp>)
+       70    0.000    0.000    0.001    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:423(print_)
+      396    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:73(BKGND_ADDALPHA)
+        2    0.000    0.000    0.001    0.000 {method 'sort' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:85(populate_visibles)
+      551    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:227(_get_component)
+      694    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:139(_console)
+      693    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        1    0.000    0.000    0.001    0.001 /Users/alvarosalvagno/roguelike/roguelike/esper.py:260(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:256(<listcomp>)
+      693    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+       70    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1161(console_put_char_ex)
+       70    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:39(_fmt)
+       70    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_put_char_ex}
+       70    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:241(default_bg)
+       70    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:252(default_fg)
+       70    0.000    0.000    0.000    0.000 {method 'replace' of 'bytes' objects}
+      140    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:273(default_alignment)
+       70    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+       70    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+       70    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_blit}
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_console_clear}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/console.py:656(blit)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1125(console_clear)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:138(blit_console)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:1085(console_flush)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:254(get_component)
+        1    0.000    0.000    0.001    0.001 /Users/alvarosalvagno/roguelike/roguelike/esper.py:258(get_components)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:145(flush_console)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:249(<listcomp>)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/render_processor.py:62(reveal_all)
+        2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+
+

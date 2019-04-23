@@ -1,0 +1,21 @@
+         31 function calls in 0.000 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_sys_wait_for_event}
+        9    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:406(__getattr__)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3957(sys_wait_for_event)
+        2    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/tcod.py:127(__getattr__)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/input_handler_processor.py:37(__hash__)
+        9    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.chr}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:446(key_p)
+        1    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/input_handler_processor.py:27(__key)
+        1    0.000    0.000    0.000    0.000 <string>:1(__init__)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:521(mouse_p)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

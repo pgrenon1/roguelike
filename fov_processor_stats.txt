@@ -1,0 +1,29 @@
+         1582 function calls in 0.001 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.001    0.001 /Users/alvarosalvagno/roguelike/roguelike/processors/fov_processor.py:53(update_map)
+      519    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:84(transparent)
+      519    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:250(<listcomp>)
+      521    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:238(_get_components)
+        2    0.000    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:260(<listcomp>)
+        1    0.000    0.000    0.000    0.000 {built-in method tcod._libtcod.TCOD_map_compute_fov}
+        1    0.000    0.000    0.000    0.000 {built-in method _warnings.warn}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/_internal.py:16(wrapper)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pstats.py:118(load_stats)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:99(compute_fov)
+        2    0.000    0.000    0.001    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:258(get_components)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pstats.py:89(__init__)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/processors/fov_processor.py:32(get_player_position)
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/libtcodpy.py:3073(map_compute_fov)
+        2    0.000    0.000    0.000    0.000 /Users/alvarosalvagno/roguelike/roguelike/esper.py:249(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/pstats.py:99(init)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 /usr/local/lib/python3.7/site-packages/tcod/map.py:94(fov)
+        1    0.000    0.000    0.000    0.000 /usr/local/Cellar/python/3.7.2_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/cProfile.py:50(create_stats)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+

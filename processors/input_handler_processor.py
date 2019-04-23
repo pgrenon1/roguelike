@@ -3,7 +3,10 @@ import esper
 
 # this should be imported as libtcod, no?
 import tcod
-
+import cProfile
+import re
+import io
+import pstats
 
 """Une classe qui est filled par le InputPlayer pour wrapper toutes les possibilitées de combinaisons genre alt+a
 si tu print une instance de cette classe en appuyant sur RIGHT_ARROW, ça donne Key(vk=16, ch='\x00', pressed=True, alt=False, ctrl=False, meta=False, shift=False)
@@ -101,6 +104,8 @@ class InputPlayer(esper.Processor):
         }
 
     def process(self):
+        pr = cProfile.Profile()
+        pr.enable()
         # check for an event of type EVENT_ANY, parce que eventuellement on va faire qqch avec la souris
         # self.key = tcod.console_wait_for_keypress(flush=False)
         tcod.sys_wait_for_event(
@@ -136,6 +141,15 @@ class InputPlayer(esper.Processor):
 
         # this assigns the current mouse data in the mouse variable in the scene, for use in other processors
         self.scene.mouse = self.mouse
+
+        pr.disable()
+        s = io.StringIO()
+
+        ps = pstats.Stats(pr, stream=s).sort_stats('tottime')
+        ps.print_stats()
+
+        with open('handler_performance_stats.txt', 'w+') as f:
+            f.write(s.getvalue())
 
 
 # class InputEditor(esper.Processor):

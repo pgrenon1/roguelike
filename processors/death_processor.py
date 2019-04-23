@@ -109,9 +109,7 @@ class Death(esper.Processor):
             yield ent, (child_component, stats)
 
     def handleSpawners(self):
-
         # Is this entity a parent?
-
         # We remove the children entity from the parent list, so it can spawn an additional one
         # We check that the parent of this thing is not dead also
         for spawner, (spawner_component, spawner_stats) in self.get_spawners():
